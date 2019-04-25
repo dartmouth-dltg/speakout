@@ -1,0 +1,528 @@
+* {
+    box-sizing: border-box;
+    transition-duration: 100ms;
+}
+.row{
+    flex-flow: row;
+}
+.third{
+    @include span(4);
+    &:last-child {
+        margin-right: 0;
+    }
+}
+.twothirds {
+    @include span(8);
+    &:last-child {
+        margin-right: 0;
+    }
+}
+.half{
+    @include span(6);
+    &:last-child {
+        margin-right: 0;
+    }
+}
+.quarter{
+    @include span(3);
+    &:last-child {
+        margin-right: 0;
+    }
+}
+.threequarters{
+    @include span(9);
+    padding-top: 0; 
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+
+#content {
+    &:before{
+        background-size: cover;
+    }
+    .full{
+        padding: 0 (2 * gutter());
+        .site-summary {
+            display: none;
+        }
+        .row {
+            .full {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+    h1, h2, h3, h4 {
+        .title{
+            text-align:unset;
+        }
+    }
+    .content-block {
+        &+.content-block {
+            margin-top: 0;
+        }
+        .threequarters {
+            padding-top:0;
+            padding-left: 1em;
+        }
+    }
+}
+
+table {
+    margin: $spacing-l 0;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: $spacing-s $spacing-m;
+    padding-bottom: $spacing-s - 1px;
+    border-bottom: 1px solid $gray;
+}
+
+/* @group ----- Footer ----- */
+
+footer {
+    padding: 0 (2 * gutter()) $spacing-l;
+    .footerinfo{
+        height: (7 * $spacing-l);
+        display: flex;
+        flex-flow: row;
+        div{
+            padding: 0;
+            margin-bottom: 0;
+            text-align: left;
+        }
+        #footertext{
+            @include span(7 last);
+        }
+        #footerlogo{
+            @include span(5 first);
+            img{
+                height: (4 * $spacing-l);
+                vertical-align: top;
+                float:right;
+            }
+        }
+    }
+}
+
+/* @end */
+
+/* @group ----- Navigation ----- */
+#mobilemenu{
+    display: none;
+}
+#search{
+    display:inline-block;
+}
+.menu.closed{
+    display:inline-block;
+}
+header > * {
+    padding: 0 (2 * gutter());
+}
+header nav {
+    @include container;
+    position: static;
+    padding: 0 (2 * gutter());
+    height: 54px;
+}
+
+header nav:before {
+    content: "";
+    border: 0;
+    display: none;
+}
+
+header nav ul a {
+    padding: 0;
+}
+
+header nav ul li {
+    position: static;
+}
+
+header nav.closed ul,
+header nav ul ul li {
+    height: auto;
+    overflow: visible;
+}
+
+header nav ul a:hover {
+    background-color: transparent;
+}
+
+header nav ul li,
+header nav > ul li:last-child,
+header nav > ul ul:hover > li {
+    border: 0;
+}
+
+header nav>ul.menu {
+    margin: 0 auto;
+    max-width: 65%;
+    float: left;
+    background-color: $light;
+    box-shadow: none;
+    height: 54px;
+    a {
+        padding: 0;
+        color:$black;
+    }
+    a:hover {
+        background-color: unset;
+        color:$bold;
+    }
+    li{
+        height: 54px;
+        line-height: 40px;
+    }
+    >li{
+        border-top: none;
+        border-bottom: none;
+        width: unset;
+        float: left;
+        padding: 0 $spacing-m;
+        &:hover{
+            background-color: $darkgreen;
+            a{
+                color:$white;
+            }
+            &>a:hover {
+                color:$white;
+            }
+        }
+    }
+    li ul:before {
+        display: none;
+    }
+
+    & > li {
+        display: inline-block;
+    }
+
+    & > li:not(:last-child) {
+    }
+
+    & > li > ul {
+        position: absolute;
+        left: -9999px;
+        background-color: $darkgreen;
+        padding: 0;
+        list-style: none;
+        width: $maxwidth;
+        border: solid $gray;
+        border-width: 1px 0;
+        padding: ($spacing-m - 1px) 0 ($spacing-s - 1px);
+        display: flex;
+        flex-direction: row;
+        flex-flow: row wrap;
+        z-index: 1;
+    }
+
+    & > li:hover > ul {
+        @include container;
+        padding: 0 (2 * gutter());
+        left: 0;
+        right: 0;
+        border: none;
+        position: fixed;
+
+        &:after {
+            content: "";
+            left: -9999px;
+            right: -9999px;
+            background-color: $darkgreen;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+            box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.15);
+        }
+    }
+
+    & > li > ul > li {
+        font-size: .75 * $base-font-size;
+        padding-bottom: $spacing-l;
+        &>a{
+            color:$darkgreen;
+            &:hover{
+                color:$lightgreen;
+            }
+        }
+    }
+
+    & > li > ul > li ul {
+        font-weight: normal;
+        padding: 0;
+        list-style-type: none;
+        height: auto;
+    }
+}
+
+header nav > ul > li > a {
+    margin: $spacing-s;
+    height: $base-line-height;
+    color: $white;
+}
+
+/* All top-level nav items with siblings are parent items and get an arrow. */
+header nav > ul > li > a:not(:only-child):after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f105";
+    display: inline-block;
+    margin-left: $spacing-s;
+    line-height: 1em;
+    width: 10px;
+}
+header nav > ul > li > a:not(:only-child):hover:after{
+    content: "\f107";
+}
+
+header nav > ul li:hover ul li {
+    height: auto;
+    padding: $spacing-s $spacing-l $spacing-s $spacing-s;
+}
+
+/* Second and Third level items */
+header nav > ul > li > ul > li a,
+header nav > ul > li > ul > li > ul > li a {
+    padding-left: 0;
+}
+header nav > ul.menu > li > ul > li a {
+    padding-left: 0;
+}
+header nav > ul.menu > li > ul > li.active > a {
+    margin-left: unset;
+}
+
+.sub-menu ul {
+    border-bottom: 1px solid $gray;
+    padding-bottom: ($spacing-m - 1px);
+}
+
+.sub-menu li {
+    display: inline-block;
+    border: 0;
+    padding: 0;
+    margin-right: $spacing-m;
+
+    &:first-of-type {
+        border: 0;
+        padding: 0;
+    }
+}
+
+#search {
+    width: 30%;
+    border: none;
+    padding: $spacing-s;
+    float: right;
+    position: relative;
+    top: unset;
+    background-color: unset;
+    box-shadow: none;
+}
+
+#search form input[type="text"],
+#search form button[type="submit"] {
+    height: $base-search-height;
+    font-size: .75 * $base-font-size;
+    line-height: $base-search-height;
+}
+
+#search form button[type="submit"] {
+    width: $base-search-height;
+    height: $base-search-height;
+    padding: 0;
+
+    &:before {
+        line-height: $base-search-height;
+    }
+}
+
+/* @end */
+
+/* @group ----- Banner ----- */
+.oldbanner{
+    /*background: rgb(255,50,50); /* Old browsers */
+    background: -moz-linear-gradient(left, rgba(255,50,50,1) 0%, rgba(226,102,0,1) 17%, rgba(255,242,0,1) 33%, rgba(13,209,0,1) 50%, rgba(0,159,204,1) 67%, rgba(3,0,198,1) 83%, rgba(100,0,168,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(255,50,50,1) 0%,rgba(226,102,0,1) 17%,rgba(255,242,0,1) 33%,rgba(13,209,0,1) 50%,rgba(0,159,204,1) 67%,rgba(3,0,198,1) 83%,rgba(100,0,168,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(255,50,50,1) 0%,rgba(226,102,0,1) 17%,rgba(255,242,0,1) 33%,rgba(13,209,0,1) 50%,rgba(0,159,204,1) 67%,rgba(3,0,198,1) 83%,rgba(100,0,168,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', endColorstr='#6400a8',GradientType=1 ); /* IE6-9 */
+}
+#banner {
+    display: block;
+    position: relative;
+    margin-top: 54px;
+    &:before{
+        content: '\00a0';
+        display: block;
+        background: url('/themes/speakout/asset/images/20150806-nightcampussummer-01-eb.jpg') no-repeat fixed;
+        background-size: cover;
+        background-position: 0 -100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        opacity: 0.4;
+    }
+    &:after{
+        content: '\00a0';
+        display: block;
+        background: linear-gradient(to right, $red 0%,$orange 17%,$yellow 33%,$green 50%,$lightblue 67%,$blue 83%,$purple 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        opacity: 0.4;
+    }
+    #bannercontent{
+        margin:0;
+        padding: (6 * $spacing-m) (2 * gutter()) (4 * $spacing-m);
+        #site-title {
+            font-size: 7.2 * $base-font-size;
+            line-height: 1em;
+            font-family: $serif;
+            text-align: left;
+            display: inline-block;
+            color:$white;
+            height: (7 * $spacing-l);
+            font-weight: bold;
+        }
+    
+        #site-title:hover,
+        #site-title:active {
+            border-bottom: 0;
+            color:$white;
+        }
+    
+        #site-title h1 {
+            margin: 0;
+        }
+        .site-summary {
+            display: block;
+            text-align: left;
+            font-size: $base-line-height;
+            line-height: 1em;
+            letter-spacing: 0.03em;
+            color: $white;
+        }
+    }
+}
+
+/* @end */
+
+/* @group ----- Resource List ----- */
+
+ul.resource-list .resource img {
+    width: 4 * $spacing-l;
+    height: auto;
+    float: right;
+    margin-left: $spacing-m;
+}
+
+ul.resource-list .resource img ~ * {
+    width: calc(100% - #{4.5 * $spacing-l});
+}
+
+/* @end */
+
+/* @group ----- Item Set ----- */
+
+body.item-set.item #content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    & > h2,
+    & > h3 {
+        width: 100%;
+    }
+}
+
+body.item-set .metadata {
+    width: span(4 of 12 alpha);
+    border-left: 5px solid $gray;
+    padding-left: gutter();
+    margin-right: gutter();
+}
+
+body.item-set .metadata h4:first-of-type {
+    margin-top: 0;
+}
+
+body.item-set #content .metadata ~ * {
+    width: span(8 of 12 omega);
+    border-left: 1px solid $gray;
+    padding-left: gutter();
+}
+
+body.item-set .item-set-items h3 {
+    margin-top: 0;
+}
+
+body.item-set .metadata ~ nav.pagination:first-of-type {
+    margin-bottom: 0;
+}
+
+.item-showcase .resource.item {
+    &:not(:only-child) {
+        width: 25%;
+    }
+}
+
+/* @end */
+
+/* @group ----- Page and blocks ----- */
+
+.preview-block {
+    clear: both;
+}
+
+ul.preview.resource-list li:first-of-type {
+    border-top: 1px solid $gray;
+    padding-top: ($spacing-l - 1px);
+}
+
+/* @end */
+
+.interview {
+    margin-bottom: 0;
+}
+
+#properties {
+    .property {
+        margin-top: 0.5em;
+        margin-bottom:0px;
+        line-height: 1.5em;
+        h4{
+            margin-top:0px;
+        }
+        h5 {
+            margin-bottom: 0;
+        }
+    }
+}
+
+#itemtranscript {
+    #transcriptinfo{
+        text-align: right;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        h4 {
+            float:left;
+            margin-bottom: 0;
+        }
+    }
+}

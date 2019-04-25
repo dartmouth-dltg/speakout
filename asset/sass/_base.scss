@@ -1,0 +1,67 @@
+// Susy
+$maxwidth:                              1700px;
+$susy: (
+    columns:                            12,
+    container:                          $maxwidth,
+    gutters:                            1/6,
+    global-box-sizing:                  border-box
+);
+
+// Colors
+$black:                                 #000000;
+$white:                                 #ffffff;
+$gray:                                  #ababab;
+$bold:                                  #424141;
+$light:                                 #f7f7f7;
+$bg:                                    #e2e2e2;
+$green:                                 #00693e;
+$lightgreen:                            #c4dd88;
+$darkgreen:                             #12312b;
+$yellow:                                #f5dc69;
+$orange:                                #ffa00f;
+$darkorange:                            #e32d1c;
+$red:                                   #9d162e;
+$purple:                                #8a6996;
+$blue:                                  #003c73;
+$lightblue:                             #267aba;
+
+// Typography
+
+$base-font-size:                        1.25rem;
+$base-line-height:                      1.875rem;
+$serif:                                 "Lora", Georgia, serif;
+$sansserif:                             "National 2 Light", Verdana, sans-serif;
+
+// Units
+$base-spacing-height:                   30px;
+$base-search-height:                    38px;
+$spacing-s:                             .25 * $base-spacing-height;
+$spacing-m:                             .5 * $base-spacing-height;
+$spacing-l:                             $base-spacing-height;
+
+// Mixins
+
+@mixin container {
+    max-width: $maxwidth;
+    margin:0 auto;
+}
+
+@mixin font-face($style-name, $file, $family, $category:"") {
+    $filepath: "/themes/speakout/asset/fonts/" + $family + "/" + $file;
+    @font-face {
+        font-family: "#{$style-name}";
+        src: url($filepath + ".eot");
+        src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg');
+    }
+    %#{$style-name} {
+        font: {
+            @if $category != "" {
+                family: "#{$style-name}", #{$category};
+            }
+            @else {
+                family: "#{$style-name}";
+                weight: normal;
+            }
+        }
+    }
+}

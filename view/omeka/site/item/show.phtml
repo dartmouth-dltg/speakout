@@ -1,0 +1,83 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$this->htmlElement('body')->appendAttribute('class', 'item resource show');
+$embedMedia = $this->siteSetting('item_media_embed', false);
+$itemMedia = $item->media();
+//build media contents
+$thismedia=array('transcript'=>false,'audio'=>false,'pdf'=>false);
+if ($embedMedia && $itemMedia): 
+    foreach ($itemMedia as $media):
+        $thismediatype=$media->value('dcterms:type');
+        if ($thismediatype=='viewable_transcript'):
+            $thismedia['transcript']=$media->render();
+        elseif ($thismediatype=='audio'):
+            $thismedia['audio']=$media->render();
+        elseif ($thismediatype=='pdf_transcript'):
+            $thismedia['pdf']=$media->originalUrl();
+        endif;
+    endforeach;
+endif; ?>
+
+<div class="row">
+    <div class="full">
+        <?php echo $this->pageTitle($item->displayTitle(), 2); ?>
+        <?php $this->trigger('view.show.before'); ?>
+    </div>
+</div>
+<div class="row">
+    <div id="itemproperties" class="third">
+        <?php if ($thismedia['audio']):
+            echo $thismedia['audio'];
+        endif;?>
+        <div id="properties">
+            <div class="property">
+                <?php echo $item->displayValues(); ?>
+            </div>
+        </div>
+    </div>
+    <div id="itemtranscript" class="twothirds">
+        <?php if ($thismedia['audio']):?>
+            <div class="row">
+                <div id="transcriptinfo" class="full">
+                    <h4>Transcript</h4>
+                    <a href="<?php echo $thismedia['pdf'];?>" target="_blank"><button>download PDF</button></a>
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="row">
+                <div class="full">
+                    <?php echo $thismedia['transcript'];?>
+                </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="half">
+        <?php if (!$embedMedia && $itemMedia): ?>
+        <div class="media-list">
+            <?php foreach ($itemMedia as $media): ?>
+                <?php echo $media->linkPretty(); ?>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+    </div>
+    <div class="half">
+        <?php
+        $page = $this->params()->fromQuery('page', 1);
+        $property = $this->params()->fromQuery('property');
+        $subjectValues = $item->displaySubjectValues($page, 25, $property);
+        ?>
+        <?php if ($subjectValues): ?>
+        <div id="item-linked">
+            <h3><?php echo $translate('Linked resources'); ?></h3>
+            <?php echo $subjectValues; ?>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>
+<div class="row">
+    <div class="full">
+        <?php $this->trigger('view.show.after'); ?>
+    </div>
+</div>

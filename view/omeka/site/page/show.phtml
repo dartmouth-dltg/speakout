@@ -1,0 +1,26 @@
+<?php
+$this->htmlElement('body')->appendAttribute('class', 'page');
+$this->pageTitle($page->title(), 2);
+$showPagePagination = $this->siteSetting('show_page_pagination', true);
+?>
+
+<?php if(!isset($item)):?>
+    <span class="site-summary"><?php echo $site->summary(); ?></span>
+<?php endif;?>
+<?php
+$nav = $site->publicNav();
+$container = $nav->getContainer();
+$activePage = $nav->findActive($container);
+if ($activePage):
+    $currentPageSlug = $activePage['page']->getParams()['page-slug'];
+?>
+    <?php if ($activePage['depth'] !== 0): ?>
+    <nav class="breadcrumbs"><?php echo $nav->breadcrumbs(); ?></nav>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php $this->trigger('view.show.before'); ?>
+<div <?php if($currentPageSlug!='home'){?>class="content-block"<?php }else{}?>>
+<?php echo $this->content; ?>
+</div>
+<?php $this->trigger('view.show.after'); ?>
