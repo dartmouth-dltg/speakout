@@ -153,7 +153,7 @@ textarea {
     border-radius: 0;
     height: 1.5 * $spacing-l;
     border: 1px solid $gray;
-    padding: ($spacing-s - 1px) gutter();
+    padding: ($spacing-s - 0.5px) gutter() ($spacing-s - 1.5px);
     margin: 0;
 }
 
@@ -169,6 +169,7 @@ input[type="file"] {
 
 button,
 .button,
+a.button,
 [type="submit"] {
     color: $white;
     background-color: $green;
@@ -489,18 +490,19 @@ nav.pagination {
         line-height: (3 * $spacing-m);
         display: inline-block;
     }
+    input {
+        text-align: center;
+        width: 2 * $spacing-l;
+    }
+    form {
+        min-width: 3 * $spacing-l;
+    }
 }
 
-.pagination input {
-    text-align: center;
-}
+.pagination 
 
 .resource-list + .pagination {
     border-color: transparent;
-}
-
-.pagination form {
-    min-width: 3 * $spacing-l;
 }
 
 .pagination form,
@@ -511,14 +513,13 @@ nav.pagination {
     vertical-align: top;
     height: 1.5 * $base-line-height;
 }
+.pagination .page-count,.pagination .row-count {
+    margin: 0 $spacing-m;
+}
 
 .pagination form,
 .pagination .last {
     margin-right: $spacing-s;
-}
-
-.pagination input {
-    width: 2 * $spacing-l;
 }
 
 .breadcrumbs {
@@ -843,7 +844,7 @@ article{
     a{
         img{
             height: 7 * $spacing-l;
-            width: 210px;
+            width: 7 * $spacing-l;
             object-fit: cover;
         }
     }
@@ -1066,21 +1067,15 @@ ul.resource-list .resource {
     }
 }
 
-ul.resource-list .resource{
-    .item {
-        a{
-            img{
-                height: 7 * $spacing-l;
-                width: 210px;
-                object-fit: cover;
-            }
+ul.resource-list .resource.item {
+    a{
+        img{
+            height: 4 * $spacing-l;
+            width: 4 * $spacing-l;
+            object-fit: cover;
+            float:right;
+            margin-right: $spacing-m;
         }
-    }
-    img {
-        height: auto;
-        width: 2 * $spacing-l;
-        float: right;
-        margin-left: $spacing-m;
     }
 }
 
@@ -1114,22 +1109,30 @@ ul.resource-list .resource img ~ * {
 
 .search-filters {
     margin-bottom: $spacing-l;
+    .filter{
+        display: inline-block;
+    }
+    .advanced-search.button{
+        float: right;
+        display: inline-block;
+    }
 }
 
 .filter-label,
 .filter-value {
     display: inline-block;
-    border: 1px solid $green;
-    padding: ($spacing-s - 1px);
+    border: 1px solid $lightgreen;
+    padding: $spacing-s $spacing-m;
+    color: $darkgreen;
 }
 
 .filter-label {
-    background-color: $green;
+    background-color: $lightgreen;
 }
 
 .filter-value {
     margin-left: -5px;
-    background-color: $lightgreen;
+    background-color: $white;
 }
 
 .browse-controls {
@@ -1137,11 +1140,6 @@ ul.resource-list .resource img ~ * {
     justify-content: space-between;
     flex-wrap: wrap;
 }
-
-.advanced-search {
-    line-height: 1.5 * $base-line-height;
-}
-
 /* @end */
 
 /* @group ----- Show ----- */
