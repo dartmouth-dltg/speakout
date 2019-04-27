@@ -231,6 +231,7 @@ header nav>ul.menu {
         right: 0;
         border: none;
         position: fixed;
+        top:54px;
 
         &:after {
             content: "";
@@ -246,7 +247,6 @@ header nav>ul.menu {
     }
 
     & > li > ul > li {
-        font-size: .75 * $base-font-size;
         padding-bottom: $spacing-l;
         &>a{
             color:$darkgreen;
@@ -348,13 +348,6 @@ header nav > ul.menu > li > ul > li.active > a {
 /* @end */
 
 /* @group ----- Banner ----- */
-.oldbanner{
-    /*background: rgb(255,50,50); /* Old browsers */
-    background: -moz-linear-gradient(left, rgba(255,50,50,1) 0%, rgba(226,102,0,1) 17%, rgba(255,242,0,1) 33%, rgba(13,209,0,1) 50%, rgba(0,159,204,1) 67%, rgba(3,0,198,1) 83%, rgba(100,0,168,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, rgba(255,50,50,1) 0%,rgba(226,102,0,1) 17%,rgba(255,242,0,1) 33%,rgba(13,209,0,1) 50%,rgba(0,159,204,1) 67%,rgba(3,0,198,1) 83%,rgba(100,0,168,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, rgba(255,50,50,1) 0%,rgba(226,102,0,1) 17%,rgba(255,242,0,1) 33%,rgba(13,209,0,1) 50%,rgba(0,159,204,1) 67%,rgba(3,0,198,1) 83%,rgba(100,0,168,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', endColorstr='#6400a8',GradientType=1 ); /* IE6-9 */
-}
 #banner {
     display: block;
     position: relative;
@@ -362,7 +355,7 @@ header nav > ul.menu > li > ul > li.active > a {
     &:before{
         content: '\00a0';
         display: block;
-        background: url('/themes/speakout/asset/images/20150806-nightcampussummer-01-eb.jpg') no-repeat fixed;
+        background: url($mainbgpath) no-repeat fixed;
         background-size: cover;
         background-position: 0 -100px;
         position: absolute;
@@ -395,7 +388,7 @@ header nav > ul.menu > li > ul > li.active > a {
             text-align: left;
             display: inline-block;
             color:$white;
-            height: (7 * $spacing-l);
+            height: (6 * $spacing-l);
             font-weight: bold;
         }
     
@@ -427,7 +420,6 @@ ul.resource-list .resource img {
     width: 4 * $spacing-l;
     height: auto;
     float: right;
-    margin-left: $spacing-m;
 }
 
 ul.resource-list .resource img ~ * {

@@ -2,6 +2,8 @@
 $this->htmlElement('body')->appendAttribute('class', 'page');
 $this->pageTitle($page->title(), 2);
 $showPagePagination = $this->siteSetting('show_page_pagination', true);
+//do not use white content-block
+$nocontentblock=['home','participate'];
 ?>
 
 <?php if(!isset($item)):?>
@@ -20,7 +22,7 @@ if ($activePage):
 <?php endif; ?>
 
 <?php $this->trigger('view.show.before'); ?>
-<div <?php if($currentPageSlug!='home'){?>class="content-block"<?php }else{}?>>
+<div <?php if(!in_array($currentPageSlug,$nocontentblock)){?>class="content-block"<?php }else{}?>>
 <?php echo $this->content; ?>
 </div>
 <?php $this->trigger('view.show.after'); ?>

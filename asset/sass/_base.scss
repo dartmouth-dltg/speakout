@@ -39,6 +39,11 @@ $spacing-s:                             .25 * $base-spacing-height;
 $spacing-m:                             .5 * $base-spacing-height;
 $spacing-l:                             $base-spacing-height;
 
+// Paths & Folders
+$mainbgpath:                            '/themes/speakout/asset/images/20150806-nightcampussummer-01-eb.jpg';
+$mobilemenuicon:                        '/themes/speakout/asset/images/dartmouth-college-logo_pine.svg';
+$fontfolder:                            '/themes/speakout/asset/fonts';
+
 // Mixins
 
 @mixin container {
@@ -47,7 +52,7 @@ $spacing-l:                             $base-spacing-height;
 }
 
 @mixin font-face($style-name, $file, $family, $category:"") {
-    $filepath: "/themes/speakout/asset/fonts/" + $family + "/" + $file;
+    $filepath: $fontfolder + "/" + $family + "/" + $file;
     @font-face {
         font-family: "#{$style-name}";
         src: url($filepath + ".eot");

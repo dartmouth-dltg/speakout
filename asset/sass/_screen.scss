@@ -456,7 +456,7 @@ header nav > ul.menu > li > ul > li > ul > li a {
             float: left;
             width: 36px;
             height: 100%;
-            background: url('/themes/speakout/asset/images/dartmouth-college-logo_pine.svg') no-repeat;
+            background: url($mobilemenuicon) no-repeat;
             background-size: 50px 60px,cover;
             background-position: -8 2;
         }
@@ -624,8 +624,6 @@ footer {
         padding: 40px (2 * gutter());
         display: flex;
         flex-flow: column;
-        font-size: 0.8 * $base-font-size;
-        line-height: 0.8 * $base-line-height;
         img{
             height:120px;
         }
@@ -658,7 +656,7 @@ article{
     &:before{
         content: '\00a0';
         display: block;
-        background: url('/themes/speakout/asset/images/20150806-nightcampussummer-01-eb.jpg') no-repeat fixed;
+        background: url($mainbgpath) no-repeat fixed;
         background-position: 0 -100px;
         position: absolute;
         top: 0;
@@ -726,7 +724,7 @@ article{
         }
         .site-summary{
             display:block;
-            font-size: 1.7em;
+            font-size: 1.3em;
             margin-bottom: $spacing-l;
             font-weight: bold;
             text-align: center;
@@ -847,6 +845,12 @@ article{
             width: 7 * $spacing-l;
             object-fit: cover;
         }
+    }
+    &>a{
+        display: block;
+        width: fit-content;
+        height: fit-content;
+        margin:0 auto;
     }
 }
 
@@ -1067,15 +1071,21 @@ ul.resource-list .resource {
     }
 }
 
+.item.resource>a {
+    background: linear-gradient(to right, #9d162e 0%, #ffa00f 17%, #f5dc69 33%, #00693e 50%, #267aba 67%, #003c73 83%, #8a6996 100%);
+}
+
 ul.resource-list .resource.item {
     a{
         img{
             height: 4 * $spacing-l;
             width: 4 * $spacing-l;
             object-fit: cover;
-            float:right;
-            margin-right: $spacing-m;
         }
+    }
+    &>a{
+        float:right;
+        display: block;
     }
 }
 

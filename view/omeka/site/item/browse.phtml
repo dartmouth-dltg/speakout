@@ -31,6 +31,7 @@ $sortHeadings = [
 ];
 ?>
 
+<div class="content-block">
 <?php if ($itemSetShow): ?>
     <?php echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
     <h3><?php echo $translate('Item set'); ?></h3>
@@ -42,7 +43,7 @@ $sortHeadings = [
 <?php else: ?>
     <?php echo $this->pageTitle($translate('Items'), 2); ?>
 <?php endif; ?>
-<div class="content-block">
+
 <div class="search-filters">
 <?php echo $this->searchFilters(); ?>
 <?php echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'button advanced-search']); ?>
