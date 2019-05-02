@@ -1,0 +1,50 @@
+<div class="item-with-metadata">
+<?php foreach($attachments as $attachment): ?>
+    <?php $item = $attachment->item(); ?>
+    <?php if (empty($item)) continue; 
+    $embedMedia = $this->siteSetting('item_media_embed', false);
+    $itemMedia = $item->media();
+    //build media contents
+    $thismedia=array('transcript'=>false,'audio'=>false,'pdf'=>false);
+    if ($embedMedia && $itemMedia): 
+        foreach ($itemMedia as $media):
+            $thismediatype=$media->value('dcterms:type');
+            if ($thismediatype=='viewable_transcript'):
+                $thismedia['transcript']=$media->render();
+            elseif ($thismediatype=='audio'):
+                $thismedia['audio']=$media->render();
+            elseif ($thismediatype=='pdf_transcript'):
+                $thismedia['pdf']=$media->originalUrl();
+            endif;
+        endforeach;
+    endif; ?>
+<div class="row">
+    <div id="itemproperties" class="third">
+        <?php if ($thismedia['audio']):
+            echo $thismedia['audio'];
+        endif;?>
+        <div id="properties">
+            <div class="property">
+                <?php echo $item->displayValues(); ?>
+            </div>
+        </div>
+    </div>
+    <div id="itemmedia" class="twothirds">
+
+    <div class="resource show">
+    
+    <?php if($item->media()): ?>
+        <div class="media-list">
+        <?php
+        foreach ($item->media() as $media):
+            echo $media->linkRaw($this->thumbnail($media, 'medium', ['title' => $media->displayTitle(), 'alt' => $media->displayTitle()]), null, [
+                'class' => 'media resource'
+            ]);
+        endforeach;
+        ?>
+        </div>
+    <?php endif; ?>
+    </div>
+    </div>
+<?php endforeach; ?>
+</div>

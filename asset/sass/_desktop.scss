@@ -332,14 +332,12 @@ header nav > ul.menu > li > ul > li.active > a {
 #search form button[type="submit"] {
     height: $base-search-height;
     font-size: .75 * $base-font-size;
-    line-height: $base-search-height;
 }
 
 #search form button[type="submit"] {
     width: $base-search-height;
-    height: $base-search-height;
     padding: 0;
-
+    line-height: $base-search-height;
     &:before {
         line-height: $base-search-height;
     }
@@ -390,6 +388,7 @@ header nav > ul.menu > li > ul > li.active > a {
             color:$white;
             height: (6 * $spacing-l);
             font-weight: bold;
+            text-shadow: -1px -1px 0 $darkgreen, 1px -1px 0 $darkgreen, -1px 1px 0 $darkgreen, 1px 1px 0 $darkgreen;
         }
     
         #site-title:hover,
@@ -408,6 +407,7 @@ header nav > ul.menu > li > ul > li.active > a {
             line-height: 1em;
             letter-spacing: 0.03em;
             color: $white;
+            text-shadow: -1px -1px 0 $darkgreen, 1px -1px 0 $darkgreen, -1px 1px 0 $darkgreen, 1px 1px 0 $darkgreen;
         }
     }
 }
@@ -473,6 +473,19 @@ body.item-set .metadata ~ nav.pagination:first-of-type {
     }
 }
 
+.item-with-metadata #itemmedia .show.resource {
+    margin: 0 0 (2 * $spacing-l) 0;
+    .media img{
+        max-width: (9 * $spacing-l);
+    }
+}
+
+
+a.media.resource+a.media.resource{
+    margin-right: $spacing-m;
+    margin-top:0;
+}
+
 /* @end */
 
 /* @group ----- Page and blocks ----- */
@@ -517,4 +530,7 @@ ul.preview.resource-list li:first-of-type {
             margin-bottom: 0;
         }
     }
+}
+.content-block #itemproperties {
+    margin-bottom: 0;
 }

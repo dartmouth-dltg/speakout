@@ -40,9 +40,10 @@ $spacing-m:                             .5 * $base-spacing-height;
 $spacing-l:                             $base-spacing-height;
 
 // Paths & Folders
-$mainbgpath:                            '/themes/speakout/asset/images/20150806-nightcampussummer-01-eb.jpg';
-$mobilemenuicon:                        '/themes/speakout/asset/images/dartmouth-college-logo_pine.svg';
-$fontfolder:                            '/themes/speakout/asset/fonts';
+$basepath:                              '/themes/speakout/asset';
+$mainbgpath:                            $basepath+'/img/20150806-nightcampussummer-01-eb.jpg';
+$mobilemenuicon:                        $basepath+'/img/dartmouth-college-logo_pine.svg';
+$fontfolder:                            $basepath+'/fonts';
 
 // Mixins
 

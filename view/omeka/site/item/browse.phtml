@@ -62,7 +62,7 @@ foreach ($items as $item):
     $body = $item->value($bodyTerm);
 ?>
     <li class="item resource">
-        <?php echo $item->linkRaw($this->thumbnail($item, 'medium')); ?>
+        <?php echo $item->linkRaw($this->thumbnail($item, 'medium',['alt'=>$item->displayTitle()])); ?>
         <h3><?php echo $item->link($heading); ?></h3>
         <?php if ($body): ?>
         <div class="description"><?php echo $body; ?></div>

@@ -1,0 +1,20 @@
+<?php $this->htmlElement('body')->appendAttribute('class', 'media resource show'); ?>
+<div class="content-block">
+<?php echo $this->pageTitle($media->displayTitle(), 2); ?>
+
+<?php $this->trigger('view.show.before'); ?>
+<div class="row">
+    <div id="itemproperties" class="third">
+        <div id="properties">
+            <div class="property">
+                <?php echo $media->displayValues(); ?>
+            </div>
+        </div>
+    </div>
+    <div id="itemmedia" class="twothirds">
+        <h3><?php echo $this->translate('Media'); ?></h3>
+        <?php echo $media->render(); ?>
+    </div>
+</div>
+<?php $this->trigger('view.show.after'); ?>
+</div>
