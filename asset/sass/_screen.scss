@@ -88,25 +88,25 @@ img {
 }
 
 .yellowbg{
-    background-color:$yellow;
+    background-color:lighten($yellow, 20% );
 }
 .orangebg{
-    background-color:$orange;
+    background-color:lighten($orange, 20% );
 }
 .redbg{
-    background-color:$red;
+    background-color:lighten($red, 20% );
 }
 .greenbg{
-    background-color:$green;
+    background-color:lighten($green, 20% );
 }
 .lightbluebg{
-    background-color:$lightblue;
+    background-color:lighten($lightblue, 20% );
 }
 .bluebg{
-    background-color:$blue;
+    background-color:lighten($blue, 20% );
 }
 .purplebg{
-    background-color:$purple;
+    background-color:lighten($purple, 20% );
 }
 .yellowtext{
     color:$yellow;
@@ -231,13 +231,15 @@ select {
 }
 
 .field .field-meta {
-    width: 30%;
-    padding: $spacing-s gutter() 0 0;
+    @include span(12);
+    display: flex;
+    flex-flow: column;
 }
 
 .field .inputs {
-    width: 70%;
-    padding-left: gutter();
+    @include span(12);
+    display: flex;
+    flex-flow: column;
 
     & > select,
     & > textarea,
@@ -250,6 +252,9 @@ select {
 
     input[type="checkbox"] {
         vertical-align: bottom;
+    }
+    .add-value.button {
+        text-align: center;
     }
 }
 
@@ -323,7 +328,7 @@ header nav > ul.menu {
     margin: 0 auto;
     background-color: $darkgreen;
     box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.5);
-
+    width:100%;
     a {
         display: inline-block;
         width: 100%;
@@ -455,16 +460,17 @@ header nav > ul.menu > li > ul > li > ul > li a {
             padding:0;
             float: left;
             width: 36px;
-            height: 100%;
+            height: 54px;
             background: url($mobilemenuicon) no-repeat;
             background-size: 50px 60px,cover;
-            background-position: -8 2;
+            background-position: -8px 2px;
         }
         &#mobilebanner {
             font-size: 1.7em;
             float: left;
             font-family: $serif;
             font-weight: bold;
+            line-height:100%;
         }
         &.rightctl {
             float: right;
@@ -498,8 +504,6 @@ nav.pagination {
         min-width: 3 * $spacing-l;
     }
 }
-
-.pagination 
 
 .resource-list + .pagination {
     border-color: transparent;
@@ -664,11 +668,11 @@ article{
 #content {
     @include container;
     padding-bottom: (2 * $spacing-l);
+    margin-top: 54px;
     &:before{
         content: '\00a0';
         display: block;
         background: url($mainbgpath) no-repeat fixed;
-        background-position: 0 -100px;
         position: absolute;
         top: 0;
         left: 0;
@@ -776,6 +780,7 @@ article{
                 content:'\00a0';
                 width:100%;
                 line-height: 0;
+                max-height: (4 * $spacing-l);
                 &:after {
                     content: "";
                     display: block;
@@ -851,12 +856,10 @@ article{
         margin-right: 0;
         vertical-align: top;
     }
-    a{
-        img{
-            height: 7 * $spacing-l;
-            width: 7 * $spacing-l;
-            object-fit: cover;
-        }
+    .squareimage{
+        height: 7 * $spacing-l;
+        width: 7 * $spacing-l;
+        object-fit: cover;
     }
     &>a{
         display: block;
@@ -1260,8 +1263,25 @@ a.media.resource+a.media.resource{
 
 /* @group ----- Advanced Search ----- */
 
-#advanced-search .value:not(:last-child) {
-    margin-bottom: $spacing-m;
+#advanced-search .value{
+    display: inline;
+    &:not(:last-child) {
+        margin-bottom: $spacing-m;
+    }
+    select{
+        width:100%;
+        float: left;
+        margin: 0 0 $spacing-s 0;
+        &+.button{
+            margin-left:0;
+        }
+    }
+}
+
+#page-actions{
+    input{
+        width: 100%;
+    }
 }
 
 .remove-value {
@@ -1381,4 +1401,28 @@ a.metadata-browse-link {
 
 .content-block #itemproperties {
     margin-bottom: $spacing-l;
+}
+
+body.hasuser{
+    header{
+        top:36px!important;
+    }
+    #banner{
+        margin-top: 90px!important;
+    }
+    #content{
+        margin-top: 90px!important;
+    }
+}
+
+.squarecontainer{
+    height: 7 * $spacing-l;
+    width: 7 * $spacing-l;
+    &.compat-object-fit {
+        background-size: contain;
+        background-position: center center;
+        .squareimage { // hide image if object fit is not supported - opacity to 0 for the link area
+            opacity: 0;
+        }
+    }
 }

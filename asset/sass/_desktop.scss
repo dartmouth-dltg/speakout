@@ -43,7 +43,7 @@
         background-size: cover;
     }
     .full{
-        padding: 0 (2 * gutter());
+        padding: 0;
         .site-summary {
             display: none;
         }
@@ -56,7 +56,7 @@
     }
     h1, h2, h3, h4 {
         .title{
-            text-align:unset;
+            text-align:left;
         }
     }
     .content-block {
@@ -66,6 +66,11 @@
         .threequarters {
             padding-top:0;
             padding-left: 1em;
+        }
+        .quarter{
+            .square {
+                max-height:initial;
+            }
         }
     }
 }
@@ -174,7 +179,7 @@ header nav>ul.menu {
         color:$black;
     }
     a:hover {
-        background-color: unset;
+        background-color: transparent;
         color:$bold;
     }
     li{
@@ -184,7 +189,7 @@ header nav>ul.menu {
     >li{
         border-top: none;
         border-bottom: none;
-        width: unset;
+        width: auto;
         float: left;
         padding: 0 $spacing-m;
         &:hover{
@@ -297,7 +302,7 @@ header nav > ul.menu > li > ul > li a {
     padding-left: 0;
 }
 header nav > ul.menu > li > ul > li.active > a {
-    margin-left: unset;
+    margin-left: 0;
 }
 
 .sub-menu ul {
@@ -323,8 +328,8 @@ header nav > ul.menu > li > ul > li.active > a {
     padding: $spacing-s;
     float: right;
     position: relative;
-    top: unset;
-    background-color: unset;
+    top: auto;
+    background-color: $light;
     box-shadow: none;
 }
 
@@ -355,7 +360,6 @@ header nav > ul.menu > li > ul > li.active > a {
         display: block;
         background: url($mainbgpath) no-repeat fixed;
         background-size: cover;
-        background-position: 0 -100px;
         position: absolute;
         top: 0;
         left: 0;
@@ -533,4 +537,52 @@ ul.preview.resource-list li:first-of-type {
 }
 .content-block #itemproperties {
     margin-bottom: 0;
+}
+
+body.hasuser{
+    #content{
+        margin-top: 30px!important;
+    }
+    header nav>ul.menu>li:hover>ul {
+        top:90px!important;
+    }
+    #banner{
+        margin-top: 90px!important;
+    }
+    #content{
+        margin-top: 90px!important;
+    }
+}
+
+.field .field-meta {
+    @include span(2);
+}
+
+.field .inputs {
+    @include span(10);
+    &:last-child {
+        margin-right: 0;
+    }
+    .add-value.button {
+        width: fit-content;
+    }
+}
+
+#advanced-search .value{
+    &:not(:last-child) {
+        margin-bottom: $spacing-m;
+    }
+    select{
+        width:auto;
+        margin: 0 $spacing-s $spacing-s 0;
+        &+.button{
+            margin-left:$spacing-s;
+        }
+    }
+}
+
+#page-actions{
+    input{
+        width: auto;
+    }
 }

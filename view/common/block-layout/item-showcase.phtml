@@ -8,7 +8,9 @@
         <?php
         $media = $attachment->media() ?: $item->primaryMedia();
         if ($media):
-            echo $item->linkRaw($this->thumbnail($media, $this->thumbnailType,['alt'=>$item->displayTitle()]));
+            echo $item->linkRaw($this->thumbnail($media, $this->thumbnailType,['alt'=>$item->displayTitle(),'class'=>'squareimage']), null, [
+                'class' => 'squarecontainer'
+            ]);
         endif;
         ?>
         <?php $showTitleOption = $this->showTitleOption; ?>

@@ -7,7 +7,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    /* @import "tablet"; */
+    @import "tablet";
 }
 @media screen and (min-width: 1024px) { 
     @import "desktop";
@@ -16,4 +16,10 @@
 
 }
 @media screen and (min-width: 1690px) {
+}
+
+@media screen and (-ms-high-contrast: none), screen and (-ms-high-contrast: active) {
+    .cutouttitle {
+        background: transparent;
+    }
 }

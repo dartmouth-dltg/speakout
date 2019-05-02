@@ -13,28 +13,6 @@ $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 
 $this->trigger('view.layout');
 $title = $this->pageTitle($site->title());
 $userBar = $this->userBar();
-//override top margins if user is logged in
-if($userBar):
-?><style>
-    header{
-        top:36px!important;
-    }
-    #banner{
-        margin-top: 90px!important;
-    }
-    #content{
-        margin-top: 90px!important;
-    }
-    @media screen and (min-width: 1024px) { 
-        #content{
-            margin-top: 30px!important;
-        }
-        header nav>ul.menu>li:hover>ul {
-            top:90px!important;
-        }
-    }
-</style><?php 
-endif;
 $logo = $this->themeSettingAssetUrl('logo');
 if ($logo):
     $title = '<img src="' . $this->escapeHtml($logo) . '">';
@@ -49,13 +27,17 @@ endif;
         <?php echo $this->headStyle(); ?>
         <?php echo $this->headScript(); ?>
     </head>
-
-    <?php echo $this->htmlElement('body'); ?>
+    
+    <?php if($userBar):
+        echo $this->htmlElement('body')->appendAttribute('class', 'hasuser');
+    else:
+        echo $this->htmlElement('body');
+    endif; ?>
         <?php echo $userBar; ?>
         <header>
             <nav>
                 <ul id="mobilemenu">
-                    <li id="mobilelogo"></li>
+                    <li id="mobilelogo">&nbsp;&nbsp;</li>
                     <li id="mobilebanner" class="cutouttitle"><a href="/"><?php echo $this->pageTitle($site->title(),0); ?></a></li>
                     <li id="navctl" class="rightctl"><i class="fas fa-bars"></i></li>
                     <li id="searchctl" class="rightctl"><i class="fas fa-search"></i></li>
@@ -96,7 +78,7 @@ endif;
                     <?php endif; ?>
                 </div>
                 <div id="footerlogo">
-                    <img src='<?php echo $this->assetUrl('img/dartmouth-college-logo_white.svg');?>' class="footerlogo">
+                    <img src='<?php echo $this->assetUrl('img/dartmouth-college-logo_white.svg');?>' class="footerlogo" alt="Dartmouth College Logo">
                 </div>
             </div>
         </footer>

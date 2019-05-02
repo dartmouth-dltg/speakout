@@ -52,5 +52,17 @@
         // Maintain iframe aspect ratios
         $(window).on('load resize', framerateCallback(fixIframeAspect));
         fixIframeAspect();
+        if('objectFit' in document.documentElement.style === false) {
+            $('.squarecontainer').each(function () {
+                var container = $(this),
+                    imgUrl = container.find('img').prop('src');
+                    console.log(imgUrl);
+                if (imgUrl) {
+                  container
+                    .css({'background-image':'url(' + imgUrl + ')','background-size':'cover'})
+                    .addClass('compat-object-fit');
+                }  
+              });
+        }
     });
 })(jQuery);
