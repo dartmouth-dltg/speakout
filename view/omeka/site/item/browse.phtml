@@ -55,14 +55,16 @@ $sortHeadings = [
 </div>
 
 <?php $this->trigger('view.browse.before'); ?>
-<ul class="resource-list">
+<ul id="search-results" class="resource-list">
 <?php
 foreach ($items as $item):
     $heading = $item->value($headingTerm, ['default' => $translate('[Untitled]')]);
     $body = $item->value($bodyTerm);
 ?>
     <li class="item resource">
-        <?php echo $item->linkRaw($this->thumbnail($item, 'medium',['alt'=>$item->displayTitle()])); ?>
+        <?php echo $item->linkRaw($this->thumbnail($item, 'medium',['alt'=>$item->displayTitle(),'class'=>'squareimage']), null, [
+                'class' => 'squarecontainer'
+            ]); ?>
         <h3><?php echo $item->link($heading); ?></h3>
         <?php if ($body): ?>
         <div class="description"><?php echo $body; ?></div>

@@ -39,6 +39,7 @@
 
 
 #content {
+    margin-top: 0;
     &:before{
         background-size: cover;
     }
@@ -191,7 +192,7 @@ header nav>ul.menu {
         border-bottom: none;
         width: auto;
         float: left;
-        padding: 0 $spacing-m;
+        padding: 0 $spacing-s;
         &:hover{
             background-color: $darkgreen;
             a{
@@ -408,7 +409,7 @@ header nav > ul.menu > li > ul > li.active > a {
             display: block;
             text-align: left;
             font-size: $base-line-height;
-            line-height: 1em;
+            line-height: 1.5em;
             letter-spacing: 0.03em;
             color: $white;
             text-shadow: -1px -1px 0 $darkgreen, 1px -1px 0 $darkgreen, -1px 1px 0 $darkgreen, 1px 1px 0 $darkgreen;

@@ -479,6 +479,7 @@ header nav > ul.menu > li > ul > li > ul > li a {
             width:50px;
             text-align: center;
             background-color:$light;
+            cursor:pointer;
             &.clicked{
                 background-color:$darkgreen;
                 color:$white;
@@ -493,7 +494,6 @@ nav.pagination {
     line-height: 1.5 * $base-line-height;
     span{
         height: (3 * $spacing-m);
-        line-height: (3 * $spacing-m);
         display: inline-block;
     }
     input {
@@ -502,6 +502,8 @@ nav.pagination {
     }
     form {
         min-width: 3 * $spacing-l;
+        margin-bottom: $spacing-m;
+        width: 100%;
     }
 }
 
@@ -545,7 +547,6 @@ button.o-icon-search {
 .o-icon-prev,.o-icon-next {
     height: (1.5 * $base-line-height);
     width: (1.5 * $base-line-height);
-    padding: 13px;
     text-align: center;
 }
 
@@ -1139,13 +1140,17 @@ ul.resource-list .resource img ~ * {
 /* @group ----- Browse ---- */
 
 .search-filters {
-    margin-bottom: $spacing-l;
+    margin-bottom: $spacing-m;
+    display: flex;
+    flex-flow: column;
     .filter{
         display: inline-block;
     }
     .advanced-search.button{
-        float: right;
+        text-align:center;
         display: inline-block;
+        margin: $spacing-m auto;
+        width: 100%;
     }
 }
 
@@ -1170,6 +1175,16 @@ ul.resource-list .resource img ~ * {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    &>*{
+        width: 100%;
+    }
+    &>form.sorting {
+        margin-bottom: $spacing-m;
+        &>*{
+            width: 100%;
+            margin-bottom: $spacing-m;
+        }
+    }
 }
 /* @end */
 
@@ -1424,5 +1439,15 @@ body.hasuser{
         .squareimage { // hide image if object fit is not supported - opacity to 0 for the link area
             opacity: 0;
         }
+    }
+}
+
+#search-results{
+    .item.resource>h3{
+        margin: 0;
+    }
+    .squarecontainer{
+        height: 4 * $spacing-l;
+        width: 4 * $spacing-l;
     }
 }
