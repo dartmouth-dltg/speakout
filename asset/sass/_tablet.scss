@@ -19,6 +19,7 @@
 
 #content {
     padding: 0 (2 * gutter()) $spacing-l;
+    margin-top: 90px;
     .full{
         padding: 0;
         .row {
@@ -29,8 +30,13 @@
         }
     }
     .content-block {
+        .quarter{
+            .square {
+                max-height: (4 * $spacing-l)+8;
+            }
+        }
         .threequarters {
-            padding-top: 1em;
+            padding-top: 0;
             padding-left: 1em;
         }
     }
@@ -45,5 +51,34 @@ body.hasuser{
     }
     #content{
         margin-top: 120px!important;
+    }
+}
+
+.search-filters {
+    margin-bottom: $spacing-l;
+    display: block;
+    .advanced-search.button{
+        float: right;
+        display: inline-block;
+        margin: 0;
+        width: auto;
+    }
+}
+
+nav.pagination {
+    form {
+        width: auto;
+    }
+}
+.browse-controls {
+    &>*{
+        width: auto;
+    }
+    &>form.sorting {
+        margin-bottom: $spacing-m;
+        &>*{
+            width: auto;
+            margin-bottom: $spacing-m;
+        }
     }
 }

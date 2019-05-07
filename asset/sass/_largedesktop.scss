@@ -1,0 +1,13 @@
+header nav>ul.menu {
+    >li{
+        padding: 0 $spacing-m;
+    }
+}
+
+#banner {
+    #bannercontent{
+        .site-summary {
+            line-height: 1em;
+        }
+    }
+}
