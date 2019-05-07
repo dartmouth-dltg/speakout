@@ -330,7 +330,7 @@ header nav > ul.menu > li > ul > li.active > a {
     float: right;
     position: relative;
     top: auto;
-    background-color: $light;
+    background-color: transparent;
     box-shadow: none;
 }
 
@@ -356,50 +356,23 @@ header nav > ul.menu > li > ul > li.active > a {
     display: block;
     position: relative;
     margin-top: 54px;
-    &:before{
-        content: '\00a0';
-        display: block;
-        background: url($mainbgpath) no-repeat fixed;
-        background-size: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        opacity: 0.4;
-    }
-    &:after{
-        content: '\00a0';
-        display: block;
-        background: linear-gradient(to right, $red 0%,$orange 17%,$yellow 33%,$green 50%,$lightblue 67%,$blue 83%,$purple 100%);
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        opacity: 0.4;
-    }
     #bannercontent{
         margin:0;
-        padding: (6 * $spacing-m) (2 * gutter()) (4 * $spacing-m);
+        padding: (3 * $spacing-m) (2 * gutter()) (4 * $spacing-m);
         #site-title {
-            font-size: 7.2 * $base-font-size;
-            line-height: 1em;
+            font-size: 6rem;
+            line-height: 1.2rem;
             font-family: $serif;
             text-align: left;
             display: inline-block;
-            color:$white;
-            height: (6 * $spacing-l);
+            color:$darkgreen;
             font-weight: bold;
-            text-shadow: -1px -1px 0 $darkgreen, 1px -1px 0 $darkgreen, -1px 1px 0 $darkgreen, 1px 1px 0 $darkgreen;
         }
     
         #site-title:hover,
         #site-title:active {
             border-bottom: 0;
-            color:$white;
+            color:$darkgreen;
         }
     
         #site-title h1 {
@@ -411,8 +384,7 @@ header nav > ul.menu > li > ul > li.active > a {
             font-size: $base-line-height;
             line-height: 1.5em;
             letter-spacing: 0.03em;
-            color: $white;
-            text-shadow: -1px -1px 0 $darkgreen, 1px -1px 0 $darkgreen, -1px 1px 0 $darkgreen, 1px 1px 0 $darkgreen;
+            color: $darkgreen;
         }
     }
 }

@@ -38,7 +38,7 @@ endif;
             <nav>
                 <ul id="mobilemenu">
                     <li id="mobilelogo">&nbsp;&nbsp;</li>
-                    <li id="mobilebanner" class="cutouttitle"><a href="/"><?php echo $this->pageTitle($site->title(),0); ?></a></li>
+                    <li id="mobilebanner"><a href="/"><?php echo $this->pageTitle($site->title(),0); ?></a></li>
                     <li id="navctl" class="rightctl"><i class="fas fa-bars"></i></li>
                     <li id="searchctl" class="rightctl"><i class="fas fa-search"></i></li>
                 </ul>
@@ -56,7 +56,7 @@ endif;
         <div id="banner">
             <div class="row">
                 <div class="full" id="bannercontent">
-                    <a href="<?php echo $site->url(); ?>" id="site-title"><?php echo $this->pageTitle($site->title(),0);?></a>
+                    <h1><a href="<?php echo $site->url(); ?>" id="site-title"><?php echo $this->pageTitle($site->title(),0);?></a></h1>
                     <span class="site-summary"><?php echo $site->summary(); ?></span>
                 </div>
             </div>
