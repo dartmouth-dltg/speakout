@@ -1,6 +1,6 @@
 /*@include font-face("Dartmouth Ruzicka", "DartmouthRuzicka-Regular", "DartmouthRuzicka", "serif");*/
-@include font-face("National 2", "National2-Regular", "National2", "sans-serif");
-@include font-face("National 2 Light", "National2-Light", "National2", "sans-serif");
+@include font-face("National 2", "National2-Light", "National2", "sans-serif");
+@include font-face("National 2", "National2-Light", "National2", "sans-serif","bold");
 * {
     box-sizing: border-box;
     transition-duration: 150ms;
@@ -731,7 +731,7 @@ article{
         padding-left:1em;
         margin-bottom: 0.25em;
     }
-    .full{
+    &>.full{
         padding: $spacing-l (4 * gutter()) $spacing-l;
         &>.content-block{
             h2{

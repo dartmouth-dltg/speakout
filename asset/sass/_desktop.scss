@@ -542,15 +542,12 @@ ul.preview.resource-list li:first-of-type {
 
 body.hasuser{
     #content{
-        margin-top: 30px!important;
+        margin-top: 0!important;
     }
     header nav>ul.menu>li:hover>ul {
         top:90px!important;
     }
     #banner{
-        margin-top: 90px!important;
-    }
-    #content{
         margin-top: 90px!important;
     }
 }
