@@ -1,6 +1,6 @@
 /*@include font-face("Dartmouth Ruzicka", "DartmouthRuzicka-Regular", "DartmouthRuzicka", "serif");*/
-@include font-face("National 2", "National2-Regular", "National2", "sans-serif");
-@include font-face("National 2 Light", "National2-Light", "National2", "sans-serif");
+@include font-face("National 2", "National2-Light", "National2", "sans-serif");
+@include font-face("National 2", "National2-Light", "National2", "sans-serif","bold");
 * {
     box-sizing: border-box;
     transition-duration: 150ms;
@@ -88,25 +88,28 @@ img {
 }
 
 .yellowbg{
-    background-color:lighten($yellow, 20% );
+    background-color:lighten($yellow, $opacityfactor )!important;
 }
 .orangebg{
-    background-color:lighten($orange, 20% );
+    background-color:lighten($orange, $opacityfactor )!important;
 }
 .redbg{
-    background-color:lighten($red, 20% );
+    background-color:lighten($red, $opacityfactor )!important;
 }
 .greenbg{
-    background-color:lighten($green, 20% );
+    background-color:lighten($green, $opacityfactor )!important;
 }
 .lightbluebg{
-    background-color:lighten($lightblue, 20% );
+    background-color:lighten($lightblue, $opacityfactor )!important;
 }
 .bluebg{
-    background-color:lighten($blue, 20% );
+    background-color:lighten($blue, $opacityfactor )!important;
 }
 .purplebg{
-    background-color:lighten($purple, 20% );
+    background-color:lighten($purple, $opacityfactor )!important;
+}
+.whitebg{
+    background-color:$white!important;
 }
 .yellowtext{
     color:$yellow;
@@ -129,7 +132,15 @@ img {
 .purpletext{
     color:$purple;
 }
-
+.whitetext{
+    color:$white!important;
+    *{
+        color:$white!important;
+    }
+    *:hover{
+        color:$white!important;
+    }
+}
 /* @group ----- Forms ----- */
 
 input,
@@ -320,6 +331,17 @@ header {
             list-style: none;
         }
     }
+    &:before{
+        content: '\00a0';
+        display: block;
+        background: linear-gradient(to right, $red 0%,$orange 17%,$yellow 33%,$green 50%,$lightblue 67%,$blue 83%,$purple 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.4;
+    }
 }
 
 header nav > ul.menu {
@@ -478,7 +500,7 @@ header nav > ul.menu > li > ul > li > ul > li a {
             height:54px;
             width:50px;
             text-align: center;
-            background-color:$light;
+            background-color:transparent;
             cursor:pointer;
             &.clicked{
                 background-color:$darkgreen;
@@ -670,30 +692,6 @@ article{
     @include container;
     padding-bottom: (2 * $spacing-l);
     margin-top: 54px;
-    &:before{
-        content: '\00a0';
-        display: block;
-        background: url($mainbgpath) no-repeat fixed;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        opacity: 0.4;
-    }
-    &:after{
-        content: '\00a0';
-        display: block;
-        background: linear-gradient(to right, $red 0%,$orange 17%,$yellow 33%,$green 50%,$lightblue 67%,$blue 83%,$purple 100%);
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        opacity: 0.4;
-    }
     *:first-child {
         margin-top:0;
     }
@@ -731,7 +729,7 @@ article{
         padding-left:1em;
         margin-bottom: 0.25em;
     }
-    .full{
+    &>.full{
         padding: $spacing-l (4 * gutter()) $spacing-l;
         &>.content-block{
             h2{
@@ -744,8 +742,7 @@ article{
             margin-bottom: $spacing-l;
             font-weight: bold;
             text-align: center;
-            color: $white;
-            text-shadow: -1px -1px 0 $darkgreen, 1px -1px 0 $darkgreen, -1px 1px 0 $darkgreen, 1px 1px 0 $darkgreen;
+            color: $darkgreen;
         }
     }
     .half{
@@ -756,8 +753,8 @@ article{
         }
     }
     .content-block {
-        background-color: $white;
         padding: 1em;
+        background-color: $white;
         &+.content-block {
             margin-top: 20px;
         }

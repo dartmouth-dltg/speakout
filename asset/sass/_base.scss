@@ -25,12 +25,14 @@ $purple:                                #8a6996;
 $blue:                                  #003c73;
 $lightblue:                             #267aba;
 
+$opacityfactor:                         20%;
+
 // Typography
 
 $base-font-size:                        1.25rem;
 $base-line-height:                      1.875rem;
 $serif:                                 "Lora", Georgia, serif;
-$sansserif:                             "National 2 Light", Verdana, sans-serif;
+$sansserif:                             "National 2", Verdana, sans-serif;
 
 // Units
 $base-spacing-height:                   30px;
@@ -52,12 +54,18 @@ $fontfolder:                            $basepath+'/fonts';
     margin:0 auto;
 }
 
-@mixin font-face($style-name, $file, $family, $category:"") {
+@mixin font-face($style-name, $file, $family, $category:"",$weight:"") {
     $filepath: $fontfolder + "/" + $family + "/" + $file;
     @font-face {
         font-family: "#{$style-name}";
         src: url($filepath + ".eot");
         src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg');
+        @if($weight == 'bold') {
+            font-weight: 700;
+        } 
+        @else {
+            font-weight: normal;
+        }
     }
     %#{$style-name} {
         font: {
@@ -66,7 +74,6 @@ $fontfolder:                            $basepath+'/fonts';
             }
             @else {
                 family: "#{$style-name}";
-                weight: normal;
             }
         }
     }
