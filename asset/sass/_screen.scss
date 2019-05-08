@@ -1,5 +1,6 @@
 /*@include font-face("Dartmouth Ruzicka", "DartmouthRuzicka-Regular", "DartmouthRuzicka", "serif");*/
 @include font-face("National 2", "National2-Light", "National2", "sans-serif");
+@include font-face("National 2 Regular", "National2-Regular", "National2", "sans-serif");
 @include font-face("National 2 Bold", "National2-Bold", "National2", "sans-serif");
 * {
     box-sizing: border-box;
@@ -1348,9 +1349,11 @@ a.metadata-browse-link {
         margin-bottom:0px;
         line-height: 1.5em;
         h4{
-            margin-top:0px;
+            font-family: $sansserif-regular;
+	    margin-top:0px;
         }
         h5 {
+            font-family: $sansserif-regular;
             margin-bottom: 0;
         }
     }
