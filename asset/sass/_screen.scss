@@ -83,27 +83,33 @@ img {
 .threequarters{
     @include span(12);
 }
+.twelfth{
+    display: none;
+}
+.eleventwelfths{
+    @include span(12);
+}
 
 .yellowbg{
-    background-color:lighten($yellow, $opacityfactor )!important;
+    background-color:$yellowbg !important;
 }
 .orangebg{
-    background-color:lighten($orange, $opacityfactor )!important;
+    background-color:$orangebg !important;
 }
 .redbg{
-    background-color:lighten($red, $opacityfactor )!important;
+    background-color:$redbg !important;
 }
 .greenbg{
-    background-color:lighten($green, $opacityfactor )!important;
+    background-color:$greenbg !important;
 }
 .lightbluebg{
-    background-color:lighten($lightblue, $opacityfactor )!important;
+    background-color:$lightbluebg !important;
 }
 .bluebg{
-    background-color:lighten($blue, $opacityfactor )!important;
+    background-color:$bluebg !important;
 }
 .purplebg{
-    background-color:lighten($purple, $opacityfactor )!important;
+    background-color:$purplebg !important;
 }
 .whitebg{
     background-color:$white!important;
@@ -137,6 +143,10 @@ img {
     *:hover{
         color:$white!important;
     }
+}
+
+.centertext {
+    text-align: center;
 }
 /* @group ----- Forms ----- */
 
@@ -287,7 +297,7 @@ header {
     position: fixed;
     z-index: 3;
     width: 100%;
-    background-color: $light;
+    background: linear-gradient(to right, $redbg 0%,$orangebg 17%,$yellowbg 33%,$greenbg 50%,$lightbluebg 67%,$bluebg 83%,$purplebg 100%);
     top: 0;
     height: 54px;
     box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.15);
@@ -327,17 +337,6 @@ header {
         li {
             list-style: none;
         }
-    }
-    &:before{
-        content: '\00a0';
-        display: block;
-        background: linear-gradient(to right, $red 0%,$orange 17%,$yellow 33%,$green 50%,$lightblue 67%,$blue 83%,$purple 100%);
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.4;
     }
 }
 
@@ -508,7 +507,6 @@ header nav > ul.menu > li > ul > li > ul > li a {
 }
 
 nav.pagination {
-    margin-bottom: $spacing-l;
     font-size: $base-font-size;
     line-height: 1.5 * $base-line-height;
     span{
@@ -549,8 +547,9 @@ nav.pagination {
 
 .breadcrumbs {
     font-size: .75 * $base-font-size;
-    margin: $spacing-l 0 (-$spacing-m);
+    margin: $spacing-l 0 0!important;
     font-weight: bold;
+    min-height: $spacing-l;
 }
 
 /* @end */
@@ -797,8 +796,6 @@ article{
 
 .item-showcase {
     margin: $spacing-l 0;
-    border-top: 1px solid $gray;
-    border-bottom: 1px solid $gray;
     padding: ($spacing-l - 1px) 0 0;
     overflow: hidden;
     text-align: center;
@@ -1088,7 +1085,7 @@ ul.resource-list .resource {
 }
 
 .item.resource>a {
-    background: linear-gradient(to right, #9d162e 0%, #ffa00f 17%, #f5dc69 33%, #00693e 50%, #267aba 67%, #003c73 83%, #8a6996 100%);
+    background: linear-gradient(to right, $redbg 0%,$orangebg 17%,$yellowbg 33%,$greenbg 50%,$lightbluebg 67%,$bluebg 83%,$purplebg 100%);
 }
 
 ul.resource-list .resource.item {
@@ -1137,6 +1134,7 @@ ul.resource-list .resource img ~ * {
     margin-bottom: $spacing-m;
     display: flex;
     flex-flow: column;
+    min-height: 3 * $spacing-m;
     .filter{
         display: inline-block;
     }

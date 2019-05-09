@@ -3,27 +3,33 @@ $this->htmlElement('body')->appendAttribute('class', 'page');
 $this->pageTitle($page->title(), 2);
 $showPagePagination = $this->siteSetting('show_page_pagination', true);
 //do not use white content-block
-$nocontentblock=['home','participate'];
+$nosideblock=['home','participate'];
+$nocontentblock=['interviews'];
 $currentPageSlug='';
-?>
+$bgcolors=['redbg','orangebg','yellowbg','greenbg','lightbluebg','bluebg','purplebg'];?>
 
 <?php if(!isset($item)):?>
     <span class="site-summary"><?php echo $site->summary(); ?></span>
-<?php endif;?>
-<?php
+<?php endif;
 $nav = $site->publicNav();
 $container = $nav->getContainer();
 $activePage = $nav->findActive($container);
 if ($activePage):
     $currentPageSlug = $activePage['page']->getParams()['page-slug'];
 ?>
-    <?php if ($activePage['depth'] !== 0): ?>
-    <nav class="breadcrumbs"><?php echo $nav->breadcrumbs(); ?></nav>
-    <?php endif; ?>
+    <nav class="breadcrumbs"><?php if ($activePage['depth'] !== 0): ?><?php echo $nav->breadcrumbs(); ?><?php endif; ?></nav>
 <?php endif; ?>
 
 <?php $this->trigger('view.show.before'); ?>
-<div <?php if(!in_array($currentPageSlug,$nocontentblock)){?>class="content-block"<?php }else{}?>>
+<div class="row">
+<?php if(!in_array($currentPageSlug,$nosideblock)){
+if(!in_array($currentPageSlug,$nocontentblock)){?><div class="twelfth <?php echo $bgcolors[mt_rand(0,count($bgcolors)-1)];?>"></div><div class="eleventwelfths"><?php }?><div class="content-block whitebg"><?php }else{?><div class="full"><?php }?>
 <?php echo $this->content; ?>
+<?php if(!in_array($currentPageSlug,$nosideblock)){
+    if(!in_array($currentPageSlug,$nocontentblock)){?></div><?php }?></div><?php }else{?></div><?php }?>
+    </div>
+<div id="after" class="row">
+    <div class="full">
+        <?php $this->trigger('view.show.after'); ?>
+    </div>
 </div>
-<?php $this->trigger('view.show.after'); ?>

@@ -25,7 +25,15 @@ $purple:                                #8a6996;
 $blue:                                  #003c73;
 $lightblue:                             #267aba;
 
-$opacityfactor:                         20%;
+$opacityfactor:                         50%;
+
+$yellowbg:                              mix($white, $yellow, $opacityfactor );
+$orangebg:                              mix($white, $orange, $opacityfactor );
+$redbg:                                 mix($white, $red, $opacityfactor );
+$greenbg:                               mix($white, $green, $opacityfactor );
+$lightbluebg:                           mix($white, $lightblue, $opacityfactor );
+$bluebg:                                mix($white, $blue, $opacityfactor );
+$purplebg:                              mix($white, $purple, $opacityfactor );
 
 // Typography
 
@@ -34,7 +42,7 @@ $base-line-height:                      1.875rem;
 $serif:                                 "Lora", Georgia, serif;
 $sansserif:                             "National 2", Verdana, sans-serif;
 $sansserif-bold:                        "National 2 Bold", Verdana, sans-serif;
-$sansserif-regular:			"National 2 Regular", Verdana, sans-serif;
+$sansserif-regular:                     "National 2 Regular", Verdana, sans-serif;
 
 // Units
 $base-spacing-height:                   30px;
@@ -80,3 +88,9 @@ $fontfolder:                            $basepath+'/fonts';
         }
     }
 }
+
+
+/*@include font-face("Dartmouth Ruzicka", "DartmouthRuzicka-Regular", "DartmouthRuzicka", "serif");*/
+@include font-face("National 2", "National2-Light", "National2", "sans-serif");
+@include font-face("National 2 Regular", "National2-Regular", "National2", "sans-serif");
+@include font-face("National 2 Bold", "National2-Bold", "National2", "sans-serif");

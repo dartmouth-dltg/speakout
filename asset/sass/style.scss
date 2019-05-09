@@ -2,11 +2,6 @@
 @import "susy";
 @import "base";
 
-/*@include font-face("Dartmouth Ruzicka", "DartmouthRuzicka-Regular", "DartmouthRuzicka", "serif");*/
-@include font-face("National 2", "National2-Light", "National2", "sans-serif");
-@include font-face("National 2 Regular", "National2-Regular", "National2", "sans-serif");
-@include font-face("National 2 Bold", "National2-Bold", "National2", "sans-serif");
-
 @media screen {
     @import "screen";
 }

@@ -36,6 +36,19 @@
         margin-right: 0;
     }
 }
+.twelfth{
+    @include span(1);
+    display: block;
+    &:last-child {
+        margin-right: 0;
+    }
+}
+.eleventwelfths{
+    @include span(11);
+    &:last-child {
+        margin-right: 0;
+    }
+}
 
 
 #content {
@@ -172,7 +185,7 @@ header nav>ul.menu {
     margin: 0 auto;
     max-width: 65%;
     float: left;
-    background-color: $light;
+    background-color: transparent;
     box-shadow: none;
     height: 54px;
     a {
@@ -358,7 +371,7 @@ header nav > ul.menu > li > ul > li.active > a {
     margin-top: 54px;
     #bannercontent{
         margin:0;
-        padding: (3 * $spacing-m) (2 * gutter()) (4 * $spacing-m);
+        padding: (3 * $spacing-m) (2 * gutter()) $spacing-l;
         #site-title {
             font-size: 6rem;
             line-height: 1.2rem;

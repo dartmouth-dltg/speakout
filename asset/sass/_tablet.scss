@@ -19,6 +19,14 @@
         margin-right: 0;
     }
 }
+.twelfth{
+}
+.eleventwelfths{
+    @include span(12);
+    &:last-child {
+        margin-right: 0;
+    }
+}
 
 #content {
     padding: 0 (2 * gutter()) $spacing-l;

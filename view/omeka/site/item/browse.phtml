@@ -73,6 +73,10 @@ foreach ($items as $item):
 <?php endforeach; ?>
 </ul>
 <?php echo ($itemSetShow) ? '</div>' : ''; ?>
-<?php $this->trigger('view.browse.after'); ?>
 <?php echo $this->pagination(); ?>
+</div>
+<div id="after" class="row">
+    <div class="full">
+        <?php $this->trigger('view.browse.after'); ?>
+    </div>
 </div>
