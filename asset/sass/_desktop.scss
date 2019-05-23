@@ -555,7 +555,8 @@ body.hasuser{
     &:not(:last-child) {
         margin-bottom: $spacing-m;
     }
-    select{
+    select,
+    input {
         width:auto;
         margin: 0 $spacing-s $spacing-s 0;
         &+.button{

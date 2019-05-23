@@ -479,6 +479,7 @@ header nav > ul.menu > li > ul > li > ul > li a {
             float: left;
             width: 36px;
             height: 54px;
+            margin: 0 0 0 15px;
             background: url($mobilemenuicon) no-repeat;
             background-size: 50px 60px,cover;
             background-position: -8px 2px;
@@ -509,6 +510,7 @@ header nav > ul.menu > li > ul > li > ul > li a {
 nav.pagination {
     font-size: $base-font-size;
     line-height: 1.5 * $base-line-height;
+    margin-bottom: 15px;
     span{
         height: (3 * $spacing-m);
         display: inline-block;
@@ -1275,7 +1277,8 @@ a.media.resource+a.media.resource{
     &:not(:last-child) {
         margin-bottom: $spacing-m;
     }
-    select{
+    select, 
+    input {
         width:100%;
         float: left;
         margin: 0 0 $spacing-s 0;
