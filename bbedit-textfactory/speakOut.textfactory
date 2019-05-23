@@ -155,9 +155,9 @@
 			<key>ComponentArguments</key>
 			<dict>
 				<key>ReplaceString</key>
-				<string>&lt;/div&gt;\n&lt;div class="transcription"&gt;&lt;p&gt;&lt;span class="interlocutor"&gt;\1 \2\. \3&lt;/span&gt;&lt;span class="speech"&gt;</string>
+				<string>&lt;/div&gt;\n&lt;div class="transcription"&gt;&lt;p&gt;&lt;span class="interlocutor"&gt;\1\2&lt;/span&gt; &lt;span class="speech"&gt;</string>
 				<key>SearchString</key>
-				<string>&lt;/div&gt;\n&lt;div class="transcription"&gt;\s*\t*\s*&lt;p&gt;\s*\t*\s*\[([A-Z][A-Z][A-Z]+)\s*([A-Z]+)\.\]\s*\t*([A-Z][A-Z][A-Z]+)\:\s*\t*</string>
+				<string>&lt;/div&gt;\n&lt;div class="transcription"&gt;\s*\t*\s*&lt;p&gt;\s*\t*\s*\[([A-Z][A-Z]|[A-Z]\.\s+[A-Z]|[A-Z]\'[A-Z])([^\:]*?)\:\s*\t*</string>
 				<key>UseGrep</key>
 				<true/>
 			</dict>
@@ -169,6 +169,23 @@
 		<dict>
 			<key>ComponentArguments</key>
 			<dict>
+				<key>ReplaceString</key>
+				<string>&lt;div class="transcription"&gt;&lt;p&gt;&lt;span class="interlocutor"&gt;\1\2&lt;/span&gt; &lt;span class="speech"&gt;</string>
+				<key>SearchString</key>
+				<string>&lt;div class="transcription"&gt;&lt;p&gt;&lt;span class="interlocutor"&gt;([^\]]*?)]([^\&lt;]*?)&lt;/span&gt; &lt;span class="speech"&gt;</string>
+				<key>UseGrep</key>
+				<true/>
+			</dict>
+			<key>ComponentName</key>
+			<string>ReplaceAll</string>
+			<key>Disabled</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>ComponentArguments</key>
+			<dict>
+				<key>Comment</key>
+				<string>not used</string>
 				<key>ReplaceString</key>
 				<string>&lt;/div&gt;\n&lt;div class="transcription"&gt;&lt;p&gt;&lt;span class="interlocutor"&gt;\1&lt;/span&gt;&lt;span class="speech"&gt;</string>
 				<key>SearchString</key>
@@ -179,15 +196,15 @@
 			<key>ComponentName</key>
 			<string>ReplaceAll</string>
 			<key>Disabled</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>ComponentArguments</key>
 			<dict>
 				<key>ReplaceString</key>
-				<string>&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="interlocutor"&gt;\1&lt;/span&gt;&lt;span class="speech"&gt;</string>
+				<string>&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="interlocutor"&gt;\1\2&lt;/span&gt;&lt;span class="speech"&gt;</string>
 				<key>SearchString</key>
-				<string>&lt;/p&gt;\t*&lt;p&gt;\t*([A-Z][A-Z][A-Z]+)\:\s*\t</string>
+				<string>&lt;/p&gt;&lt;p&gt;\t+([A-Z][A-Z]|[A-Z]\.+\s+|[A-Z]\'[A-Z])([^\:]*?)\:\s*\t</string>
 				<key>UseGrep</key>
 				<true/>
 			</dict>
@@ -199,8 +216,42 @@
 		<dict>
 			<key>ComponentArguments</key>
 			<dict>
+				<key>Comment</key>
+				<string>not used</string>
 				<key>ReplaceString</key>
-				<string></string>
+				<string>&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="interlocutor"&gt;\1\2\3&lt;/span&gt;&lt;span class="speech"&gt;</string>
+				<key>SearchString</key>
+				<string>&lt;/p&gt;\t*&lt;p&gt;\t*([A-Z][A-Z][A-Z]+)(\s+)([A-Z][A-Z][A-Z]+)\:\s*\t</string>
+				<key>UseGrep</key>
+				<true/>
+			</dict>
+			<key>ComponentName</key>
+			<string>ReplaceAll</string>
+			<key>Disabled</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>ComponentArguments</key>
+			<dict>
+				<key>Comment</key>
+				<string>not used</string>
+				<key>ReplaceString</key>
+				<string>&lt;div class="transcription"&gt;&lt;p&gt;&lt;span class="interlocutor"&gt;\1 \3. \5 \6&lt;/span&gt;&lt;span class="speech"&gt;</string>
+				<key>SearchString</key>
+				<string>&lt;div\sclass="transcription"&gt;\t*&lt;p&gt;\t*\[([A-Z][A-Z][A-Z]+)(\s+)([A-Z]+)(\.)\]\t*([A-Z][A-Z][A-Z]+)\s+([A-Z][A-Z][A-Z]+)\:\s*\t*</string>
+				<key>UseGrep</key>
+				<true/>
+			</dict>
+			<key>ComponentName</key>
+			<string>ReplaceAll</string>
+			<key>Disabled</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>ComponentArguments</key>
+			<dict>
+				<key>ReplaceString</key>
+				<string> </string>
 				<key>SearchString</key>
 				<string>	</string>
 			</dict>
@@ -213,9 +264,9 @@
 			<key>ComponentArguments</key>
 			<dict>
 				<key>ReplaceString</key>
-				<string>&lt;p&gt;&lt;span class="interviewnote"&gt;[End of interview.]&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</string>
+				<string>&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class="interviewnote"&gt;[End of interview.]&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</string>
 				<key>SearchString</key>
-				<string>&lt;p&gt;\s*\[End of interview\.\]\s*&lt;/p&gt;</string>
+				<string>&lt;/p&gt;&lt;p&gt;\s*\[End of interview\.\]\s*&lt;/p&gt;</string>
 				<key>UseGrep</key>
 				<true/>
 			</dict>
