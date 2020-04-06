@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/omeka-s-themes/default#readme",
   "devDependencies": {
-    "autoprefixer": "^9.5.1",
+    "autoprefixer": "^9.7.5",
     "gulp": "^4.0.2",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
