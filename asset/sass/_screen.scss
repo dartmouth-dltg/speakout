@@ -208,7 +208,7 @@ a.button,
     &.inactive {
         opacity: .5;
         background-color: $gray;
-    
+
         &:hover {
             background-color: $gray;
         }
@@ -1053,7 +1053,7 @@ article{
         font-size: 1.25 * $base-font-size;
         margin-bottom: $spacing-s;
     }
-    
+
     .site-summary {
         margin: 0 0 0 $spacing-m;
         line-height: 20px;
@@ -1277,13 +1277,14 @@ a.media.resource+a.media.resource{
     &:not(:last-child) {
         margin-bottom: $spacing-m;
     }
-    select, 
+    select,
     input {
         width:100%;
         float: left;
         margin: 0 0 $spacing-s 0;
         &+.button{
             margin-left:0;
+            height: 2.8rem;
         }
     }
 }
