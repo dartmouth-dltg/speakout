@@ -3,7 +3,7 @@ $maxwidth:                              1700px;
 $susy: (
     columns:                            12,
     container:                          $maxwidth,
-    gutters:                            1/6,
+    gutters:                            math.div(1, 6),
     global-box-sizing:                  border-box
 );
 
@@ -40,9 +40,9 @@ $purplebg:                              mix($white, $purple, $opacityfactor );
 $base-font-size:                        1.25rem;
 $base-line-height:                      1.875rem;
 $serif:                                 "Lora", Georgia, serif;
-$sansserif:                             "National 2", Verdana, sans-serif;
-$sansserif-bold:                        "National 2 Bold", Verdana, sans-serif;
-$sansserif-regular:                     "National 2 Regular", Verdana, sans-serif;
+$sansserif:                             "National2", Verdana, sans-serif;
+$sansserif-bold:                        "National2-Bold", Verdana, sans-serif;
+$sansserif-regular:                     "National2-Regular", Verdana, sans-serif;
 
 // Units
 $base-spacing-height:                   30px;
@@ -72,7 +72,7 @@ $fontfolder:                            $basepath+'/fonts';
         src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg');
         @if($weight == 'bold') {
             font-weight: 700;
-        } 
+        }
         @else {
             font-weight: normal;
         }
@@ -91,6 +91,6 @@ $fontfolder:                            $basepath+'/fonts';
 
 
 /*@include font-face("Dartmouth Ruzicka", "DartmouthRuzicka-Regular", "DartmouthRuzicka", "serif");*/
-@include font-face("National 2", "National2-Light", "National2", "sans-serif");
-@include font-face("National 2 Regular", "National2-Regular", "National2", "sans-serif");
-@include font-face("National 2 Bold", "National2-Bold", "National2", "sans-serif");
+@include font-face("National2", "National2-Light", "National2", "sans-serif");
+@include font-face("National2-Regular", "National2-Regular", "National2", "sans-serif");
+@include font-face("National2-Bold", "National2-Bold", "National2", "sans-serif");
