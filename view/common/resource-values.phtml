@@ -40,7 +40,6 @@ $lang = $this->lang();
               <div class="<?php echo implode(' ', $class); ?>" lang="<?php echo $escape($valueLang); ?>">
                 <?php if ($showLocale && $valueLang): ?>
                 <?php endif; ?>
-                <?php echo $value->asHtml(); ?>
                 <?php echo $filterLocale ? $value->asHtml($lang) : $value->asHtml(); ?>
               </div>
             <?php endif; ?>
