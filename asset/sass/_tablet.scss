@@ -93,3 +93,10 @@ nav.pagination {
     width: 50%;
   }
 }
+
+#itemproperties {
+  &.third {
+    width: calc(33.333333333% - 1.5rem);
+    flex-basis: calc(33.333333333% - 1.5rem);
+  }
+}

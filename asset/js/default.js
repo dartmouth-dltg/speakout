@@ -29,6 +29,10 @@
       $('#searchctl i').addClass('fa-search').removeClass('fa-times');
     }
 
+    function setInterviewPaneHeight() {
+      $('.interview').css('max-height',$('#itemproperties').outerHeight()-$('#transcriptinfo').parent().outerHeight() + 50);
+    }
+
     $(document).ready(function() {
         $('.menu, #search, .menu ul').addClass('closed');
 
@@ -53,6 +57,7 @@
         });
 
         $(window).on('resize', function() {
+          setInterviewPaneHeight();
           if ($(window).width() > 1023) {
             if ($('#navctl').hasClass('clicked')) {
               toggleNavCtl();
@@ -60,7 +65,9 @@
           }
         });
 
-        $('.interview').css('max-height',$('#itemproperties').outerHeight()-$('#transcriptinfo').parent().outerHeight()-20);
+        $(window).on('load', function() {
+          setInterviewPaneHeight();
+        })
 
         // Maintain iframe aspect ratios
         $(window).on('load resize', framerateCallback(fixIframeAspect));

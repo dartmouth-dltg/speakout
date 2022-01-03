@@ -546,10 +546,10 @@ nav.pagination {
 
 .breadcrumbs {
   font-size: 0.8em;
-  margin: $spacing-l 0 0 1rem !important;
+  margin: 0 0 0 1rem !important;
   margin-bottom: 0.4em;
   font-weight: bold;
-  min-height: $spacing-l;
+  min-height: 0;
 }
 
 /* @end */
@@ -700,6 +700,7 @@ article {
     letter-spacing: 0.04em;
     line-height: 2em;
     margin-bottom: 0.5em;
+    margin-left: 0.5rem;
     color: $darkgreen;
     .title {
       line-height: 1.5em;
@@ -741,8 +742,8 @@ article {
       display: block;
       font-size: 1.3em;
       margin-bottom: $spacing-l;
+      margin-left: 1rem;
       font-weight: bold;
-      text-align: center;
       color: $darkgreen;
     }
   }
@@ -1332,6 +1333,7 @@ a.metadata-browse-link {
   margin-bottom: (3 * $spacing-m);
   padding: $spacing-m;
   background-color: $white;
+  box-shadow: inset 0 -26px 44px -44px $darkgreen;
   .speech + .speech::before {
     content: '\00a0';
     display: block;
@@ -1377,6 +1379,7 @@ a.metadata-browse-link {
 }
 
 #itemproperties {
+  margin-left: 1rem;
   background-color: $lightgreen;
   padding: 1em;
   color: $black;
@@ -1391,6 +1394,10 @@ a.metadata-browse-link {
     &:hover {
       background-color: $darkgreen;
     }
+  }
+  &.third {
+    flex-basis: calc(33.333333333% - 1.5rem);
+    width: calc(100% - 1.5rem);
   }
   #itemsets {
     margin-top: (3 * $spacing-m);
