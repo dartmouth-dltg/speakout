@@ -1,26 +1,26 @@
 @use "sass:math";
+
 @import "normalize";
-@import "susy";
 @import "base";
 
 @media screen {
-    @import "screen";
+  @import "screen";
 }
 
 @media screen and (min-width: 768px) {
-    @import "tablet";
+  @import "tablet";
 }
+
 @media screen and (min-width: 1024px) {
-    @import "desktop";
+  @import "desktop";
 }
+
 @media screen and (min-width: 1280px) {
-    @import "largedesktop";
-}
-@media screen and (min-width: 1690px) {
+  @import "largedesktop";
 }
 
 @media screen and (-ms-high-contrast: none), screen and (-ms-high-contrast: active) {
-    .cutouttitle {
-        background: transparent;
-    }
+  .cutouttitle {
+    background: transparent;
+  }
 }

@@ -1,0 +1,15 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "at-rule-no-unknown": [true, {
+      "ignoreAtRules": ["each", "else", "extend", "for", "function", "if", "include", "mixin", "return", "use"]
+    }],
+    "font-family-no-missing-generic-family-keyword": [true, {
+      "ignoreFontFamilies": [ "FontAwesome", "Font Awesome 5 Free", "Glyphicons Halflings" ]
+    }],
+    "no-descending-specificity": null,
+    "no-invalid-position-at-import-rule": null,
+    "rule-empty-line-before": null,
+    "selector-pseudo-element-colon-notation": null
+  }
+}

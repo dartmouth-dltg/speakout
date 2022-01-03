@@ -1,24 +1,4 @@
-'use strict';
+const $conf = require("./gulp-config");
+const $gulp = require("@dltg/gulp-build")($conf);
 
-var gulp = require('gulp');
-
-gulp.task('css', function () {
-    var sass = require('gulp-sass')(require('sass'));
-    var cleanCSS = require("gulp-clean-css");
-    var rename = require("gulp-rename");
-    var autoprefixer = require('gulp-autoprefixer');
-
-    return gulp.src('./asset/sass/*.scss')
-        .pipe(sass({
-            outputStyle: 'compressed',
-            includePaths: ['node_modules/susy/sass']
-        }).on('error', sass.logError))
-        .pipe(cleanCSS([
-            autoprefixer()
-        ]))
-        .pipe(gulp.dest('./asset/css'));
-});
-
-gulp.task('css:watch', function () {
-    gulp.watch('./asset/sass/*.scss', gulp.parallel('css'));
-});
+module.exports = $gulp;
