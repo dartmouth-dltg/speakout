@@ -3,6 +3,9 @@ $escape = $this->plugin('escapeHtml');
 $translate = $this->plugin('translate');
 $this->htmlElement('body')->appendAttribute('class', 'item resource browse');
 
+$filterLocale = (bool) $this->siteSetting('filter_locale_values');
+$lang = $this->lang();
+
 $query = $this->params()->fromQuery();
 $itemSetShow = isset($itemSet);
 if ($itemSetShow):
@@ -33,7 +36,7 @@ $sortHeadings = [
 
 <div class="content-block">
 <?php if ($itemSetShow): ?>
-    <?php echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
+    <?php echo $this->pageTitle($itemSet->displayTitle(null, ($filterLocale ? $lang : null)), 2); ?>
     <h3><?php echo $translate('Item set'); ?></h3>
     <div class="metadata">
         <?php echo $itemSet->displayValues(); ?>
@@ -58,8 +61,8 @@ $sortHeadings = [
 <ul id="search-results" class="resource-list">
 <?php
 foreach ($items as $item):
-    $heading = $item->value($headingTerm, ['default' => $translate('[Untitled]')]);
-    $body = $item->value($bodyTerm);
+  $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => ($filterLocale ? [$lang, ''] : null)]) : $item->displayTitle(null, ($filterLocale ? [$lang, ''] : null));
+  $body = $bodyTerm ? $item->value($bodyTerm, ['lang' => ($filterLocale ? [$lang, ''] : null)]) : $item->displayDescription(null, ($filterLocale ? [$lang, ''] : null));
 ?>
     <li class="item resource">
         <?php echo $item->linkRaw($this->thumbnail($item, 'medium',['alt'=>$item->displayTitle(),'class'=>'squareimage']), null, [
@@ -67,7 +70,7 @@ foreach ($items as $item):
             ]); ?>
         <h3><?php echo $item->link($heading); ?></h3>
         <?php if ($body): ?>
-        <div class="description"><?php echo $body; ?></div>
+        <div class="description"><?php echo $escape($body); ?></div>
         <?php endif; ?>
     </li>
 <?php endforeach; ?>
