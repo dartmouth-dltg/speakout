@@ -17,15 +17,9 @@
 .threequarters,
 .twothirds {
   @include span(8);
-  &:last-child {
-    margin-right: 0;
-  }
 }
 .eleventwelfths {
   @include span(12);
-  &:last-child {
-    margin-right: 0;
-  }
 }
 
 #content {
@@ -91,5 +85,11 @@ nav.pagination {
       width: auto;
       margin-bottom: $spacing-m;
     }
+  }
+}
+
+.item-showcase .resource.item {
+  &:not(:only-child) {
+    width: 50%;
   }
 }

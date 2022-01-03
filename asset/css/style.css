@@ -587,7 +587,7 @@ a.button.inactive:hover,
 
   .breadcrumbs {
     font-size: 0.8em;
-    margin: 30px 0 0 !important;
+    margin: 30px 0 0 1rem !important;
     margin-bottom: 0.4em;
     font-weight: bold;
     min-height: 30px;
@@ -796,6 +796,7 @@ a.button.inactive:hover,
     line-height: normal;
   }
   #content .content-block p {
+    max-width: 970px;
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -1472,17 +1473,10 @@ a.button.inactive:hover,
     margin: 0.5rem;
     flex: 1 1 calc(66.6666666667% - 1rem);
   }
-  .threequarters:last-child,
-.twothirds:last-child {
-    margin-right: 0;
-  }
 
   .eleventwelfths {
     margin: 0.5rem;
     flex: 1 1 calc(100% - 1rem);
-  }
-  .eleventwelfths:last-child {
-    margin-right: 0;
   }
 
   #content {
@@ -1539,6 +1533,10 @@ a.button.inactive:hover,
     width: auto;
     margin-bottom: 15px;
   }
+
+  .item-showcase .resource.item:not(:only-child) {
+    width: 50%;
+  }
 }
 @media screen and (min-width: 1024px) {
   * {
@@ -1554,32 +1552,20 @@ a.button.inactive:hover,
     margin: 0.5rem;
     flex: 1 1 calc(33.3333333333% - 1rem);
   }
-  .third:last-child {
-    margin-right: 0;
-  }
 
   .twothirds {
     margin: 0.5rem;
     flex: 1 1 calc(66.6666666667% - 1rem);
-  }
-  .twothirds:last-child {
-    margin-right: 0;
   }
 
   .half {
     margin: 0.5rem;
     flex: 1 1 calc(50% - 1rem);
   }
-  .half:last-child {
-    margin-right: 0;
-  }
 
   .quarter {
     margin: 0.5rem;
     flex: 1 1 calc(25% - 1rem);
-  }
-  .quarter:last-child {
-    margin-right: 0;
   }
 
   .threequarters {
@@ -1587,25 +1573,18 @@ a.button.inactive:hover,
     flex: 1 1 calc(75% - 1rem);
     padding-top: 0;
   }
-  .threequarters:last-child {
-    margin-right: 0;
-  }
 
   .twelfth {
     margin: 0.5rem;
     flex: 1 1 calc(8.3333333333% - 1rem);
     display: block;
-  }
-  .twelfth:last-child {
-    margin-right: 0;
+    margin-left: 1rem;
   }
 
   .eleventwelfths {
     margin: 0.5rem;
     flex: 1 1 calc(91.6666666667% - 1rem);
-  }
-  .eleventwelfths:last-child {
-    margin-right: 0;
+    margin-top: 0;
   }
 
   #content {

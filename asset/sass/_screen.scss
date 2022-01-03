@@ -546,7 +546,7 @@ nav.pagination {
 
 .breadcrumbs {
   font-size: 0.8em;
-  margin: $spacing-l 0 0 !important;
+  margin: $spacing-l 0 0 1rem !important;
   margin-bottom: 0.4em;
   font-weight: bold;
   min-height: $spacing-l;
@@ -765,6 +765,7 @@ article {
       line-height: normal;
     }
     p {
+      max-width: $max-reading-width;
       margin-top: 0;
       margin-bottom: 0;
     }
