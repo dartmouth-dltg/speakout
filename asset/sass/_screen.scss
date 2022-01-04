@@ -219,6 +219,7 @@ a.button,
 
 select {
   background-color: $white;
+  margin-bottom: 0.5rem;
   padding: $spacing-s;
   border-color: $gray;
   height: 1.5 * $spacing-l;
@@ -325,7 +326,7 @@ header {
   }
   nav {
     position: relative;
-    padding: 0;
+    padding: 0 1rem;
     & > .open {
       top: 54px;
       position: absolute;
@@ -627,6 +628,7 @@ button.o-icon-search {
 
 #banner {
   display: none;
+  margin: 0 1rem;
 }
 
 /* @end */
@@ -660,7 +662,7 @@ footer {
   .footerinfo {
     @include container;
 
-    padding: 40px 0;
+    padding: 3rem 1rem;
     display: flex;
     flex-flow: column;
     img {
@@ -680,7 +682,7 @@ footer {
 article {
   /* box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.15); */
   position: relative;
-  margin: 0;
+  margin: 0 1rem;
   padding-top: 1px;
 }
 
@@ -700,7 +702,6 @@ article {
     letter-spacing: 0.04em;
     line-height: 2em;
     margin-bottom: 0.5em;
-    margin-left: 0.5rem;
     color: $darkgreen;
     .title {
       line-height: 1.5em;
