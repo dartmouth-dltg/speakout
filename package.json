@@ -1,68 +1,19 @@
 {
-  "name": "default",
-  "version": "1.0.0",
-  "description": "The default theme for Omeka S.",
+  "name": "basicdartmouth",
+  "version": "1.0.2",
+  "description": "A Basic Dartmouth Library theme for Omeka-S",
   "main": "gulpfile.js",
-  "scripts": {
-    "test": "test"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/omeka-s-themes/default.git"
+    "url": "git+https://github.com/dartmouth-dltg/basic-dartmouth-theme.git"
   },
   "keywords": [
     "omeka-s",
     "theme"
   ],
-  "author": "RRCHNM",
+  "author": "Dartmouth Library",
   "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/omeka-s-themes/default/issues"
-  },
-  "homepage": "https://github.com/omeka-s-themes/default#readme",
-  "devDependencies": {
-    "ansi-colors": "^4.1.1",
-    "browser-sync": "^2.27.5",
-    "crypto": "^1.0.1",
-    "del": "^6.0.0",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "fancy-log": "^1.3.3",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^8.0.0",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-eslint7": "^0.3.2",
-    "gulp-fs-cache": "^0.1.0",
-    "gulp-jsonlint": "^1.3.2",
-    "gulp-noop": "^1.0.1",
-    "gulp-pa11y": "^0.0.4",
-    "gulp-plumber": "^1.2.1",
-    "gulp-rename": "^2.0.0",
-    "gulp-sass": "^5.0.0",
-    "gulp-sass-glob": "^1.1.0",
-    "gulp-sass-lint": "^1.4.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-stylelint": "^13.0.0",
-    "gulp-uglify": "^3.0.2",
-    "gulp-watch": "^5.0.1",
-    "lodash": "^4.17.21",
-    "path": "^0.12.7",
-    "sass": "^1.41.0",
-    "stylelint-config-standard": "^22.0.0",
-    "stylelint-no-browser-hacks": "^1.2.1",
-    "stylelint-order": "^4.1.0",
-    "stylelint-scss": "^3.21.0",
-    "susy": "^2.2.12",
-    "through2": "^4.0.2"
-  },
-  "browserslist": [
-    "> 5%",
-    "> 1% in US"
-  ],
   "dependencies": {
-    "breakpoint-sass": "^2.7.1"
+    "@dltg/gulp-build": "^1.0.0"
   }
 }

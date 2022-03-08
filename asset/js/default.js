@@ -20,16 +20,24 @@
         }
     }
 
+    function toggleNavCtl() {
+      $('#search').removeClass('open').addClass('closed');
+      $('.menu').toggleClass('open').toggleClass('closed');
+      $('#searchctl').removeClass('clicked');
+      $('#navctl').toggleClass('clicked');
+      $('#navctl i').toggleClass('fa-bars').toggleClass('fa-times');
+      $('#searchctl i').addClass('fa-search').removeClass('fa-times');
+    }
+
+    function setInterviewPaneHeight() {
+      $('.interview').css('max-height',$('#itemproperties').outerHeight()-$('#transcriptinfo').parent().outerHeight() + 50);
+    }
+
     $(document).ready(function() {
-        $('.menu,#search,.menu ul').addClass('closed');
+        $('.menu, #search, .menu ul').addClass('closed');
 
         $('#navctl').click(function() {
-            $('#search').removeClass('open').addClass('closed');
-            $('.menu').toggleClass('open').toggleClass('closed');
-            $('#searchctl').removeClass('clicked');
-            $('#navctl').toggleClass('clicked');
-            $('#navctl i').toggleClass('fa-bars').toggleClass('fa-times');
-            $('#searchctl i').addClass('fa-search').removeClass('fa-times');
+            toggleNavCtl();
         });
         $('#searchctl').click(function() {
             $('.menu').removeClass('open').addClass('closed');
@@ -47,7 +55,19 @@
                 $('.menu ul').removeClass('open').addClass('closed');
             }
         });
-        $('.interview').css('max-height',$('#itemproperties').outerHeight()-$('#transcriptinfo').parent().outerHeight()-20);
+
+        $(window).on('resize', function() {
+          setInterviewPaneHeight();
+          if ($(window).width() > 1023) {
+            if ($('#navctl').hasClass('clicked')) {
+              toggleNavCtl();
+            }
+          }
+        });
+
+        $(window).on('load', function() {
+          setInterviewPaneHeight();
+        })
 
         // Maintain iframe aspect ratios
         $(window).on('load resize', framerateCallback(fixIframeAspect));
@@ -61,7 +81,7 @@
                   container
                     .css({'background-image':'url(' + imgUrl + ')','background-size':'cover'})
                     .addClass('compat-object-fit');
-                }  
+                }
               });
         }
     });

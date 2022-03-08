@@ -1,15 +1,8 @@
-// Susy
 $maxwidth:                              1700px;
-$susy: (
-    columns:                            12,
-    container:                          $maxwidth,
-    gutters:                            math.div(1, 6),
-    global-box-sizing:                  border-box
-);
-
+$max-reading-width:                     970px;
 // Colors
-$black:                                 #000000;
-$white:                                 #ffffff;
+$black:                                 #000;
+$white:                                 #fff;
 $gray:                                  #ababab;
 $bold:                                  #424141;
 $light:                                 #f7f7f7;
@@ -27,28 +20,28 @@ $lightblue:                             #267aba;
 
 $opacityfactor:                         50%;
 
-$yellowbg:                              mix($white, $yellow, $opacityfactor );
-$orangebg:                              mix($white, $orange, $opacityfactor );
-$redbg:                                 mix($white, $red, $opacityfactor );
-$greenbg:                               mix($white, $green, $opacityfactor );
-$lightbluebg:                           mix($white, $lightblue, $opacityfactor );
-$bluebg:                                mix($white, $blue, $opacityfactor );
-$purplebg:                              mix($white, $purple, $opacityfactor );
+$yellowbg:                              mix($white, $yellow, $opacityfactor);
+$orangebg:                              mix($white, $orange, $opacityfactor);
+$redbg:                                 mix($white, $red, $opacityfactor);
+$greenbg:                               mix($white, $green, $opacityfactor);
+$lightbluebg:                           mix($white, $lightblue, $opacityfactor);
+$bluebg:                                mix($white, $blue, $opacityfactor);
+$purplebg:                              mix($white, $purple, $opacityfactor);
 
 // Typography
 
 $base-font-size:                        1.25rem;
 $base-line-height:                      1.875rem;
-$serif:                                 "Lora", Georgia, serif;
-$sansserif:                             "National2", Verdana, sans-serif;
-$sansserif-bold:                        "National2-Bold", Verdana, sans-serif;
-$sansserif-regular:                     "National2-Regular", Verdana, sans-serif;
+$serif:                                 "Lora", georgia, serif;
+$sansserif:                             "National2", verdana, sans-serif;
+$sansserif-bold:                        "National2-Bold", verdana, sans-serif;
+$sansserif-regular:                     "National2-Regular", verdana, sans-serif;
 
 // Units
 $base-spacing-height:                   30px;
 $base-search-height:                    38px;
-$spacing-s:                             .25 * $base-spacing-height;
-$spacing-m:                             .5 * $base-spacing-height;
+$spacing-s:                             0.25 * $base-spacing-height;
+$spacing-m:                             0.5 * $base-spacing-height;
 $spacing-l:                             $base-spacing-height;
 
 // Paths & Folders
@@ -60,37 +53,50 @@ $fontfolder:                            $basepath+'/fonts';
 // Mixins
 
 @mixin container {
-    max-width: $maxwidth;
-    margin:0 auto;
+  max-width: $maxwidth;
+  margin: 0 auto;
 }
 
 @mixin font-face($style-name, $file, $family, $category:"",$weight:"") {
-    $filepath: $fontfolder + "/" + $family + "/" + $file;
-    @font-face {
-        font-family: "#{$style-name}";
-        src: url($filepath + ".eot");
-        src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg');
-        @if($weight == 'bold') {
-            font-weight: 700;
-        }
-        @else {
-            font-weight: normal;
-        }
+  $filepath: $fontfolder + "/" + $family + "/" + $file;
+
+  @font-face {
+    font-family: "#{$style-name}";
+    src: url($filepath + ".eot");
+    src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg');
+
+    @if ($weight == 'bold') {
+      font-weight: 700;
     }
-    %#{$style-name} {
-        font: {
-            @if $category != "" {
-                family: "#{$style-name}", #{$category};
-            }
-            @else {
-                family: "#{$style-name}";
-            }
-        }
+
+    @else {
+      font-weight: normal;
     }
+  }
+  %#{$style-name} {
+    font: {
+      @if $category != "" {
+        $family: "#{$style-name}", #{$category};
+      }
+
+      @else {
+        $family: "#{$style-name}";
+      }
+    }
+  }
 }
 
+@mixin span($cols) {
+  margin: 0 0.5rem;
+  flex: 1 1 calc((math.div($cols, 12) * 100%) - 1rem);
+  width: calc((math.div($cols, 12) * 100%) - 1rem);
+}
 
-/*@include font-face("Dartmouth Ruzicka", "DartmouthRuzicka-Regular", "DartmouthRuzicka", "serif");*/
+@function gutter() {
+  @return 1.25rem;
+}
+
+/* @include font-face("Dartmouth Ruzicka", "DartmouthRuzicka-Regular", "DartmouthRuzicka", "serif"); */
 @include font-face("National2", "National2-Light", "National2", "sans-serif");
 @include font-face("National2-Regular", "National2-Regular", "National2", "sans-serif");
 @include font-face("National2-Bold", "National2-Bold", "National2", "sans-serif");
