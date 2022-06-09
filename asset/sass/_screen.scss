@@ -1047,20 +1047,25 @@ article {
   cursor: pointer;
 }
 
-.list-of-sites .site-list {
-  .site {
-    margin-bottom: $spacing-m;
-  }
+#content .list-of-sites {
+  .site-list {
+    margin: 1rem 0.5rem;
+    .site {
+      margin-bottom: $spacing-m;
+    }
 
-  .site-link {
-    display: inline-block;
-    font-size: 1.25 * $base-font-size;
-    margin-bottom: $spacing-s;
-  }
+    .site-link {
+      display: inline-block;
+      font-size: 1.25 * $base-font-size;
+      font-weight: bold;
+      margin-bottom: $spacing-s;
+    }
 
-  .site-summary {
-    margin: 0 0 0 $spacing-m;
-    line-height: 20px;
+    .site-summary {
+      margin: 0 0 0 $spacing-m;
+      font-size: 0.9 * $base-font-size;
+      font-weight: normal;
+    }
   }
 }
 
