@@ -1247,6 +1247,10 @@ a.button.inactive:hover,
     max-height: -moz-fit-content;
     max-height: fit-content;
   }
+  #itemproperties.no-transcript {
+    padding: 0;
+    background-color: transparent;
+  }
   #itemproperties button {
     color: #fff;
     background-color: #00693e;

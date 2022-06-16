@@ -1389,6 +1389,10 @@ a.metadata-browse-link {
   padding: 1em;
   color: $black;
   max-height: fit-content;
+  &.no-transcript {
+    padding: 0;
+    background-color: transparent;
+  }
   button {
     color: $white;
     background-color: $green;

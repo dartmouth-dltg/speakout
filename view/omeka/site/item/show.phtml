@@ -8,6 +8,9 @@ $itemMedia = $item->media();
 $filterLocale = (bool) $this->siteSetting('filter_locale_values');
 $lang = $this->lang();
 
+// class for audio column
+$audioClass = 'third';
+
 //build media contents
 $thismedia=array('transcript'=>false,'audio'=>false,'pdf'=>false);
 if ($embedMedia && $itemMedia):
@@ -29,8 +32,14 @@ endif; ?>
         <?php $this->trigger('view.show.before'); ?>
     </div>
 </div>
+<?php
+  if (!$thismedia['transcript']):
+    $audioClass = 'no-transcript';
+  endif;
+?>
+
 <div class="row">
-    <div id="itemproperties" class="third">
+    <div id="itemproperties" class="<?php echo $audioClass; ?>">
         <?php if ($thismedia['audio']):
           foreach ($thismedia['audio'] as $audioTitle => $audio):
             if (count($thismedia['audio']) > 1):
@@ -45,21 +54,23 @@ endif; ?>
             </div>
         </div>
     </div>
-    <div id="itemtranscript" class="twothirds">
-        <?php if ($thismedia['audio']):?>
-            <div class="row">
-                <div id="transcriptinfo" class="full">
-                    <h4>Transcript</h4>
-                    <a href="<?php echo $thismedia['pdf'];?>" target="_blank"><button>download PDF</button></a>
-                </div>
-            </div>
-        <?php endif; ?>
-        <div class="row">
-                <div class="full">
-                    <?php echo $thismedia['transcript'];?>
-                </div>
-        </div>
-    </div>
+    <?php if ($thismedia['transcript']): ?>
+      <div id="itemtranscript" class="twothirds">
+          <?php if ($thismedia['audio']):?>
+              <div class="row">
+                  <div id="transcriptinfo" class="full">
+                      <h4>Transcript</h4>
+                      <a href="<?php echo $thismedia['pdf'];?>" target="_blank"><button>download PDF</button></a>
+                  </div>
+              </div>
+          <?php endif; ?>
+          <div class="row">
+                  <div class="full">
+                      <?php echo $thismedia['transcript'];?>
+                  </div>
+          </div>
+      </div>
+    <?php endif; ?>
 </div>
 <?php   $page = $this->params()->fromQuery('page', 1);
     $property = $this->params()->fromQuery('property');
