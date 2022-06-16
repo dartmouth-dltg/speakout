@@ -1262,6 +1262,9 @@ a.button.inactive:hover,
   #itemproperties .button:hover {
     background-color: #12312b;
   }
+  #itemproperties #transcriptinfo {
+    margin: 1rem 0;
+  }
   #itemproperties.third {
     flex-basis: calc(33.333333333% - 1.5rem);
     width: calc(100% - 1.5rem);

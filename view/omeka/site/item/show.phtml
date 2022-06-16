@@ -53,10 +53,17 @@ endif; ?>
                 <?php echo $item->displayValues(); ?>
             </div>
         </div>
+        <?php if ($thismedia['pdf'] && !$thismedia['transcript']):?>
+            <div class="row">
+                <div id="transcriptinfo" class="full">
+                    <a href="<?php echo $thismedia['pdf'];?>" target="_blank"><button>download PDF of transcript</button></a>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
     <?php if ($thismedia['transcript']): ?>
       <div id="itemtranscript" class="twothirds">
-          <?php if ($thismedia['audio']):?>
+          <?php if ($thismedia['pdf']):?>
               <div class="row">
                   <div id="transcriptinfo" class="full">
                       <h4>Transcript</h4>
