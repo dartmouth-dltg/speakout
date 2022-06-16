@@ -16,7 +16,7 @@ if ($embedMedia && $itemMedia):
         if ($thismediatype=='viewable_transcript'):
             $thismedia['transcript']=$media->render();
         elseif ($thismediatype=='audio'):
-            $thismedia['audio']=$media->render();
+            $thismedia['audio'][$media->title()]=$media->render();
         elseif ($thismediatype=='pdf_transcript'):
             $thismedia['pdf']=$media->originalUrl();
         endif;
@@ -32,7 +32,12 @@ endif; ?>
 <div class="row">
     <div id="itemproperties" class="third">
         <?php if ($thismedia['audio']):
-            echo $thismedia['audio'];
+          foreach ($thismedia['audio'] as $audioTitle => $audio):
+            if (count($thismedia['audio']) > 1):
+              echo $audioTitle;
+            endif;
+            echo $audio;
+          endforeach;
         endif;?>
         <div id="properties">
             <div class="property">
