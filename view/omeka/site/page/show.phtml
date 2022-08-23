@@ -1,5 +1,5 @@
 <?php
-$this->htmlElement('body')->appendAttribute('class', 'page');
+$this->htmlElement('body')->appendAttribute('class', $pageBodyClass);
 $this->pageTitle($page->title(), 2);
 $showPagePagination = $this->siteSetting('show_page_pagination', true);
 //do not use white content-block
@@ -9,7 +9,7 @@ $currentPageSlug='';
 $bgcolors=['redbg','orangebg','yellowbg','greenbg','lightbluebg','bluebg','purplebg'];?>
 
 <?php if(!isset($item)):?>
-    <span class="site-summary"><?php echo $site->summary(); ?></span>
+    <span class="site-summary secondary-title"><?php echo $site->summary(); ?></span>
 <?php endif;
 $nav = $site->publicNav();
 $container = $nav->getContainer();

@@ -27,7 +27,7 @@ endif;
         <?php echo $this->headStyle(); ?>
         <?php echo $this->headScript(); ?>
     </head>
-    
+
     <?php if($userBar):
         echo $this->htmlElement('body')->appendAttribute('class', 'hasuser');
     else:
@@ -57,7 +57,7 @@ endif;
             <div class="row">
                 <div class="full" id="bannercontent">
                     <h1><a href="<?php echo $site->url(); ?>" id="site-title"><?php echo $this->pageTitle($site->title(),0);?></a></h1>
-                    <span class="site-summary"><?php echo $site->summary(); ?></span>
+                    <span class="site-summary secondary-title"><?php echo $site->summary(); ?></span>
                 </div>
             </div>
         </div>
