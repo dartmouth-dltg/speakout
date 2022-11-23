@@ -12,6 +12,7 @@ if ($this->status()->isSiteRequest()) {
     $showLocale = true;
     $filterLocale = false;
     $lang = null;
+    $showValueAnnotations = true;
 }
 ?>
 <?php foreach ($values as $term => $propertyData): ?>
@@ -33,15 +34,13 @@ if ($this->status()->isSiteRequest()) {
             <?php
             $valueType = $value->type();
             $valueLang = $value->lang();
+            $valueAnnotation = $value->valueAnnotation();
             $class = ['value'];
             if ('resource' == $valueType) {
                 $class[] = 'resource';
                 $class[] = $escape($value->valueResource()->resourceName());
             } elseif ('uri' == $valueType) {
                 $class[] = 'uri';
-            }
-            if (!$value->isPublic()) {
-                $class[] = 'private';
             }
             ?>
             <?php if ((!$filterLocale) || ($valueLang == '') || (strcasecmp($valueLang, $lang) == 0)): ?>
