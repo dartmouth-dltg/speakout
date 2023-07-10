@@ -291,6 +291,7 @@
     content: "\f069";
     font-family: "Font Awesome 5 Free";
     font-size: 0.9375rem;
+    font-weight: bold;
   }
   .field .value:not(:last-child) {
     margin-bottom: 15px;
@@ -396,6 +397,7 @@
     width: 30px;
     padding: 7.5px;
     text-align: center;
+    font-weight: bold;
   }
   header nav > ul.menu li > ul:hover:before {
     content: "\f107";
@@ -586,6 +588,7 @@
     text-align: center;
     text-indent: 0;
     line-height: 45px;
+    font-weight: bold;
   }
   #search form button[type=submit]:hover {
     background-color: #424141;
@@ -1685,6 +1688,7 @@
     content: "\f105";
     display: inline-block;
     margin-left: 7.5px;
+    font-weight: bold;
     line-height: 1em;
     width: 10px;
   }
