@@ -1,12 +1,14 @@
 <?php
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
+$this->headLink()->appendStylesheet($this->assetUrl('css/resource-page-blocks.css', 'Omeka'));
 $this->htmlElement('body')->appendAttribute('class', 'item resource show');
 $embedMedia = $this->siteSetting('item_media_embed', false);
 $itemMedia = $item->media();
 
 $filterLocale = (bool) $this->siteSetting('filter_locale_values');
 $lang = $this->lang();
+$valueLang = $filterLocale ? [$lang, ''] : null;
 
 // class for audio column
 $audioClass = 'third';
@@ -79,9 +81,14 @@ endif; ?>
       </div>
     <?php endif; ?>
 </div>
-<?php   $page = $this->params()->fromQuery('page', 1);
+<?php   
+    $page = $this->params()->fromQuery('page', 1);
     $property = $this->params()->fromQuery('property');
-    $subjectValues = $item->displaySubjectValues($page, 25, $property);
+    $subjectValues = $item->displaySubjectValues([
+        'page' => $page, 
+        'perPage' => 25, 
+        'resourceProperty' => $property
+    ]);
     if ($subjectValues || (!$embedMedia && $itemMedia)):?>
 <div class="row">
     <div class="half">
