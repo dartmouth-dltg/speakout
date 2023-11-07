@@ -274,6 +274,7 @@ header nav > ul > li > a:not(:only-child):after {
   content: "\f105";
   display: inline-block;
   margin-left: $spacing-s;
+  font-weight: bold;
   line-height: 1em;
   width: 10px;
 }

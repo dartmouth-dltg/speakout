@@ -285,6 +285,7 @@ select {
   content: "\f069";
   font-family: "Font Awesome 5 Free";
   font-size: 0.75 * $base-font-size;
+  font-weight: bold;
 }
 
 .field .value:not(:last-child) {
@@ -399,6 +400,7 @@ header nav > ul.menu {
     width: $spacing-l;
     padding: $spacing-s;
     text-align: center;
+    font-weight: bold;
   }
 
   li > ul:hover:before {
@@ -616,6 +618,7 @@ button.o-icon-search {
     text-align: center;
     text-indent: 0;
     line-height: 1.5 * $base-spacing-height;
+    font-weight: bold;
   }
   &:hover {
     background-color: $bold;

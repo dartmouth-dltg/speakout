@@ -1,6 +1,15 @@
-<?php $this->htmlElement('body')->appendAttribute('class', 'media resource show'); ?>
+<?php
+$translate = $this->plugin('translate');
+$item = $media->item();
+$this->headLink()->appendStylesheet($this->assetUrl('css/resource-page-blocks.css', 'Omeka'));
+$this->htmlElement('body')->appendAttribute('class', 'media resource show'); 
+$filterLocale = (bool) $this->siteSetting('filter_locale_values');
+$lang = $this->lang();
+$valueLang = $filterLocale ? [$lang, ''] : null;
+?>
+
 <div class="content-block">
-<?php echo $this->pageTitle($media->displayTitle(), 2); ?>
+<?php echo $this->pageTitle($media->displayTitle(null, $valueLang), 2); ?>
 
 <?php $this->trigger('view.show.before'); ?>
 <div class="row">
