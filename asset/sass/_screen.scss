@@ -1283,6 +1283,28 @@ a.media.resource + a.media.resource {
 
 /* @end */
 
+/* interviews page */
+.site-page-interviews #content .content-block .blocks-inner .block-media .media-embed {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  h3 {
+    line-height: normal;
+  }
+  a {
+    display: inline-block;
+  }
+  img {
+    max-height: 200px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .site-page-interviews #content .content-block .blocks-inner .block-media .media-embed {
+    grid-template-columns: 100%;
+  }
+}
+
 /* @group ----- Advanced Search ----- */
 
 #advanced-search .value {

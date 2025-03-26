@@ -1150,7 +1150,33 @@
     align-items: center;
   }
   /* @end */
+  /* interviews page */
+  .site-page-interviews #content .content-block .blocks-inner .block-media .media-embed {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+  }
+  .site-page-interviews #content .content-block .blocks-inner .block-media .media-embed h3 {
+    line-height: normal;
+  }
+  .site-page-interviews #content .content-block .blocks-inner .block-media .media-embed a {
+    display: inline-block;
+  }
+  .site-page-interviews #content .content-block .blocks-inner .block-media .media-embed img {
+    max-height: 200px;
+  }
   /* @group ----- Advanced Search ----- */
+  /* @end */
+  /* @group ----- Common Modules ---- */
+  /* ---item page---- */
+  /* @end */
+}
+@media screen and (max-width: 540px) {
+  .site-page-interviews #content .content-block .blocks-inner .block-media .media-embed {
+    grid-template-columns: 100%;
+  }
+}
+@media screen {
   #advanced-search .value {
     display: inline;
   }
@@ -1186,12 +1212,9 @@
     left: 0;
     line-height: 2.8125rem;
   }
-  /* @end */
-  /* @group ----- Common Modules ---- */
   a.metadata-browse-link {
     font-size: 0.9375rem;
   }
-  /* ---item page---- */
   .interview {
     max-height: 400px;
     display: block;
@@ -1227,7 +1250,6 @@
     font-family: "National2-Regular", verdana, sans-serif;
     margin-bottom: 0;
   }
-  /* @end */
   #user-bar {
     position: fixed;
     z-index: 3;
@@ -1425,6 +1447,10 @@
   #itemproperties.third {
     width: calc(33.333333333% - 1.5rem);
     flex-basis: calc(33.333333333% - 1.5rem);
+  }
+  /* interviews page */
+  .site-page-interviews #content .content-block .blocks-inner .block-media .media-embed {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media screen and (min-width: 1024px) {
@@ -1914,6 +1940,10 @@
   }
   #page-actions input {
     width: auto;
+  }
+  /* interviews page */
+  .site-page-interviews #content .content-block .blocks-inner .block-media .media-embed {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 @media screen and (min-width: 1280px) {
