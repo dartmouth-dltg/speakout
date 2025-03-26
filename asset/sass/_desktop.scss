@@ -550,3 +550,8 @@ body.hasuser {
     width: auto;
   }
 }
+
+/* interviews page */
+.site-page-interviews #content .content-block .blocks-inner .block-media .media-embed {
+  grid-template-columns: repeat(4, 1fr);
+}

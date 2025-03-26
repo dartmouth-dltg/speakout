@@ -100,3 +100,8 @@ nav.pagination {
     flex-basis: calc(33.333333333% - 1.5rem);
   }
 }
+
+/* interviews page */
+.site-page-interviews #content .content-block .blocks-inner .block-media .media-embed {
+  grid-template-columns: repeat(3, 1fr);
+}
