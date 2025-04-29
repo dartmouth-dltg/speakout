@@ -6,6 +6,13 @@ $this->htmlElement('body')->appendAttribute('class', 'item resource show');
 $embedMedia = $this->siteSetting('item_media_embed', false);
 $itemMedia = $item->media();
 
+if ($this->themeSetting('noindex_items') !== null) {
+    $no_index_items = explode(",", $this->themeSetting('noindex_items'));
+    if (in_array($item->id(), $no_index_items)) {
+        $this->headMeta()->appendName('robots', 'noindex');
+    }
+}
+
 $filterLocale = (bool) $this->siteSetting('filter_locale_values');
 $lang = $this->lang();
 $valueLang = $filterLocale ? [$lang, ''] : null;
@@ -14,7 +21,7 @@ $valueLang = $filterLocale ? [$lang, ''] : null;
 $audioClass = 'third';
 
 //build media contents
-$thismedia=array('transcript'=>false,'audio'=>false,'pdf'=>false);
+$thismedia = array('transcript' => false, 'audio' => false, 'pdf' => false);
 if ($embedMedia && $itemMedia):
     foreach ($itemMedia as $media):
         $thismediatype=$media->value('dcterms:type');
@@ -68,7 +75,7 @@ endif; ?>
           <?php if ($thismedia['pdf']):?>
               <div class="row">
                   <div id="transcriptinfo" class="full">
-                      <h4>Transcript</h4>
+                      <h3>Transcript</h3>
                       <a href="<?php echo $thismedia['pdf'];?>" target="_blank"><button>download PDF</button></a>
                   </div>
               </div>
