@@ -1,6 +1,6 @@
 @use "base" as spk;
 
-@media (width >= 1024px) {
+@media screen and (min-width: 1024px) {
   * {
     box-sizing: border-box;
     transition-duration: 100ms;
@@ -39,7 +39,7 @@
 
   #content {
     margin-top: 0;
-    &:before {
+    &::before {
       background-size: cover;
     }
     .full {
@@ -49,8 +49,8 @@
       }
       .row {
         .full {
-          padding-left: 0;
           padding-right: 0;
+          padding-left: 0;
         }
       }
     }
@@ -63,7 +63,7 @@
       }
     }
     .content-block {
-      & + .content-block {
+      + .content-block {
         margin-top: 0;
       }
       .threequarters {
@@ -85,23 +85,23 @@
 
   th,
   td {
-    text-align: left;
     padding: spk.$spacing-s spk.$spacing-m;
     padding-bottom: spk.$spacing-s - 1px;
+    text-align: left;
     border-bottom: 1px solid spk.$gray;
   }
 
-  /* @group ----- Footer ----- */
+  // @group ----- Footer -----
 
   footer {
     padding: 0 1.25rem spk.$spacing-l;
     .footerinfo {
-      height: (7 * spk.$spacing-l);
       display: flex;
       flex-flow: row;
+      height: (7 * spk.$spacing-l);
       div {
-        padding: 0;
         margin-bottom: 0;
+        padding: 0;
         text-align: left;
       }
       #footertext {
@@ -111,17 +111,17 @@
         @include spk.span(5);
 
         img {
+          float: right;
           height: (4 * spk.$spacing-l);
           vertical-align: top;
-          float: right;
         }
       }
     }
   }
 
-  /* @end */
+  // @end
 
-  /* @group ----- Navigation ----- */
+  // @group ----- Navigation -----
   #mobilemenu {
     display: none;
   }
@@ -136,14 +136,14 @@
     @include spk.container;
 
     position: static;
-    padding: 0 1rem;
     height: 54px;
+    padding: 0 1rem;
   }
 
-  header nav:before {
+  header nav::before {
+    display: none;
     content: "";
     border: 0;
-    display: none;
   }
 
   header nav ul a {
@@ -156,8 +156,8 @@
 
   header nav.closed ul,
   header nav ul ul li {
-    height: auto;
     overflow: visible;
+    height: auto;
   }
 
   header nav ul a:hover {
@@ -171,19 +171,19 @@
   }
 
   header nav > ul.menu {
-    margin: 0 auto;
-    max-width: 65%;
     float: left;
+    max-width: 65%;
+    height: 54px;
+    margin: 0 auto;
     background-color: transparent;
     box-shadow: none;
-    height: 54px;
     a {
       padding: 0;
       color: spk.$black;
     }
     a:hover {
-      background-color: transparent;
       color: spk.$bold;
+      background-color: transparent;
     }
     li {
       height: 54px;
@@ -191,62 +191,62 @@
     }
     > li {
       display: inline-block;
+      float: left;
+      width: auto;
+      padding: 0 spk.$spacing-s;
       border-top: none;
       border-bottom: none;
-      width: auto;
-      float: left;
-      padding: 0 spk.$spacing-s;
       &:hover {
         background-color: spk.$darkgreen;
         a {
           color: spk.$white;
         }
-        & > a:hover {
+        > a:hover {
           color: spk.$white;
         }
       }
     }
-    li ul:before {
+    li ul::before {
       display: none;
     }
 
-    & > li > ul {
+    > li > ul {
       position: absolute;
+      z-index: 1;
       left: -9999px;
-      background-color: spk.$darkgreen;
-      list-style: none;
-      width: spk.$maxwidth;
-      border: solid spk.$gray;
-      border-width: 1px 0;
-      padding: (spk.$spacing-m - 1px) 0 (spk.$spacing-s - 1px);
       display: flex;
       flex-flow: row wrap;
-      z-index: 1;
+      width: spk.$maxwidth;
+      padding: (spk.$spacing-m - 1px) 0 (spk.$spacing-s - 1px);
+      list-style: none;
+      border: solid spk.$gray;
+      border-width: 1px 0;
+      background-color: spk.$darkgreen;
     }
 
-    & > li:hover > ul {
+    > li:hover > ul {
       @include spk.container;
 
-      padding: 0 (2 * spk.gutter());
-      left: 0;
-      right: 0;
-      border: none;
       position: fixed;
       top: 54px;
+      right: 0;
+      left: 0;
+      padding: 0 (2 * spk.gutter());
+      border: none;
 
-      &:after {
-        content: "";
-        background-color: spk.$darkgreen;
+      &::after {
         position: absolute;
         inset: 0 -9999px;
         z-index: -1;
-        box-shadow: 0 4px 5px 0 rgb(0 0 0 / 15%);
+        content: "";
+        background-color: spk.$darkgreen;
+        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.15);
       }
     }
 
-    & > li > ul > li {
+    > li > ul > li {
       padding-bottom: spk.$spacing-l;
-      & > a {
+      > a {
         color: spk.$darkgreen;
         &:hover {
           color: spk.$lightgreen;
@@ -254,31 +254,31 @@
       }
     }
 
-    & > li > ul > li ul {
-      font-weight: normal;
+    > li > ul > li ul {
+      height: auto;
       padding: 0;
       list-style-type: none;
-      height: auto;
+      font-weight: normal;
     }
   }
 
   header nav > ul > li > a {
-    margin: spk.$spacing-s;
     height: spk.$base-line-height;
+    margin: spk.$spacing-s;
     color: spk.$white;
   }
 
-  /* All top-level nav items with siblings are parent items and get an arrow. */
-  header nav > ul > li > a:not(:only-child):after {
-    font-family: "Font Awesome 5 Free";
-    content: "\f105";
+  // All top-level nav items with siblings are parent items and get an arrow.
+  header nav > ul > li > a:not(:only-child)::after {
     display: inline-block;
+    width: 10px;
     margin-left: spk.$spacing-s;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free", sans-serif;
     font-weight: bold;
     line-height: 1em;
-    width: 10px;
   }
-  header nav > ul > li > a:not(:only-child):hover:after {
+  header nav > ul > li > a:not(:only-child):hover::after {
     content: "\f107";
   }
 
@@ -287,7 +287,7 @@
     padding: spk.$spacing-s spk.$spacing-l spk.$spacing-s spk.$spacing-s;
   }
 
-  /* Second and Third level items */
+  // Second and Third level items
   header nav > ul > li > ul > li a,
   header nav > ul > li > ul > li > ul > li a {
     padding-left: 0;
@@ -300,30 +300,30 @@
   }
 
   .sub-menu ul {
-    border-bottom: 1px solid spk.$gray;
     padding-bottom: (spk.$spacing-m - 1px);
+    border-bottom: 1px solid spk.$gray;
   }
 
   .sub-menu li {
     display: inline-block;
-    border: 0;
-    padding: 0;
     margin-right: spk.$spacing-m;
+    padding: 0;
+    border: 0;
 
     &:first-of-type {
-      border: 0;
       padding: 0;
+      border: 0;
     }
   }
 
   #search {
-    display: inline-block;
-    width: 30%;
-    border: none;
-    padding: spk.$spacing-s;
-    float: right;
     position: relative;
     top: auto;
+    display: inline-block;
+    float: right;
+    width: 30%;
+    padding: spk.$spacing-s;
+    border: none;
     background-color: transparent;
     box-shadow: none;
   }
@@ -338,35 +338,35 @@
     width: spk.$base-search-height;
     padding: 0;
     line-height: spk.$base-search-height;
-    &:before {
+    &::before {
       line-height: spk.$base-search-height;
     }
   }
 
-  /* @end */
+  // @end
 
-  /* @group ----- Banner ----- */
+  // @group ----- Banner -----
   #banner {
-    display: block;
     position: relative;
+    display: block;
     margin-top: 54px;
     #bannercontent {
       margin: 0;
       padding: (3 * spk.$spacing-m) 1.5rem spk.$spacing-l;
       #site-title {
-        font-size: 6rem;
-        line-height: 1.2rem;
-        font-family: spk.$serif;
-        text-align: left;
         display: inline-block;
+        text-align: left;
         color: spk.$darkgreen;
+        font-family: spk.$serif;
+        font-size: 6rem;
         font-weight: bold;
+        line-height: 1.2rem;
       }
 
       #site-title:hover,
       #site-title:active {
-        border-bottom: 0;
         color: spk.$darkgreen;
+        border-bottom: 0;
       }
 
       #site-title h1 {
@@ -375,31 +375,31 @@
       .site-summary {
         display: block;
         text-align: left;
-        font-size: spk.$base-line-height;
-        line-height: 1.5em;
         letter-spacing: 0.03em;
         color: spk.$darkgreen;
+        font-size: spk.$base-line-height;
+        line-height: 1.5em;
       }
     }
   }
 
-  /* @end */
+  // @end
 
-  /* @group ----- Resource List ----- */
+  // @group ----- Resource List -----
 
   ul.resource-list .resource img {
+    float: right;
     width: 4 * spk.$spacing-l;
     height: auto;
-    float: right;
   }
 
   ul.resource-list .resource img ~ * {
     width: calc(100% - #{4.5 * spk.$spacing-l});
   }
 
-  /* @end */
+  // @end
 
-  /* @group ----- Item Set ----- */
+  // @group ----- Item Set -----
 
   body.item-set.item #content {
     display: flex;
@@ -407,17 +407,17 @@
     align-items: flex-start;
     justify-content: flex-end;
 
-    & > h2,
-    & > h3 {
+    > h2,
+    > h3 {
       width: 100%;
     }
   }
 
   body.item-set .metadata {
     flex: 0 0 calc(100% / 12 * 4);
-    border-left: 5px solid spk.$gray;
-    padding-left: spk.gutter();
     margin-right: spk.gutter();
+    padding-left: spk.gutter();
+    border-left: 5px solid spk.$gray;
   }
 
   body.item-set .metadata h4:first-of-type {
@@ -426,8 +426,8 @@
 
   body.item-set #content .metadata ~ * {
     flex: 0 0 calc(100% / 12 * 8);
-    border-left: 1px solid spk.$gray;
     padding-left: spk.gutter();
+    border-left: 1px solid spk.$gray;
   }
 
   body.item-set .item-set-items h3 {
@@ -452,24 +452,24 @@
   }
 
   a.media.resource + a.media.resource {
-    margin-right: spk.$spacing-m;
     margin-top: 0;
+    margin-right: spk.$spacing-m;
   }
 
-  /* @end */
+  // @end
 
-  /* @group ----- Page and blocks ----- */
+  // @group ----- Page and blocks -----
 
   .preview-block {
     clear: both;
   }
 
   ul.preview.resource-list li:first-of-type {
-    border-top: 1px solid spk.$gray;
     padding-top: (spk.$spacing-l - 1px);
+    border-top: 1px solid spk.$gray;
   }
 
-  /* @end */
+  // @end
 
   .interview {
     margin-bottom: 0;
@@ -491,10 +491,10 @@
 
   #itemtranscript {
     #transcriptinfo {
-      text-align: right;
       margin-top: 0;
       margin-bottom: 0;
       padding-bottom: 0;
+      text-align: right;
       h4 {
         float: left;
         margin-bottom: 0;
@@ -539,7 +539,7 @@
     input {
       width: auto;
       margin: 0 spk.$spacing-s spk.$spacing-s 0;
-      & + .button {
+      + .button {
         margin-left: spk.$spacing-s;
       }
     }
@@ -551,8 +551,13 @@
     }
   }
 
-  /* interviews page */
-  .site-page-interviews #content .content-block .blocks-inner .block-media .media-embed {
+  // interviews page
+  .site-page-interviews
+    #content
+    .content-block
+    .blocks-inner
+    .block-media
+    .media-embed {
     grid-template-columns: repeat(4, 1fr);
   }
 }

@@ -1,6 +1,6 @@
 @use "base" as spk;
 
-@media (width >= 768px) {
+@media screen and (min-width: 768px) {
   .row {
     flex-flow: wrap;
   }
@@ -26,14 +26,14 @@
   }
 
   #content {
-    padding: 0 0 spk.$spacing-l;
     margin-top: 90px;
+    padding: 0 0 spk.$spacing-l;
     .full {
       padding: 0;
       .row {
         .full {
-          padding-left: 0;
           padding-right: 0;
+          padding-left: 0;
         }
       }
     }
@@ -63,13 +63,13 @@
   }
 
   .search-filters {
-    margin-bottom: spk.$spacing-l;
     display: block;
+    margin-bottom: spk.$spacing-l;
     .advanced-search.button {
-      float: right;
       display: inline-block;
-      margin: 0;
+      float: right;
       width: auto;
+      margin: 0;
     }
   }
 
@@ -79,12 +79,12 @@
     }
   }
   .browse-controls {
-    & > * {
+    > * {
       width: auto;
     }
-    & > form.sorting {
+    > form.sorting {
       margin-bottom: spk.$spacing-m;
-      & > * {
+      > * {
         width: auto;
         margin-bottom: spk.$spacing-m;
       }
@@ -99,13 +99,18 @@
 
   #itemproperties {
     &.third {
-      width: calc(33.333333333% - 1.5rem);
-      flex-basis: calc(33.333333333% - 1.5rem);
+      flex-basis: calc(33.33333% - 1.5rem);
+      width: calc(33.33333% - 1.5rem);
     }
   }
 
-  /* interviews page */
-  .site-page-interviews #content .content-block .blocks-inner .block-media .media-embed {
+  // interviews page
+  .site-page-interviews
+    #content
+    .content-block
+    .blocks-inner
+    .block-media
+    .media-embed {
     grid-template-columns: repeat(3, 1fr);
   }
 }

@@ -1,6 +1,6 @@
 @use "base" as *;
 
-@media (width >= 1280px) {
+@media screen and (min-width: 1280px) {
   #banner {
     #bannercontent {
       .site-summary {

@@ -5,7 +5,8 @@
 @use "desktop";
 @use "largedesktop";
 
-@media screen and (-ms-high-contrast: none), screen and (-ms-high-contrast: active) {
+@media screen and (-ms-high-contrast: none),
+  screen and (-ms-high-contrast: active) {
   .cutouttitle {
     background: transparent;
   }

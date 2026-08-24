@@ -1,107 +1,112 @@
 @use "sass:math";
 @use "sass:color";
 
-$maxwidth:                              1700px;
-$max-reading-width:                     970px;
+$maxwidth: 1700px;
+$max-reading-width: 970px;
 
-/* Colors */
+// Colors
+$black: #000;
+$white: #fff;
+$gray: #ababab;
+$bold: #424141;
+$light: #f7f7f7;
+$bg: #e2e2e2;
+$green: #00693e;
+$lightgreen: #c4dd88;
+$darkgreen: #12312b;
+$yellow: #f5dc69;
+$orange: #ffa00f;
+$darkorange: #e32d1c;
+$red: #9d162e;
+$purple: #8a6996;
+$blue: #003c73;
+$lightblue: #267aba;
+$opacityfactor: 50%;
+$yellowbg: color.mix($white, $yellow, $opacityfactor);
+$orangebg: color.mix($white, $orange, $opacityfactor);
+$redbg: color.mix($white, $red, $opacityfactor);
+$greenbg: color.mix($white, $green, $opacityfactor);
+$lightbluebg: color.mix($white, $lightblue, $opacityfactor);
+$bluebg: color.mix($white, $blue, $opacityfactor);
+$purplebg: color.mix($white, $purple, $opacityfactor);
 
-$black:                                 #000;
-$white:                                 #fff;
-$gray:                                  #ababab;
-$bold:                                  #424141;
-$light:                                 #f7f7f7;
-$bg:                                    #e2e2e2;
-$green:                                 #00693e;
-$lightgreen:                            #c4dd88;
-$darkgreen:                             #12312b;
-$yellow:                                #f5dc69;
-$orange:                                #ffa00f;
-$darkorange:                            #e32d1c;
-$red:                                   #9d162e;
-$purple:                                #8a6996;
-$blue:                                  #003c73;
-$lightblue:                             #267aba;
+// Typography
+$base-font-size: 1.25rem;
+$base-line-height: 1.875rem;
+$serif: "Lora", georgia, serif;
+$sansserif: "National2", verdana, sans-serif;
+$sansserif-bold: "National2-Bold", verdana, sans-serif;
+$sansserif-regular: "National2-Regular", verdana, sans-serif;
 
-$opacityfactor:                         50%;
+// Units
+$base-spacing-height: 30px;
+$base-search-height: 38px;
+$spacing-s: 0.25 * $base-spacing-height;
+$spacing-m: 0.5 * $base-spacing-height;
+$spacing-l: $base-spacing-height;
 
-$yellowbg:                              color.mix($white, $yellow, $opacityfactor);
-$orangebg:                              color.mix($white, $orange, $opacityfactor);
-$redbg:                                 color.mix($white, $red, $opacityfactor);
-$greenbg:                               color.mix($white, $green, $opacityfactor);
-$lightbluebg:                           color.mix($white, $lightblue, $opacityfactor);
-$bluebg:                                color.mix($white, $blue, $opacityfactor);
-$purplebg:                              color.mix($white, $purple, $opacityfactor);
+// Paths & Folders
+$basepath: "..";
+$mainbgpath: $basepath + "/img/20150806-nightcampussummer-01-eb.jpg";
+$mobilemenuicon: $basepath + "/img/dartmouth-college-logo_pine.svg";
+$fontfolder: $basepath + "/fonts";
 
-/* Typography */
-
-$base-font-size:                        1.25rem;
-$base-line-height:                      1.875rem;
-$serif:                                 "Lora", georgia, serif;
-$sansserif:                             "National2", verdana, sans-serif;
-$sansserif-bold:                        "National2-Bold", verdana, sans-serif;
-$sansserif-regular:                     "National2-Regular", verdana, sans-serif;
-
-/* Units */
-$base-spacing-height:                   30px;
-$base-search-height:                    38px;
-$spacing-s:                             0.25 * $base-spacing-height;
-$spacing-m:                             0.5 * $base-spacing-height;
-$spacing-l:                             $base-spacing-height;
-
-/* Paths & Folders */
-$basepath:                              '..';
-$mainbgpath:                            $basepath+'/img/20150806-nightcampussummer-01-eb.jpg';
-$mobilemenuicon:                        $basepath+'/img/dartmouth-college-logo_pine.svg';
-$fontfolder:                            $basepath+'/fonts';
-
-/* Mixins */
+// Mixins
 
 @mixin container {
   max-width: $maxwidth;
   margin: 0 auto;
 }
 
-@mixin font-face($style-name, $file, $family, $category:"",$weight:"") {
+@mixin font-face($style-name, $file, $family, $category: "", $weight: "") {
   $filepath: $fontfolder + "/" + $family + "/" + $file;
+
+  %#{$style-name} {
+    font: {
+      @if $category != "" {
+        $family: ("#{$style-name}", #{$category});
+      } @else {
+        $family: "#{$style-name}";
+      }
+    }
+  }
 
   @font-face {
     font-family: "#{$style-name}";
     src: url("#{$filepath}.eot");
-    src: url("#{$filepath}.eot?#iefix") format('embedded-opentype'), url("#{$filepath}.woff") format('woff'), url("#{$filepath}.ttf")  format('truetype'), url("#{$filepath}.svg##{$style-name}") format('svg');
-
-    @if ($weight == 'bold') {
+    src:
+      url("#{$filepath}.woff") format("woff"),
+      url("#{$filepath}.ttf") format("truetype"),
+      url("#{$filepath}.svg##{$style-name}") format("svg");
+    @if $weight == "bold" {
       font-weight: 700;
-    }
-
-    @else {
+    } @else {
       font-weight: normal;
-    }
-  }
-  %#{$style-name} {
-    font: {
-      @if $category != "" {
-        $family: "#{$style-name}", #{$category};
-      }
-
-      @else {
-        $family: "#{$style-name}";
-      }
     }
   }
 }
 
 @mixin span($cols) {
-  margin: 0 0.5rem;
   flex: 1 1 calc((math.div($cols, 12) * 100%) - 1rem);
   width: calc((math.div($cols, 12) * 100%) - 1rem);
+  margin: 0 0.5rem;
 }
 
 @function gutter() {
   @return 1.25rem;
 }
 
-/* @include font-face("Dartmouth Ruzicka", "DartmouthRuzicka-Regular", "DartmouthRuzicka", "serif"); */
+// @include font-face("Dartmouth Ruzicka", "DartmouthRuzicka-Regular", "DartmouthRuzicka", "serif");
 @include font-face("National2", "National2-Light", "National2", "sans-serif");
-@include font-face("National2-Regular", "National2-Regular", "National2", "sans-serif");
-@include font-face("National2-Bold", "National2-Bold", "National2", "sans-serif");
+@include font-face(
+  "National2-Regular",
+  "National2-Regular",
+  "National2",
+  "sans-serif"
+);
+@include font-face(
+  "National2-Bold",
+  "National2-Bold",
+  "National2",
+  "sans-serif"
+);

@@ -4,23 +4,23 @@
 
 * {
   box-sizing: border-box;
-  transition-duration: 150ms;
   transition-timing-function: ease-out;
+  transition-duration: 150ms;
 }
 
 html {
   height: 100%;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 body {
+  margin: 0;
+  word-wrap: break-word;
   background-color: spk.$light;
   font-family: spk.$sansserif;
   font-size: spk.$base-font-size;
   line-height: spk.$base-line-height;
-  margin: 0;
-  word-wrap: break-word;
 }
 
 a:link {
@@ -66,7 +66,7 @@ img {
 
   display: flex;
   flex-flow: column;
-  & + .row {
+  + .row {
     margin-top: 20px;
   }
 }
@@ -154,18 +154,18 @@ img {
   text-align: center;
 }
 
-/* @group ----- Forms ----- */
+// @group ----- Forms -----
 
 input,
 textarea,
 button,
 .button,
 select {
+  margin: 0;
+  vertical-align: top;
   font-family: spk.$sansserif;
   font-size: spk.$base-font-size;
   line-height: spk.$base-line-height;
-  margin: 0;
-  vertical-align: top;
 }
 
 input[type="text"],
@@ -173,12 +173,12 @@ input[type="password"],
 input[type="email"],
 input[type="url"],
 textarea {
+  height: 1.5 * spk.$spacing-l;
+  margin: 0;
+  padding: (spk.$spacing-s - 0.5px) spk.gutter() (spk.$spacing-s - 1.5px);
+  border: 1px solid spk.$gray;
   appearance: none;
   border-radius: 0;
-  height: 1.5 * spk.$spacing-l;
-  border: 1px solid spk.$gray;
-  padding: (spk.$spacing-s - 0.5px) spk.gutter() (spk.$spacing-s - 1.5px);
-  margin: 0;
 }
 
 textarea {
@@ -186,25 +186,25 @@ textarea {
 }
 
 input[type="file"] {
-  line-height: 1;
   vertical-align: bottom;
   font-size: 0.75 * spk.$base-font-size;
+  line-height: 1;
 }
 
 button,
 .button,
 a.button,
 [type="submit"] {
-  color: spk.$white;
-  background-color: spk.$green;
-  border-radius: 2px;
-  padding: spk.$spacing-s (2 * spk.$spacing-s);
   display: inline-block;
-  appearance: none;
+  padding: spk.$spacing-s (2 * spk.$spacing-s);
+  cursor: pointer;
+  color: spk.$white;
   border: 0;
+  border-radius: 2px;
+  background-color: spk.$green;
+  appearance: none;
   font-size: spk.$base-font-size;
   line-height: spk.$base-line-height;
-  cursor: pointer;
   &:hover {
     color: spk.$white;
     background-color: spk.$darkgreen;
@@ -220,17 +220,17 @@ a.button,
 }
 
 select {
-  background-color: spk.$white;
+  height: 1.5 * spk.$spacing-l;
   margin-bottom: 0.5rem;
   padding: spk.$spacing-s;
   border-color: spk.$gray;
-  height: 1.5 * spk.$spacing-l;
+  background-color: spk.$white;
 }
 
 .field {
-  margin: spk.$spacing-l 0;
   display: flex;
   flex-wrap: wrap;
+  margin: spk.$spacing-l 0;
 }
 
 .field .field-meta {
@@ -246,12 +246,12 @@ select {
   display: flex;
   flex-flow: column;
 
-  & > select,
-  & > textarea,
-  & > input[type="text"],
-  & > input[type="password"],
-  & > input[type="email"],
-  & > input[type="url"] {
+  > select,
+  > textarea,
+  > input[type="text"],
+  > input[type="password"],
+  > input[type="email"],
+  > input[type="url"] {
     width: 100%;
   }
 
@@ -263,9 +263,9 @@ select {
   }
 }
 
-.field.required .field-meta:after {
+.field.required .field-meta::after {
   content: "\f069";
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-size: 0.75 * spk.$base-font-size;
   font-weight: bold;
 }
@@ -278,22 +278,31 @@ select {
   font-size: 0.75 * spk.$base-font-size;
 }
 
-/* @end */
+// @end
 
-/* @group ----- Navigation ----- */
+// @group ----- Navigation -----
 header {
   position: fixed;
   z-index: 3;
-  width: 100%;
-  background: linear-gradient(to right, spk.$redbg 0%, spk.$orangebg 17%, spk.$yellowbg 33%, spk.$greenbg 50%, spk.$lightbluebg 67%, spk.$bluebg 83%, spk.$purplebg 100%);
   top: 0;
+  width: 100%;
   height: 66px;
   padding: 0.5rem;
-  box-shadow: 0 4px 5px 0 rgb(0 0 0 / 15%);
+  background: linear-gradient(
+    to right,
+    spk.$redbg 0%,
+    spk.$orangebg 17%,
+    spk.$yellowbg 33%,
+    spk.$greenbg 50%,
+    spk.$lightbluebg 67%,
+    spk.$bluebg 83%,
+    spk.$purplebg 100%
+  );
+  box-shadow: 0 4px 5px 0 rgb(0, 0, 0, 0.15);
 
-  & > * {
-    padding: 0 spk.gutter();
+  > * {
     display: block;
+    padding: 0 spk.gutter();
   }
   .closed {
     display: none;
@@ -302,7 +311,7 @@ header {
     display: block;
     .closed {
       display: inline;
-      & > * {
+      > * {
         display: none;
       }
     }
@@ -310,18 +319,18 @@ header {
   nav {
     position: relative;
     padding: 0 1rem;
-    & > .open {
-      top: 54px;
+    > .open {
       position: absolute;
+      top: 54px;
     }
   }
   ul {
-    list-style: none;
-    padding: 0;
     margin: 0;
-    & > li {
-      list-style: none;
+    padding: 0;
+    list-style: none;
+    > li {
       display: inline-block;
+      list-style: none;
     }
     li {
       list-style: none;
@@ -330,12 +339,12 @@ header {
 }
 
 header nav > ul.menu {
+  width: 100%;
+  margin: 0 auto;
   padding-left: 0;
   list-style: none;
-  margin: 0 auto;
   background-color: spk.$darkgreen;
-  box-shadow: 0 4px 5px 0 rgb(0 0 0 / 50%);
-  width: 100%;
+  box-shadow: 0 4px 5px 0 rgb(0, 0, 0, 0.5);
   a {
     display: inline-block;
     width: 100%;
@@ -344,8 +353,8 @@ header nav > ul.menu {
   }
 
   a:hover {
-    border-bottom: 0;
     color: spk.$white;
+    border-bottom: 0;
   }
 
   li {
@@ -372,48 +381,48 @@ header nav > ul.menu {
       color: spk.$darkgreen;
     }
   }
-  li > ul:before {
-    font-family: "Font Awesome 5 Free";
-    content: "\f105";
+  li > ul::before {
     position: absolute;
-    right: 0;
     top: 0;
-    color: spk.$white;
+    right: 0;
     width: spk.$spacing-l;
     padding: spk.$spacing-s;
+    content: "\f105";
     text-align: center;
+    color: spk.$white;
+    font-family: "Font Awesome 5 Free", sans-serif;
     font-weight: bold;
   }
 
-  li > ul:hover:before {
+  li > ul:hover::before {
     content: "\f107";
   }
-  li > ul.open:before {
+  li > ul.open::before {
     content: "\f107";
   }
-  li > ul.closed:before {
+  li > ul.closed::before {
     content: "\f105";
   }
 
-  a:hover ~ ul:before {
+  a:hover ~ ul::before {
     color: spk.$gray;
   }
-  & > ul {
+  > ul {
     margin-left: spk.$base-spacing-height;
   }
 }
 
 header nav > ul.menu ul li {
+  display: block;
   height: auto;
   border: 0;
-  display: block;
 }
 
 header nav > ul.menu ul:hover > li {
   height: auto;
 }
 
-/* Second level items */
+// Second level items
 header nav > ul.menu > li > ul > li.active > a {
   margin-left: 0;
 }
@@ -422,88 +431,90 @@ header nav > ul.menu > li > ul > li a {
   padding-left: spk.$spacing-l;
 }
 
-/* Third level items */
+// Third level items
 
 .sub-menu ul {
+  margin-top: spk.$spacing-m;
   padding-left: 0;
   list-style-type: none;
-  margin-top: spk.$spacing-m;
 }
 
 .sub-menu li {
+  padding: spk.$spacing-s 0 (spk.$spacing-s - 1px);
+  border-bottom: 1px solid spk.$light;
   font-size: 0.75 * spk.$base-font-size;
   font-weight: bold;
-  border-bottom: 1px solid spk.$light;
-  padding: spk.$spacing-s 0 (spk.$spacing-s - 1px);
 
   &:first-of-type {
-    border-top: 1px solid spk.$light;
     padding-top: (spk.$spacing-s - 1px);
+    border-top: 1px solid spk.$light;
   }
 }
 
 #mobilemenu {
-  width: 100%;
   display: block;
-  padding: 0;
+  width: 100%;
   margin: 0;
+  padding: 0;
   background-color: spk.$light;
   li {
-    list-style: none;
     display: inline-block;
-    padding: 10px;
     margin: 0;
+    padding: 10px;
+    list-style: none;
     line-height: spk.$spacing-l;
     &#mobilelogo {
-      content: '\00a0';
-      padding: 0;
       float: left;
       width: 36px;
       height: 54px;
       margin: 0 0 0 15px;
+      padding: 0;
+      content: "\00a0";
       background: url(spk.$mobilemenuicon) no-repeat;
-      background-size: 50px 60px, cover;
       background-position: -8px 2px;
+      background-size:
+        50px 60px,
+        cover;
     }
     &#mobilebanner {
-      font-size: 1.7em;
       float: left;
       font-family: spk.$serif;
+      font-size: 1.7em;
       font-weight: bold;
       line-height: 100%;
     }
     &.rightctl {
       float: right;
-      font-size: 1.6em;
-      height: 54px;
       width: 50px;
+      height: 54px;
+      cursor: pointer;
       text-align: center;
       background-color: transparent;
-      cursor: pointer;
+      font-size: 1.6em;
       &.clicked {
-        background-color: spk.$darkgreen;
         color: spk.$white;
+        background-color: spk.$darkgreen;
       }
     }
   }
 }
 
 nav.pagination {
+  margin-bottom: 15px;
   font-size: spk.$base-font-size;
   line-height: 1.5 * spk.$base-line-height;
-  margin-bottom: 15px;
   span {
-    height: (3 * spk.$spacing-m);
     display: inline-block;
+    height: (3 * spk.$spacing-m);
   }
   input {
-    text-align: center;
     width: 2 * spk.$spacing-l;
+    text-align: center;
   }
   form {
+    width: 100%;
     min-width: 3 * spk.$spacing-l;
     margin-bottom: spk.$spacing-m;
-    width: 100%;
   }
 }
 
@@ -516,8 +527,8 @@ nav.pagination {
 .pagination button,
 .pagination .page-count {
   display: inline-block;
-  vertical-align: top;
   height: 1.5 * spk.$base-line-height;
+  vertical-align: top;
 }
 .pagination .page-count,
 .pagination .row-count {
@@ -530,45 +541,45 @@ nav.pagination {
 }
 
 .breadcrumbs {
-  font-size: 0.8em;
+  min-height: 0;
   margin: 0 0 0 1rem !important;
   margin-bottom: 0.4em;
+  font-size: 0.8em;
   font-weight: bold;
-  min-height: 0;
 }
 
-/* @end */
+// @end
 
-/* @group ----- Header ----- */
+// @group ----- Header -----
 
 button.o-icon-search {
   display: none;
 }
 .o-icon-prev,
 .o-icon-next {
-  height: (1.5 * spk.$base-line-height);
   width: (1.5 * spk.$base-line-height);
+  height: (1.5 * spk.$base-line-height);
   text-align: center;
 }
 
 #search-form {
   #quicksearchlabel {
-    clip: rect(1px, 1px, 1px, 1px);
-    width: 1px;
-    height: 1px;
     position: absolute;
     top: -100px;
     overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px;
+    height: 1px;
   }
 }
 
 #search {
   position: absolute;
-  left: 0;
   right: 0;
-  background-color: spk.$darkgreen;
+  left: 0;
   padding: spk.$spacing-s spk.gutter();
-  box-shadow: 0 4px 5px 0 rgb(0 0 0 / 50%);
+  background-color: spk.$darkgreen;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 #search form {
@@ -583,52 +594,52 @@ button.o-icon-search {
 }
 
 #search form button[type="submit"] {
-  height: 1.5 * spk.$base-spacing-height;
-  width: 1.5 * spk.$base-spacing-height;
-  text-indent: -9999px;
   position: relative;
+  width: 1.5 * spk.$base-spacing-height;
+  height: 1.5 * spk.$base-spacing-height;
+  text-indent: -9999px;
   border-radius: 0 3px 3px 0;
   background-color: spk.$gray;
 
-  &:before {
-    content: "\f061";
-    font-family: "Font Awesome 5 Free";
+  &::before {
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
+    left: 0;
+    content: "\f061";
     text-align: center;
     text-indent: 0;
-    line-height: 1.5 * spk.$base-spacing-height;
+    font-family: "Font Awesome 5 Free", sans-serif;
     font-weight: bold;
+    line-height: 1.5 * spk.$base-spacing-height;
   }
   &:hover {
     background-color: spk.$bold;
   }
 }
 
-/* @end */
+// @end
 
-/* @group ----- Banner ----- */
+// @group ----- Banner -----
 
 #banner {
   display: none;
   margin: 0 1rem;
 }
 
-/* @end */
+// @end
 
-/* @group ------ Sharing Buttons ----- */
+// @group ------ Sharing Buttons -----
 
 #after ul#sharing-buttons {
   padding-left: 0.75rem;
 }
 
-/* @group ----- Footer ----- */
+// @group ----- Footer -----
 
 footer {
-  background-color: spk.$darkgreen;
   color: spk.$white;
+  background-color: spk.$darkgreen;
   a {
     color: spk.$white;
     &:hover {
@@ -647,25 +658,25 @@ footer {
   .footerinfo {
     @include spk.container;
 
-    padding: 3rem 1rem;
     display: flex;
     flex-flow: column;
+    padding: 3rem 1rem;
     img {
       height: 120px;
     }
     div {
-      padding: 0 (2 * spk.gutter());
       margin-bottom: 2 * spk.$base-spacing-height;
+      padding: 0 (2 * spk.gutter());
       text-align: center;
     }
   }
 }
 
-/* @end */
+// @end
 
-/* @group ----- Page and Blocks ----- */
+// @group ----- Page and Blocks -----
 article {
-  /* box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.15); */
+  // box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.15);
   position: relative;
   margin: 0 1rem;
   padding-top: 1px;
@@ -674,8 +685,8 @@ article {
 #content {
   @include spk.container;
 
-  padding-bottom: (2 * spk.$spacing-l);
   margin-top: 54px;
+  padding-bottom: (2 * spk.$spacing-l);
   *:first-child {
     margin-top: 0;
   }
@@ -683,27 +694,27 @@ article {
   h2,
   h3,
   h4 {
-    font-family: spk.$serif;
-    letter-spacing: 0.04em;
-    line-height: 2em;
     margin-bottom: 0.5em;
+    letter-spacing: 0.04em;
     color: spk.$darkgreen;
+    font-family: spk.$serif;
+    line-height: 2em;
     .title {
-      line-height: 1.5em;
       display: block;
+      line-height: 1.5em;
     }
   }
   h4 {
-    font-size: 1.2em;
     border-bottom: solid 1px spk.$darkgreen;
+    font-size: 1.2em;
   }
   h5,
   h6 {
-    font-family: spk.$sansserif;
-    letter-spacing: 0.06em;
-    line-height: 1.6em;
     margin-bottom: 0.5em;
-    & + p {
+    letter-spacing: 0.06em;
+    font-family: spk.$sansserif;
+    line-height: 1.6em;
+    + p {
       margin-top: 0.5em;
     }
   }
@@ -711,25 +722,25 @@ article {
     font-size: 1em;
   }
   h6 {
-    font-size: 0.9em;
-    border-left: solid 3px spk.$gray;
-    padding-left: 1em;
     margin-bottom: 0.25em;
+    padding-left: 1em;
+    border-left: solid 3px spk.$gray;
+    font-size: 0.9em;
   }
-  & > .full {
+  > .full {
     padding: spk.$spacing-l 0 spk.$spacing-l;
-    & > .content-block {
+    > .content-block {
       h2 {
         margin-bottom: 0.75em;
       }
     }
     .site-summary {
       display: block;
-      font-size: 1.3em;
       margin-bottom: spk.$spacing-l;
       margin-left: 1rem;
-      font-weight: bold;
       color: spk.$darkgreen;
+      font-size: 1.3em;
+      font-weight: bold;
     }
   }
   .half {
@@ -742,12 +753,12 @@ article {
   .content-block {
     padding: 1em;
     background-color: spk.$white;
-    & + .content-block {
+    + .content-block {
       margin-top: 20px;
     }
     h2 {
-      margin-bottom: 0;
       margin-top: 0;
+      margin-bottom: 0;
       line-height: normal;
     }
     p {
@@ -756,26 +767,26 @@ article {
       margin-bottom: 0;
     }
     .threequarters {
-      padding-top: 1em;
       margin-right: 0;
+      padding-top: 1em;
     }
     .quarter {
       .square {
         position: relative;
         display: block;
-        content: '\00a0';
         width: 100%;
-        line-height: 0;
         max-height: (4 * spk.$spacing-l);
-        &:after {
-          content: "";
+        content: "\00a0";
+        line-height: 0;
+        &::after {
           display: block;
           padding-bottom: 100%;
+          content: "";
         }
         .squarecontent {
           position: absolute;
-          height: 100%;
           width: 100%;
+          height: 100%;
           padding: 1em;
           line-height: 1em;
         }
@@ -785,13 +796,13 @@ article {
 }
 
 .item-showcase {
+  display: flex;
+  clear: both;
+  overflow: hidden;
+  flex-wrap: wrap;
   margin: spk.$spacing-l 0;
   padding: (spk.$spacing-l - 1px) 0 0;
-  overflow: hidden;
   text-align: center;
-  clear: both;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .item.resource .caption {
@@ -802,14 +813,14 @@ article {
     margin: 0 0 spk.$spacing-l 0;
   }
 
-  & > *:last-child {
+  > *:last-child {
     margin-bottom: 0;
   }
 }
 
 .item-showcase .resource.item {
-  vertical-align: top;
   margin-bottom: spk.$spacing-l;
+  vertical-align: top;
 
   img {
     margin-right: spk.$spacing-m;
@@ -820,30 +831,30 @@ article {
   }
 
   &:not(:only-child) {
-    width: 100%;
     clear: none;
+    width: 100%;
     padding: 0 spk.gutter();
   }
 
   &:not(:only-child) h3 {
     clear: left;
+    margin: spk.$spacing-m 0 0;
     font-size: 0.75 * spk.$base-font-size;
     line-height: spk.$base-line-height;
-    margin: spk.$spacing-m 0 0;
   }
 
   &:not(:only-child) img {
-    max-height: 7 * spk.$spacing-l;
     float: none;
+    max-height: 7 * spk.$spacing-l;
     margin-right: 0;
     vertical-align: top;
   }
   .squareimage {
-    height: 7 * spk.$spacing-l;
     width: 7 * spk.$spacing-l;
+    height: 7 * spk.$spacing-l;
     object-fit: cover;
   }
-  & > a {
+  > a {
     display: block;
     width: fit-content;
     height: fit-content;
@@ -858,19 +869,19 @@ article {
 
 .left .item.resource,
 .right .item.resource {
-  margin: 0 0 spk.$spacing-l 0;
   width: min-content;
   max-width: 40vw;
+  margin: 0 0 spk.$spacing-l 0;
 
   &:first-of-type {
-    border-top: 1px solid spk.$gray;
-    padding-top: (spk.$spacing-l - 1px);
     margin-top: 0;
+    padding-top: (spk.$spacing-l - 1px);
+    border-top: 1px solid spk.$gray;
   }
 
   &:last-of-type {
-    border-bottom: 1px solid spk.$gray;
     padding-bottom: (spk.$spacing-l - 1px);
+    border-bottom: 1px solid spk.$gray;
   }
 
   .media-render > *,
@@ -901,14 +912,14 @@ article {
 
 .left .item.resource {
   float: left;
-  margin-right: spk.$spacing-l;
   clear: left;
+  margin-right: spk.$spacing-l;
 }
 
 .right .item.resource {
   float: right;
-  margin-left: spk.$spacing-l;
   clear: right;
+  margin-left: spk.$spacing-l;
 }
 
 .left .item.resource > a:first-child,
@@ -933,11 +944,11 @@ article {
 }
 
 .break {
-  width: 100%;
   clear: both;
-  border-bottom: 1px solid spk.$gray;
-  padding-bottom: -1px;
+  width: 100%;
   margin: spk.$spacing-l 0;
+  padding-bottom: -1px;
+  border-bottom: 1px solid spk.$gray;
 
   &.transparent {
     border-color: transparent;
@@ -949,23 +960,23 @@ article {
 }
 
 .preview-block {
-  margin: spk.$spacing-l 0;
   overflow: hidden;
+  margin: spk.$spacing-l 0;
 }
 
 .resource-list.preview + a {
-  background-color: spk.$gray;
-  text-align: center;
-  padding: spk.$spacing-s;
-  border-radius: 2px;
-  line-height: spk.$base-line-height;
   display: inline-block;
+  padding: spk.$spacing-s;
+  text-align: center;
+  border-radius: 2px;
+  background-color: spk.$gray;
   font-weight: bold;
+  line-height: spk.$base-line-height;
 
   &:hover {
-    background-color: spk.$bold;
-    border-bottom-width: 0;
     color: spk.$white;
+    border-bottom-width: 0;
+    background-color: spk.$bold;
   }
 }
 
@@ -984,15 +995,15 @@ article {
 }
 
 .toc-block ul ul {
-  list-style-type: none;
   padding-left: 0;
+  list-style-type: none;
 }
 
 .toc-block ul ul ul {
   padding-left: 1.25em;
 }
 
-.toc-block ul ul li:before {
+.toc-block ul ul li::before {
   content: "\2014";
   color: spk.$gray;
 }
@@ -1008,18 +1019,18 @@ article {
 }
 
 .site-page-pagination {
-  margin-top: 2 * spk.$spacing-l;
   clear: both;
+  margin-top: 2 * spk.$spacing-l;
 }
 
 .site-page-pagination a {
-  background-color: spk.$gray;
-  border-radius: 2px;
-  padding: spk.$spacing-s;
   display: inline-block;
+  padding: spk.$spacing-s;
   appearance: none;
-  border: 0;
   cursor: pointer;
+  border: 0;
+  border-radius: 2px;
+  background-color: spk.$gray;
 }
 
 #content .list-of-sites {
@@ -1031,9 +1042,9 @@ article {
 
     .site-link {
       display: inline-block;
+      margin-bottom: spk.$spacing-s;
       font-size: 1.25 * spk.$base-font-size;
       font-weight: bold;
-      margin-bottom: spk.$spacing-s;
     }
 
     .site-summary {
@@ -1044,47 +1055,56 @@ article {
   }
 }
 
-/* @end */
+// @end
 
-/* @group ----- Resource List ----- */
+// @group ----- Resource List -----
 
 ul.resource-list {
-  list-style-type: none;
   padding-left: 0;
+  list-style-type: none;
 }
 
 ul.resource-list .resource {
-  border-bottom: 1px solid spk.$gray;
-  padding-bottom: (spk.$spacing-l - 1px);
-  margin: spk.$spacing-l 0;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+  margin: spk.$spacing-l 0;
+  padding-bottom: (spk.$spacing-l - 1px);
+  border-bottom: 1px solid spk.$gray;
 
-  & > *:last-child {
+  > *:last-child {
     margin-bottom: 0;
   }
 
   &:first-child {
-    border-top: 1px solid spk.$gray;
     padding-top: (spk.$spacing-l - 1px);
+    border-top: 1px solid spk.$gray;
   }
 }
 
 .item.resource > a {
-  background: linear-gradient(to right, spk.$redbg 0%, spk.$orangebg 17%, spk.$yellowbg 33%, spk.$greenbg 50%, spk.$lightbluebg 67%, spk.$bluebg 83%, spk.$purplebg 100%);
+  background: linear-gradient(
+    to right,
+    spk.$redbg 0%,
+    spk.$orangebg 17%,
+    spk.$yellowbg 33%,
+    spk.$greenbg 50%,
+    spk.$lightbluebg 67%,
+    spk.$bluebg 83%,
+    spk.$purplebg 100%
+  );
 }
 
 ul.resource-list .resource.item {
   a {
     img {
-      height: 4 * spk.$spacing-l;
       width: 4 * spk.$spacing-l;
+      height: 4 * spk.$spacing-l;
       object-fit: cover;
     }
   }
-  & > a {
-    float: right;
+  > a {
     display: block;
+    float: right;
   }
 }
 
@@ -1093,18 +1113,22 @@ ul.resource-list .resource h4 {
 }
 
 ul.resource-list .resource .description {
-  max-height: 3 * spk.$spacing-l;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+  max-height: 3 * spk.$spacing-l;
 
-  &:after {
-    content: "";
+  &::after {
     position: absolute;
     top: 1.75 * spk.$spacing-l;
-    left: 0;
     right: 0;
+    left: 0;
     height: 1.25 * spk.$spacing-l;
-    background: linear-gradient(to top, rgb(248 248 248 / 100%), rgb(248 248 248 / 0%));
+    content: "";
+    background: linear-gradient(
+      to top,
+      rgba(248, 248, 248, 1),
+      rgba(248, 248, 248, 0)
+    );
   }
 }
 
@@ -1112,32 +1136,32 @@ ul.resource-list .resource img ~ * {
   width: calc(100% - #{2.5 * spk.$spacing-l});
 }
 
-/* @end */
+// @end
 
-/* @group ----- Browse ---- */
+// @group ----- Browse ----
 
 .search-filters {
-  margin-bottom: spk.$spacing-m;
   display: flex;
   flex-flow: column;
   min-height: 3 * spk.$spacing-m;
+  margin-bottom: spk.$spacing-m;
   .filter {
     display: inline-block;
   }
   .advanced-search.button {
-    text-align: center;
     display: inline-block;
-    margin: spk.$spacing-m auto;
     width: 100%;
+    margin: spk.$spacing-m auto;
+    text-align: center;
   }
 }
 
 .filter-label,
 .filter-value {
   display: inline-block;
-  border: 1px solid spk.$lightgreen;
   padding: spk.$spacing-s spk.$spacing-m;
   color: spk.$darkgreen;
+  border: 1px solid spk.$lightgreen;
 }
 
 .filter-label {
@@ -1151,28 +1175,28 @@ ul.resource-list .resource img ~ * {
 
 .browse-controls {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  & > * {
+  justify-content: space-between;
+  > * {
     width: 100%;
   }
-  & > form.sorting {
+  > form.sorting {
     margin-bottom: spk.$spacing-m;
-    & > * {
+    > * {
       width: 100%;
       margin-bottom: spk.$spacing-m;
     }
   }
 }
 
-/* @end */
+// @end
 
-/* @group ----- Show ----- */
+// @group ----- Show -----
 
 body.resource #content > h2:first-of-type + h3 {
-  font-size: 0.75 * spk.$base-font-size;
-  text-transform: uppercase;
   margin: calc(spk.$spacing-l * -1) 0 spk.$spacing-l;
+  text-transform: uppercase;
+  font-size: 0.75 * spk.$base-font-size;
 }
 
 .property {
@@ -1185,11 +1209,11 @@ body.resource #content > h2:first-of-type + h3 {
 }
 
 .resource-link img {
+  display: inline-block;
   width: auto;
   height: 1.5 * spk.$spacing-l;
-  display: inline-block;
-  vertical-align: middle;
   margin-right: spk.$spacing-s;
+  vertical-align: middle;
 }
 
 .property .value a {
@@ -1206,16 +1230,16 @@ body.resource #content > h2:first-of-type + h3 {
 }
 
 .property .value .language {
-  background-color: color.scale(spk.$gray, $lightness: 45.535714285%);
   padding: 0.5 * spk.$spacing-s;
+  background-color: color.scale(spk.$gray, $lightness: 45.53571%);
   font-size: 0.5 * spk.$base-font-size;
 }
 
 #content .media.resource {
   display: inline-block;
+  margin-right: spk.$spacing-s;
   text-align: center;
   vertical-align: bottom;
-  margin-right: spk.$spacing-s;
 
   &:hover {
     border-bottom: 0;
@@ -1223,8 +1247,8 @@ body.resource #content > h2:first-of-type + h3 {
 }
 
 #content .media.resource img {
-  vertical-align: top;
   margin-bottom: spk.$spacing-m;
+  vertical-align: top;
 }
 
 a.media.resource + a.media.resource {
@@ -1237,10 +1261,10 @@ a.media.resource + a.media.resource {
 }
 
 #linked-resources caption {
-  text-align: left;
-  font-weight: bold;
-  border-bottom: 3px solid spk.$gray;
   padding: spk.$spacing-s spk.$spacing-m (spk.$spacing-s - 3px);
+  text-align: left;
+  border-bottom: 3px solid spk.$gray;
+  font-weight: bold;
 }
 
 #linked-filter h4 {
@@ -1248,15 +1272,20 @@ a.media.resource + a.media.resource {
 }
 
 #linked-resources .resource-link {
-  margin-bottom: 0;
   display: flex;
   align-items: center;
+  margin-bottom: 0;
 }
 
-/* @end */
+// @end
 
-/* interviews page */
-.site-page-interviews #content .content-block .blocks-inner .block-media .media-embed {
+// interviews page
+.site-page-interviews
+  #content
+  .content-block
+  .blocks-inner
+  .block-media
+  .media-embed {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 36px;
@@ -1271,13 +1300,18 @@ a.media.resource + a.media.resource {
   }
 }
 
-@media (width <= 540px) {
-  .site-page-interviews #content .content-block .blocks-inner .block-media .media-embed {
+@media screen and (max-width: 540px) {
+  .site-page-interviews
+    #content
+    .content-block
+    .blocks-inner
+    .block-media
+    .media-embed {
     grid-template-columns: 100%;
   }
 }
 
-/* @group ----- Advanced Search ----- */
+// @group ----- Advanced Search -----
 
 #advanced-search .value {
   display: inline;
@@ -1286,12 +1320,12 @@ a.media.resource + a.media.resource {
   }
   select,
   input {
-    width: 100%;
     float: left;
+    width: 100%;
     margin: 0 0 spk.$spacing-s 0;
-    & + .button {
-      margin-left: 0;
+    + .button {
       height: 2.8rem;
+      margin-left: 0;
     }
   }
 }
@@ -1303,39 +1337,39 @@ a.media.resource + a.media.resource {
 }
 
 .remove-value {
-  text-indent: -9999px;
   position: relative;
   width: 1.5 * spk.$spacing-l;
   margin-left: spk.$spacing-s;
+  text-indent: -9999px;
 
-  &:before {
-    text-indent: 0;
+  &::before {
     position: absolute;
     inset: 0;
+    text-indent: 0;
     line-height: 1.5 * spk.$base-line-height;
   }
 }
 
-/* @end */
+// @end
 
-/* @group ----- Common Modules ---- */
+// @group ----- Common Modules ----
 
 a.metadata-browse-link {
   font-size: 0.75 * spk.$base-font-size;
 }
 
-/* ---item page---- */
+// ---item page----
 .interview {
-  max-height: 400px;
   display: block;
   overflow: auto;
+  max-height: 400px;
   margin-bottom: (3 * spk.$spacing-m);
   padding: spk.$spacing-m;
   background-color: spk.$white;
   box-shadow: inset 0 -26px 44px -44px spk.$darkgreen;
   .speech + .speech::before {
-    content: '\00a0';
     display: block;
+    content: "\00a0";
   }
   .interlocutor {
     font-family: spk.$sansserif-bold;
@@ -1352,17 +1386,17 @@ a.metadata-browse-link {
     margin-bottom: 0;
     line-height: 1.5em;
     h4 {
-      font-family: spk.$sansserif-regular;
       margin-top: 0;
+      font-family: spk.$sansserif-regular;
     }
     h5 {
-      font-family: spk.$sansserif-regular;
       margin-bottom: 0;
+      font-family: spk.$sansserif-regular;
     }
   }
 }
 
-/* @end */
+// @end
 
 #user-bar {
   position: fixed;
@@ -1372,15 +1406,24 @@ a.metadata-browse-link {
 }
 
 .cutouttitle {
-  background: linear-gradient(to right, spk.$red 0%, spk.$orange 17%, spk.$yellow 33%, spk.$green 50%, spk.$lightblue 67%, spk.$blue 83%, spk.$purple 100%);
+  background: linear-gradient(
+    to right,
+    spk.$red 0%,
+    spk.$orange 17%,
+    spk.$yellow 33%,
+    spk.$green 50%,
+    spk.$lightblue 67%,
+    spk.$blue 83%,
+    spk.$purple 100%
+  );
 }
 
 #itemproperties {
+  max-height: fit-content;
   margin-left: 1rem;
-  background-color: spk.$lightgreen;
   padding: 1em;
   color: spk.$black;
-  max-height: fit-content;
+  background-color: spk.$lightgreen;
   &.no-transcript {
     padding: 0;
     background-color: transparent;
@@ -1400,7 +1443,7 @@ a.metadata-browse-link {
     margin: 1rem 0;
   }
   &.third {
-    flex-basis: calc(33.333333333% - 1.5rem);
+    flex-basis: calc(33.33333% - 1.5rem);
     width: calc(100% - 1.5rem);
   }
   #itemsets {
@@ -1422,13 +1465,13 @@ a.metadata-browse-link {
 #itemtranscript {
   background-color: transparent;
   #transcriptinfo {
-    text-align: center;
     margin-top: (3 * spk.$spacing-m);
     margin-bottom: 0;
     padding-bottom: 0;
+    text-align: center;
     h4 {
-      text-align: center;
       margin-bottom: spk.$spacing-l;
+      text-align: center;
     }
     a {
       button {
@@ -1455,13 +1498,13 @@ body.hasuser {
 }
 
 .squarecontainer {
-  height: 7 * spk.$spacing-l;
   width: 7 * spk.$spacing-l;
+  height: 7 * spk.$spacing-l;
   &.compat-object-fit {
-    background-size: contain;
     background-position: center center;
+    background-size: contain;
 
-    /* hide image if object fit is not supported - opacity to 0 for the link area */
+    // hide image if object fit is not supported - opacity to 0 for the link area
     .squareimage {
       opacity: 0;
     }
@@ -1473,7 +1516,7 @@ body.hasuser {
     margin: 0;
   }
   .squarecontainer {
-    height: 4 * spk.$spacing-l;
     width: 4 * spk.$spacing-l;
+    height: 4 * spk.$spacing-l;
   }
 }
