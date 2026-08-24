@@ -1,5 +1,5 @@
 <div class="item-with-metadata">
-<?php foreach($attachments as $attachment): ?>
+<?php foreach ($attachments as $attachment): ?>
     <?php $item = $attachment->item(); ?>
     <?php if (empty($item)) continue; 
     $embedMedia = $this->siteSetting('item_media_embed', false);
@@ -33,7 +33,7 @@
 
     <div class="resource show">
     
-    <?php if($item->media()): ?>
+    <?php if ($item->media()): ?>
         <div class="media-list">
         <?php
         foreach ($item->media() as $media):
