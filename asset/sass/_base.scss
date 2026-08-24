@@ -1,6 +1,11 @@
+@use "sass:math";
+@use "sass:color";
+
 $maxwidth:                              1700px;
 $max-reading-width:                     970px;
-// Colors
+
+/* Colors */
+
 $black:                                 #000;
 $white:                                 #fff;
 $gray:                                  #ababab;
@@ -20,15 +25,15 @@ $lightblue:                             #267aba;
 
 $opacityfactor:                         50%;
 
-$yellowbg:                              mix($white, $yellow, $opacityfactor);
-$orangebg:                              mix($white, $orange, $opacityfactor);
-$redbg:                                 mix($white, $red, $opacityfactor);
-$greenbg:                               mix($white, $green, $opacityfactor);
-$lightbluebg:                           mix($white, $lightblue, $opacityfactor);
-$bluebg:                                mix($white, $blue, $opacityfactor);
-$purplebg:                              mix($white, $purple, $opacityfactor);
+$yellowbg:                              color.mix($white, $yellow, $opacityfactor);
+$orangebg:                              color.mix($white, $orange, $opacityfactor);
+$redbg:                                 color.mix($white, $red, $opacityfactor);
+$greenbg:                               color.mix($white, $green, $opacityfactor);
+$lightbluebg:                           color.mix($white, $lightblue, $opacityfactor);
+$bluebg:                                color.mix($white, $blue, $opacityfactor);
+$purplebg:                              color.mix($white, $purple, $opacityfactor);
 
-// Typography
+/* Typography */
 
 $base-font-size:                        1.25rem;
 $base-line-height:                      1.875rem;
@@ -37,20 +42,20 @@ $sansserif:                             "National2", verdana, sans-serif;
 $sansserif-bold:                        "National2-Bold", verdana, sans-serif;
 $sansserif-regular:                     "National2-Regular", verdana, sans-serif;
 
-// Units
+/* Units */
 $base-spacing-height:                   30px;
 $base-search-height:                    38px;
 $spacing-s:                             0.25 * $base-spacing-height;
 $spacing-m:                             0.5 * $base-spacing-height;
 $spacing-l:                             $base-spacing-height;
 
-// Paths & Folders
+/* Paths & Folders */
 $basepath:                              '..';
 $mainbgpath:                            $basepath+'/img/20150806-nightcampussummer-01-eb.jpg';
 $mobilemenuicon:                        $basepath+'/img/dartmouth-college-logo_pine.svg';
 $fontfolder:                            $basepath+'/fonts';
 
-// Mixins
+/* Mixins */
 
 @mixin container {
   max-width: $maxwidth;
@@ -62,8 +67,8 @@ $fontfolder:                            $basepath+'/fonts';
 
   @font-face {
     font-family: "#{$style-name}";
-    src: url($filepath + ".eot");
-    src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg');
+    src: url("#{$filepath}.eot");
+    src: url("#{$filepath}.eot?#iefix") format('embedded-opentype'), url("#{$filepath}.woff") format('woff'), url("#{$filepath}.ttf")  format('truetype'), url("#{$filepath}.svg##{$style-name}") format('svg');
 
     @if ($weight == 'bold') {
       font-weight: 700;

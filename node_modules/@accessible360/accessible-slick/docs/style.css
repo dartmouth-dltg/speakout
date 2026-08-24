@@ -1,0 +1,727 @@
+:root {
+  --alternative-color--light: #e3f2df;
+  --alternative-color--dark: #2c5e39;
+  --focus-outline-color: orange;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+  width: 100%;
+}
+
+  body {
+    padding-bottom: 50px !important;
+  }
+
+main:focus,
+section:focus {
+  outline: none;
+}
+
+
+/*******************
+  Content blocks
+********************/
+.content {
+  margin: auto;
+  padding: 20px;
+  width: 600px;
+}
+
+  .content:after,
+  .buttons::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+  p a:focus {
+    outline: 3px dashed black;
+    outline-offset: 5px;
+  }
+
+
+/***************
+  Buttons
+****************/
+.button {
+  background: var(--alternative-color--dark);
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  width: 48%;
+  border: 1px solid var(--alternative-color--light);
+}
+
+  .button:hover,
+  .button:focus {
+    background-color: var(--alternative-color--light);
+    color: var(--alternative-color--dark);
+    border: 1px solid var(--alternative-color--dark);
+    text-decoration: underline;
+  }
+
+  .button:focus {
+    outline: 4px dashed black;
+    outline-offset: 2px;
+  }
+
+.buttons {
+  padding: 0 20px 20px;
+  margin-bottom: 10px;
+}
+
+  .buttons .button {
+    float: left;
+    margin: 5px;
+  }
+
+.filter .button {
+  margin-bottom: 40px;
+}
+
+
+/**********************
+  Header (desktop)
+**********************/
+.header {
+  padding: 20px 0;
+}
+
+.subheading {
+  font-style: italic;
+  font-weight: 400;
+  text-align: center;
+}
+
+
+/****************************
+  Fixed mobile header nav
+*****************************/
+.fixed-header {
+  background: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  display: none;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+}
+
+  .fixed-header .header-content {
+    margin: auto;
+    width: 600px;
+  }
+
+  .fixed-header h1.title {
+    float: left;
+    font-size: 24px;
+    margin: 0;
+  }
+
+  .fixed-header ul.nav {
+    float: right;
+    margin: 0;
+    padding: 5px;
+  }
+
+    .fixed-header ul.nav li {
+      margin: 0 0 0 10px;
+    }
+
+
+/****************************
+  Desktop and mobile navs
+****************************/
+ul.nav {
+  margin-bottom: 0;
+  padding-left: 0;
+  text-align: center;
+}
+
+  ul.nav li {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+  }
+
+    ul.nav li a {
+      font-size: 14px;
+      text-decoration: none;
+      padding: 10px 15px;
+      color: var(--alternative-color--dark);
+    }
+
+      ul.nav li a:hover,
+      ul.nav li a:focus {
+        text-decoration: underline;
+      }
+
+      ul.nav li a:hover {
+        background-color: var(--alternative-color--light);
+        color: black;
+      }
+
+      ul.nav li a:focus {
+        background-color: black;
+        color: white;
+      }
+
+@media (max-width: 420px) {
+  ul.nav li a {
+    display: block;
+    font-size: 14px;
+  }
+}
+
+
+/*********************************************
+  Github corner badge
+  https://github.com/tholman/github-corners
+**********************************************/
+.github-corner svg {
+  transition: all .2s linear;
+}
+
+  .github-corner:hover svg,
+  .github-corner:focus svg {
+    fill: var(--alternative-color--dark) !important;
+  }
+
+  .github-corner:focus svg {
+    outline: 4px dashed orange;
+    outline-offset: 1px;
+  }
+
+
+/*********************************
+  Light banner at top pointing
+  to repo README
+**********************************/
+.readme-banner {
+  background-color: var(--alternative-color--light);
+  color: var(--alternative-color--dark);
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding: 15px;
+  text-align: center;
+}
+
+  .readme-banner a {
+    color: var(--alternative-color--dark);
+    font-weight: bold;
+    transition: outline .08s linear;
+  }
+
+
+/********************
+  Sponsor section
+********************/
+.sponsor-banner {
+  background-color: var(--alternative-color--light);
+  color: var(--alternative-color--dark);
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+  .sponsor-banner a {
+    display: block;
+  }
+
+    .sponsor-banner a:focus {
+      outline: 4px dashed black !important;
+    }
+
+  .sponsor-banner img {
+    width: 80%;
+    max-height: 100px;
+  }
+
+
+/************************************
+  Sections with color background
+*************************************/
+section {
+  width: 100%;
+  position: relative;
+  color: var(--alternative-color--dark);
+}
+
+  section a {
+    font-weight: bold;
+    transition: outline .1s linear;
+  }
+
+.alt-background {
+  background: var(--alternative-color--dark);
+  color: var(--alternative-color--light);
+}
+
+  .alt-background h2,
+  .alt-background h3,
+  .alt-background h4 {
+    color: white;
+  }
+
+  .alt-background a {
+    color: white;
+  }
+
+    .alt-background a:focus {
+      outline-color: orange;
+    }
+
+  .alt-background .slick-slide {
+    background: #fff;
+    margin: 10px;
+    position: relative;
+    height: 100px;
+    color: var(--alternative-color--dark);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+    .alt-background .slick-slide p {
+      margin: 0;
+      font-size: 36px;
+    }
+
+  .alt-background hr {
+    background: rgb(255,255,255,.3);
+  }
+
+
+/**************
+  Headings
+**************/
+h1 {
+  color: var(--alternative-color--dark);
+  font-family: Pacifico;
+  font-size: 96px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 auto 10px;
+  text-align: center;
+}
+
+h2, h3 {
+  font-family: Pacifico;
+  font-size: 36px;
+  color: var(--alternative-color--dark);
+  margin: 20px auto;
+  text-align: center;
+}
+
+h4, .h4 {
+  font-family: Pacifico;
+  font-size: 28px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+hr {
+  background: var(--alternative-color--dark);
+  border: 0;
+  height: 1px;
+  margin: 40px -20px;
+}
+
+
+/*****************
+  Code snippets
+******************/
+pre {
+  overflow-x: scroll;
+  margin: 0 10px !important;
+  border-radius: 0 !important;
+  border: 2px solid black;
+}
+
+  code {
+    color: #000;
+    overflow-x: scroll;
+  }
+
+p code,
+li code,
+th code,
+td code {
+  position: relative;
+  padding: 2px 7px 4px 7px;
+  border-radius: 3px;
+  color: var(--alternative-color--dark);
+  background-color: var(--alternative-color--light);
+}
+
+  .alt-background p code,
+  .alt-background li code,
+  .alt-background th code,
+  .alt-background td code {
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+
+/****************************
+  Accessibility tip block
+*****************************/
+.accessibility-tip {
+  background-color: #204CCF;
+  display: flex;
+  margin: 20px 10px 0 10px;
+  outline: 2px solid black;
+}
+
+  .accessibility-tip .icon {
+    flex: 0 0 16%;
+    padding-top: 10px;
+
+    text-align: center;
+    font-size: 48px;
+
+    color: white;
+  }
+
+  .accessibility-tip .content {
+    text-align: left;
+    padding: 15px;
+    padding-left: 0;
+    padding-right: 25px;
+  }
+
+    .accessibility-tip .heading {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      text-align: left;
+      margin: 0;
+      margin-bottom: 10px;
+    }
+
+    .accessibility-tip p {
+      text-align: left;
+      margin: 0;
+      opacity: .9;
+    }
+
+      .accessibility-tip p + p {
+        margin-top: 15px;
+      }
+
+      .accessibility-tip a:focus {
+        outline-color: orange;
+      }
+
+
+/*******************
+  Features at top
+********************/
+.features-list {
+  display: block;
+  list-style-type: none;
+  margin-top: 30px;
+  padding: 0;
+  text-align: center;
+}
+
+  .features-list li {
+    margin: 30px 0;
+  }
+
+
+/**************
+  Demos
+***************/
+/** All sliders */
+.slick-autoplay-toggle-button,
+.slick-prev .slick-prev-icon, .slick-next .slick-next-icon,
+.slick-dots li button .slick-dot-icon,
+.slick-dots li.slick-active button .slick-dot-icon {
+  color: white;
+}
+
+  .slick-slider p {
+    font-weight: bold;
+  }
+
+/** Variable width */
+.variable-width .slick-slide p {
+  background: #fff;
+  color: var(--alternative-color--dark);
+  margin: 0;
+}
+
+.adaptive-height .slick-slide,
+.lazy .slick-slide,
+.fade .slick-slide {
+  height: auto;
+  min-height: 100px;
+}
+
+/** Center Mode */
+.center .slick-center {
+  color: royalblue;
+  opacity: 1;
+  transform: scale(1.2);
+  transition: all .5s linear;
+}
+
+/** Adaptive Height */
+.adaptive-height p + p {
+  font-size: 18px !important;
+  font-weight: normal;
+  line-height: 24px;
+  margin-bottom: 20px !important;
+}
+
+/** Image sliders (Lazy Loading and Fade) */
+.image-slider .image {
+  padding: 10px;
+}
+
+  .image-slider .slick-slide img {
+    border: 5px solid #fff;
+    display: block;
+    width: 100%;
+  }
+
+    .image-slider .slick-slide img.slick-loading {
+      border: 0;
+    }
+
+
+/************
+  Tables
+************/
+table {
+  font-size: 14px;
+  line-height: 18px;
+  margin: 40px auto 0;
+  display: block;
+}
+
+  tr {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #fff;
+    margin: 0px 0px 20px;
+    padding: 0px 0px 20px;
+    background: transparent;
+    float: left;
+  }
+
+    tr:last-of-type {
+      border: 0;
+      padding-bottom: 0;
+    }
+
+    th {
+      font-weight: bold;
+      font-size: 20px;
+      color: white;
+      line-height: 22px;
+    }
+
+    td {
+      border: 0;
+      padding: 10px 0px;
+    }
+
+  th,
+  td {
+    display: block;
+    width: 100% !important;
+    text-align: left;
+  }
+
+
+/*************************
+  Responsive behaviors
+**************************/
+@media (max-width: 768px) {
+  .fixed-header {
+    display: none !important;
+  }
+
+  .header ul.nav li {
+    display: block;
+    margin: 20px;
+  }
+
+  .alt-background h3 {
+    font-size: 24px;
+  }
+
+  .button {
+    margin: 0 auto 20px;
+    width: auto;
+  }
+
+  .button.first {
+    margin-top: 40px;
+  }
+
+  .buttons {
+    padding: 0 0 20px;
+  }
+
+  .buttons .button {
+    float: left;
+    font-size: 12px;
+    margin: 1%;
+    width: 48%;
+  }
+
+  .center {
+    margin-left: -40px;
+    margin-right: -40px;
+  }
+
+  .center .slick-center h3 {
+    color: #e67e22;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .center h3 {
+    opacity: 0.8;
+    transform: scale(0.95);
+    transition: all 300ms ease;
+  }
+
+  .content {
+    margin: auto;
+    padding: 20px 40px;
+    width: auto;
+  }
+
+  .fixed-header .header-content {
+    width: auto;
+  }
+
+  table {
+    font-size: 14px;
+    line-height: 18px;
+    margin: 40px auto 20px;
+    display: block;
+    float: left;
+  }
+
+    tr {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid #fff;
+      margin: 0px 0px 20px;
+      padding: 0px 0px 20px;
+      background: transparent;
+      float: left;
+    }
+
+    thead {
+      display: none;
+    }
+
+    td {
+      border: 0;
+      padding: 10px 0px;
+    }
+
+    td,
+    tbody {
+      display: block;
+      width: 100% !important;
+    }
+
+    table.settings td:nth-of-type(1),
+    table.methods td:nth-of-type(1) {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 18px;
+    }
+
+    table.settings td:nth-of-type(2):before {
+      content: 'Type: ';
+      font-weight: 700;
+    }
+
+    table.settings td:nth-of-type(3):before {
+      content: 'Default: ';
+      font-weight: 700;
+    }
+
+    table.methods td:nth-of-type(2):before {
+      content: 'Arguments: ';
+      font-weight: 700;
+    }
+}
+
+/*******************************************************************
+  Improved .sr-only class by ffoodd
+  https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034
+********************************************************************/
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+	-webkit-clip-path: inset(50%) !important;
+		clip-path: inset(50%) !important;  /* 2 */
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;            /* 3 */
+}
+
+
+/********************************
+  "Skip to main content" link
+********************************/
+.skip-link {
+  position: absolute;
+  left: 20px;
+  top: -100px;
+  z-index: 100;
+  transition: top .2s ease-out;
+
+  background-color: var(--alternative-color--dark);
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  padding: 20px;
+  text-decoration: none;
+}
+
+  .skip-link:focus {
+    top: 20px;
+    outline: 5px dashed var(--focus-outline-color);
+    outline-offset: 2px;
+  }
+
+  .skip-link:hover {
+    text-decoration: underline;
+  }

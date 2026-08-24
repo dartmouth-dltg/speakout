@@ -1,0 +1,70 @@
+{
+  "name": "stylelint-prettier",
+  "version": "4.1.0",
+  "description": "Runs prettier as an stylelint rule",
+  "keywords": [
+    "stylelint",
+    "stylelint-plugin",
+    "prettier"
+  ],
+  "author": "Ben Scott",
+  "files": [
+    "stylelint-prettier.js",
+    "recommended.js",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "main": "stylelint-prettier.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "yarn run lint && node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "format": "yarn run prettier '**/*.{js,json,md}' --write && yarn run lint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prettier/stylelint-prettier.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prettier/stylelint-prettier/issues"
+  },
+  "homepage": "https://github.com/prettier/stylelint-prettier#readme",
+  "dependencies": {
+    "prettier-linter-helpers": "^1.0.0"
+  },
+  "peerDependencies": {
+    "prettier": ">=3.0.0",
+    "stylelint": ">=15.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.6.1",
+    "jest-preset-stylelint": "^6.3.2",
+    "postcss": "^8.4.25",
+    "postcss-html": "^1.5.0",
+    "postcss-markdown": "^1.2.0",
+    "postcss-scss": "^4.0.6",
+    "postcss-styled-syntax": "^0.4.0",
+    "postcss-syntax": "^0.36.2",
+    "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.12.1",
+    "prettier-plugin-svelte": "^3.0.0",
+    "strip-ansi": "^6.0.0",
+    "stylelint": "^15.8.0",
+    "svelte": "^4.1.0",
+    "typescript": "5.1.6"
+  },
+  "engines": {
+    "node": "^14.17.0 || >=16.0.0"
+  },
+  "jest": {
+    "preset": "jest-preset-stylelint",
+    "transform": {},
+    "setupFiles": [
+      "./jest-setup.js"
+    ]
+  },
+  "license": "MIT"
+}

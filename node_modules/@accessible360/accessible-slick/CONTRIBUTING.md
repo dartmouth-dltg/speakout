@@ -1,0 +1,7 @@
+If you feel this package can be improved in some way, please start by [proposing your change in a new Issue](https://github.com/Accessible360/accessible-slick/issues/new) before spending a bunch of time writing code! We'll talk through the problem and your proposed solution, and possibly even do some light prototyping and testing with live users with disabilities to see how it feels for real people.
+
+Please note that this package is meant to build upon the original Slick Slider repo, not necessarily replace it. This repo will be updated to incorporate newer versions of Slick Slider when/if they become available. **If you would like to propose changes that are not directly related to accessibility, please direct your proposal to the original Slick Slider repo!**
+
+When your change is given the green light and you're ready to code, [create a fork of this repository](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) and commit your changes there. [Open a pull request (PR)](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) to the master branch of this repo and we'll get that sucker integrated!
+
+**If your change is really minor (like a spelling or formatting fix), feel free to just go ahead and open up a pull request and skip the prior validation!** We'll review and discuss your changes in the PR directly, if needed.

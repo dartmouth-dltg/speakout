@@ -1,0 +1,421 @@
+@import 'variables';
+
+/**
+ * Lightbox link
+ *
+ */
+
+.tobii-zoom {
+  border: 0;
+  box-shadow: none;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+
+
+  & img {
+    display: block;
+  }
+
+  &__icon {
+    align-items: center;
+    background-color: var(--zoom-icon-background, var(--tobii-zoom-icon-background));
+    top: 0.5em;
+    color: var(--zoom-icon-color, var(--tobii-zoom-icon-color));
+    display: flex;
+    justify-content: center;
+    line-height: 1;
+    position: absolute;
+    right: 0.5em;
+    width: 1.78em;
+    height: 1.78em;
+
+
+    & svg {
+      fill: none;
+      height: 1.5em;
+      pointer-events: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.5;
+      stroke: currentColor;
+      width: 1.5em;
+    }
+  }
+}
+
+// Hide scrollbar if lightbox is displayed
+
+body.tobii-is-open {
+  overflow-y: hidden;
+}
+
+// Prevent background scrolling on Safari iOS devices.
+.tobii-is-open,
+.tobii-image {
+  touch-action: none;
+}
+
+/**
+ * Lightbox
+ *
+ */
+
+.tobii {
+  background-color: var(--lightbox-background, var(--tobii-lightbox-background));
+  bottom: 0;
+  box-sizing: border-box;
+  contain: strict;
+  font-size: var(--base-font-size, var(--tobii-base-font-size));
+  left: 0;
+  line-height: 1.5;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: var(--lightbox-z-index, var(--tobii-lightbox-z-index));
+
+
+  &[aria-hidden='true'] {
+    display: none;
+  }
+
+  & *,
+  & *::before,
+  & *::after {
+    box-sizing: inherit;
+  }
+}
+
+
+/**
+ * Slider
+ *
+ */
+
+.tobii__slider {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 3.125em;
+  will-change: transform;
+
+
+  &[aria-hidden='true'] {
+    display: none;
+  }
+
+  @media screen and (prefers-reduced-motion: no-preference) {
+
+    &--animate:not(&--is-dragging) {
+      transition-duration: var(--transition-duration, var(--tobii-transition-duration));
+      transition-property: transform;
+      transition-timing-function: var(--transition-timing-function, var(--tobii-transition-timing-function));
+    }
+  }
+
+  &--is-draggable [data-type] {
+    cursor: grab;
+  }
+
+  &--is-dragging [data-type] {
+    cursor: grabbing;
+  }
+
+  &--is-moving [data-type] {
+    cursor: move;
+  }
+}
+
+/**
+ * Slide
+ *
+ */
+
+.tobii__slide {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+
+
+  &:not(&--is-active) {
+    visibility: hidden;
+
+    @media screen and (prefers-reduced-motion: no-preference) {
+      transition-duration: var(--transition-duration, var(--tobii-transition-duration));
+      transition-property: visibility;
+      transition-timing-function: var(--timing-function, var(--tobii-transition-timing-function));
+    }
+  }
+
+  & [data-type] {
+    max-height: 100%;
+    max-width: var(--slide-max-width, var(--tobii-slide-max-width));
+    overflow: hidden;
+    overscroll-behavior: contain;
+  }
+
+  & iframe,
+  & video {
+    display: block !important;
+  }
+
+  & figure {
+    margin: 0;
+    position: relative;
+
+
+    & > img {
+      display: block;
+      height: auto;
+      max-height: var(--slide-max-height, var(--tobii-slide-max-height));
+      max-width: var(--slide-max-width, var(--tobii-slide-max-width));
+      width: auto;
+    }
+
+    & > figcaption {
+      background-color: var(--caption-background, var(--tobii-caption-background));
+      bottom: 0;
+      color: var(--caption-color, var(--tobii-caption-color));
+      padding: 0.25em 0.5em;
+      position: absolute;
+      white-space: pre-wrap;
+      width: 100%;
+      font-size: 1.125em;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+      &:has(button.caption-toggle[aria-expanded='false']) {
+        color: transparent;
+        background-color: transparent;
+
+        & > button.caption-toggle {
+          &::after {
+            opacity: 0.6;
+          }
+
+          &:hover::after {
+            opacity: 1;
+          }
+        }
+      }
+
+      & > button.caption-toggle {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0 3em 0 0;
+        cursor: pointer;
+        color: transparent;
+        border: none;
+        background: transparent;
+
+        &::after {
+          position: absolute;
+          right: 0.25em;
+          bottom: 0.25em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 1.75em;
+          height: 1.75em;
+          content: 'ⓘ';
+          transition: opacity 0.3s ease-in-out;
+          pointer-events: none;
+          opacity: 0;
+          color: var(--caption-color, var(--tobii-caption-color));
+          border-radius: 50%;
+          background-color: var(
+            --caption-background,
+            var(--tobii-caption-background)
+          );
+          font-size: medium;
+          font-weight: bold;
+          line-height: 1;
+        }
+      }
+    }
+  }
+
+  & [data-type='html'] {
+    overflow-y: auto;
+
+    & video {
+      cursor: auto;
+      max-height: var(--slide-max-height, var(--tobii-slide-max-height));
+      max-width: var(--slide-max-width, var(--tobii-slide-max-width));
+    }
+
+    & audio {
+      max-width: 100%;
+    }
+  }
+
+  & [data-type='iframe'] {
+
+    /* Fix iframe scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    transform: translate(0, 0);
+
+
+    & iframe {
+      height: var(--slide-max-height, var(--tobii-slide-max-height));
+      width: var(--slide-max-width, var(--tobii-slide-max-width));
+    }
+  }
+}
+
+/**
+ * Buttons
+ *
+ */
+
+.tobii__btn {
+  appearance: none;
+  background-color: var(--button-background, var(--tobii-button-background));
+  border: 1px solid transparent;
+  color: var(--button-color, var(--tobii-button-color));
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+  margin: 0;
+  opacity: 0.5;
+  padding: 0;
+  position: absolute;
+  touch-action: manipulation;
+  will-change: opacity;
+  z-index: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @media screen and (prefers-reduced-motion: no-preference) {
+    transition-duration: var(--transition-duration, var(--tobii-transition-duration));
+    transition-property: opacity, transform;
+    transition-timing-function: var(--transition-timing-function, var(--tobii-transition-timing-function));
+    will-change: opacity, transform;
+  }
+
+
+  & svg {
+    fill: none;
+    height: 3.75em;
+    pointer-events: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1;
+    stroke: currentColor;
+    width: 3.75em;
+  }
+
+  &--previous,
+  &--next {
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--button-navigation-background, var(--tobii-button-navigation-background));
+    border-radius: 5px;
+  }
+
+  &--previous {
+    left: 1em;
+  }
+
+  &--next {
+    right: 1em;
+  }
+
+  &--close {
+    right: 0.25em;
+    top: 0.25em;
+    width: 2.5em;
+    height: 2.5em;
+    opacity: 0.75;
+
+    & svg {
+      transform: scale(1.4);
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &:disabled,
+  &[aria-hidden='true'] {
+    visibility: hidden;
+    cursor: default;
+  }
+}
+
+/**
+ * Counter
+ *
+ */
+
+.tobii__counter {
+  background-color: var(--counter-background, var(--tobii-counter-background));
+  color: var(--counter-color, var(--tobii-counter-color));
+  font-size: 1.25em;
+  left: 0.875em;
+  line-height: 1;
+  position: absolute;
+  top: 0.875em;
+  z-index: 1;
+  opacity: 0.8;
+
+  &[aria-hidden='true'] {
+    display: none;
+  }
+
+  & p {
+    display: inline;
+  }
+}
+
+/**
+ * Loader
+ *
+ */
+
+.tobii__loader {
+  display: inline-block;
+  height: 6em;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 6em;
+
+
+  &::before {
+    animation: spin 1s infinite;
+    border-radius: 100%;
+    border: 2px solid #949ba3;
+    border-top-color: var(--loader-color, var(--tobii-loader-color));
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tobii__slide .tobii-html {
+  background: #ffffff;
+  padding: 10px 20px;
+  max-width: 800px;
+  font-size: 1.125em;
+}
