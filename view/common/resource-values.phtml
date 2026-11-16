@@ -16,7 +16,7 @@ if ($this->status()->isSiteRequest()) {
     $showValueAnnotations = true;
 }
 ?>
-
+<?php if (count($values) > 0): ?>
 <dl>
 <?php foreach ($values as $term => $propertyData): ?>
     <div class="property">
@@ -43,6 +43,8 @@ if ($this->status()->isSiteRequest()) {
                 $class[] = $escape($value->valueResource()->resourceName());
             } elseif ('uri' == $valueType) {
                 $class[] = 'uri';
+            } else {
+              $class[] = $escape(str_replace(['_', ':'], '-', $valueType));
             }
             ?>
             <?php if ((!$filterLocale) || ($valueLang == '') || (strcasecmp($valueLang, $lang) == 0)): ?>
@@ -51,7 +53,7 @@ if ($this->status()->isSiteRequest()) {
                   <span class="language"><?php echo $valueLang; ?></span>
                 <?php endif; ?>
                 <span class="value-content"><?php echo $filterLocale ? $value->asHtml($lang) : $value->asHtml(); ?></span>
-                <?php if(!$value->isPublic()): ?>
+                <?php if (!$value->isPublic()): ?>
                   <span class="o-icon-private" aria-role="tooltip" title="<?php echo $this->escapeHtml($translate('Private')); ?>" aria-label="<?php echo $this->escapeHtml($translate('Private')); ?>"></span>
                 <?php endif; ?>
                 <?php if ($valueAnnotation && $showValueAnnotations): ?>
@@ -69,3 +71,4 @@ if ($this->status()->isSiteRequest()) {
     </div>
 <?php endforeach; ?>
 </dl>
+<?php endif; ?>

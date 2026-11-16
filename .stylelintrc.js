@@ -1,0 +1,1 @@
+module.exports = require("@dltg/gulp-build/stylelint-config");
